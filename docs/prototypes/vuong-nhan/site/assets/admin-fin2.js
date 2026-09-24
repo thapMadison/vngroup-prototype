@@ -29,14 +29,15 @@
     Lg.sachxanh = [
       ['24/09 07:45', 'payout', ['Yêu cầu rút tiền RT-24092', 'Payout request RT-24092'], ['avail', 'payout'], 1800000, 'RT-24092'],
       ['23/09 18:20', 'hold', ['Tạm giữ do khiếu nại KN-1042', 'Held for dispute KN-1042'], ['warranty', 'hold'], 747000, 'VN-240921'],
+      ['23/09 16:40', 'cash', ['Thu tiền mặt VN-240923, ghi công nợ hoa hồng và thuế', 'Cash collected VN-240923, commission and tax owed'], ['', 'debt'], -110500, 'RT-CM-0041'],
       ['22/09 21:14', 'adjust', ['Nhà cung cấp đổi tài khoản ngân hàng nhận tiền', 'Provider changed payout bank account'], ['', ''], 0, 'TCB •••• 8823'],
       ['22/09 16:30', 'order', ['Ghi nhận đơn VN-240921 sau thanh toán', 'Order VN-240921 recorded after payment'], ['', 'warranty'], 747000, 'VN-240921'],
       ['19/09 00:00', 'warranty', ['Hết bảo hành 4 đơn, chuyển sang Có thể rút', '4 orders out of warranty, now available'], ['warranty', 'avail'], 1320000, 'VN-240901'],
       ['15/09 11:02', 'refund', ['Hoàn một phần VN-240916', 'Partial refund VN-240916'], ['warranty', ''], -232400, 'HT-0918']
     ];
-    Lg.hoabinh = [['24/09 07:30', 'payout', ['Yêu cầu rút tiền RT-24093', 'Payout request RT-24093'], ['avail', 'payout'], 3120000, 'RT-24093'], ['21/09 15:02', 'order', ['Ghi nhận đơn VN-240914 sau thanh toán', 'Order VN-240914 recorded after payment'], ['', 'warranty'], 954500, 'VN-240914'], ['19/09 10:52', 'order', ['Ghi nhận đơn VN-240913 sau thanh toán', 'Order VN-240913 recorded after payment'], ['', 'warranty'], 996000, 'VN-240913'], ['14/09 15:40', 'paid', ['Chi trả lô L-0914 (RT-24068)', 'Paid in batch L-0914 (RT-24068)'], ['payout', ''], -2780000, 'L-0914'], ['12/09 16:10', 'paid', ['Chi trả lô L-0912 (CT-0912-03)', 'Paid in batch L-0912 (CT-0912-03)'], ['payout', ''], -3200000, 'CT-0912-03']];
-    Lg.antam = [['23/09 21:08', 'payout', ['Yêu cầu rút tiền RT-24094', 'Payout request RT-24094'], ['avail', 'payout'], 1250000, 'RT-24094'], ['22/09 16:55', 'order', ['Ghi nhận đơn VN-240920 sau thanh toán', 'Order VN-240920 recorded after payment'], ['', 'warranty'], 622500, 'VN-240920'], ['21/09 10:20', 'adjust', ['Điều chỉnh DC-0921: phí chuyển khoản lỗi', 'Adjustment DC-0921: failed transfer fee'], ['avail', ''], -55000, 'DC-0921']];
-    Lg.thotam = [['23/09 18:40', 'adjust', ['Khoá tài khoản, dừng nhận đơn mới', 'Account locked, no new orders'], ['', ''], 0, ''], ['23/09 11:40', 'order', ['Nghiệm thu VN-240925, chờ khách thanh toán', 'VN-240925 signed off, awaiting payment'], ['', 'awaiting'], 431600, 'VN-240925']];
+    Lg.hoabinh = [['24/09 07:30', 'payout', ['Yêu cầu rút tiền RT-24093', 'Payout request RT-24093'], ['avail', 'payout'], 3120000, 'RT-24093'], ['23/09 11:30', 'order', ['Chưa thu được tiền mặt VN-240935, chờ khách thanh toán', 'Cash not collected VN-240935, awaiting customer payment'], ['', 'awaiting'], 622500, 'VN-240935'], ['22/09 11:20', 'cash', ['Thu tiền mặt VN-240922, ghi công nợ hoa hồng và thuế', 'Cash collected VN-240922, commission and tax owed'], ['', 'debt'], -374000, 'RT-CM-0040'], ['21/09 15:02', 'order', ['Ghi nhận đơn VN-240914 sau thanh toán', 'Order VN-240914 recorded after payment'], ['', 'warranty'], 954500, 'VN-240914'], ['19/09 10:52', 'order', ['Ghi nhận đơn VN-240913 sau thanh toán', 'Order VN-240913 recorded after payment'], ['', 'warranty'], 996000, 'VN-240913'], ['14/09 15:40', 'paid', ['Chi trả lô L-0914 (RT-24068)', 'Paid in batch L-0914 (RT-24068)'], ['payout', ''], -2780000, 'L-0914'], ['12/09 16:10', 'paid', ['Chi trả lô L-0912 (CT-0912-03)', 'Paid in batch L-0912 (CT-0912-03)'], ['payout', ''], -3200000, 'CT-0912-03']];
+    Lg.antam = [['23/09 21:08', 'payout', ['Yêu cầu rút tiền RT-24094', 'Payout request RT-24094'], ['avail', 'payout'], 1250000, 'RT-24094'], ['22/09 16:55', 'order', ['Ghi nhận đơn VN-240920 sau thanh toán', 'Order VN-240920 recorded after payment'], ['', 'warranty'], 622500, 'VN-240920'], ['21/09 10:20', 'adjust', ['Điều chỉnh DC-0921: phí chuyển khoản lỗi', 'Adjustment DC-0921: failed transfer fee'], ['avail', ''], -55000, 'DC-0921'], ['21/09 09:40', 'cash', ['Nhận chuyển khoản trả công nợ tiền mặt VN-240907', 'Cash debt transfer received VN-240907'], ['debt', ''], 153000, 'FT26264093551'], ['20/09 10:30', 'cash', ['Thu tiền mặt VN-240907, ghi công nợ hoa hồng và thuế', 'Cash collected VN-240907, commission and tax owed'], ['', 'debt'], -153000, 'RT-CM-0037']];
+    Lg.thotam = [['23/09 18:40', 'adjust', ['Khoá tài khoản, dừng nhận đơn mới', 'Account locked, no new orders'], ['', ''], 0, ''], ['23/09 11:40', 'order', ['Nghiệm thu VN-240925, chờ khách thanh toán', 'VN-240925 signed off, awaiting payment'], ['', 'awaiting'], 431600, 'VN-240925'], ['22/09 15:10', 'cash', ['Nhận chuyển khoản trả công nợ tiền mặt VN-240909', 'Cash debt transfer received VN-240909'], ['debt', ''], 81600, 'FT26265418207'], ['21/09 14:55', 'cash', ['Thu tiền mặt VN-240909, ghi công nợ hoa hồng và thuế', 'Cash collected VN-240909, commission and tax owed'], ['', 'debt'], -81600, 'RT-CM-0038']];
     return Lg;
   }
   A.ledger = function (pid) { if (!A.S.d.LEDGER) A.S.d.LEDGER = seedLedger(); if (!A.S.d.LEDGER[pid]) A.S.d.LEDGER[pid] = []; return A.S.d.LEDGER[pid]; };
@@ -53,7 +54,7 @@
       var adjPend = d.ADJUSTS.filter(function (a) { return a.st === 'pending'; }).length;
       var tabs = [['txn', L('Giao dịch thu', 'Collections'), VN.num(D.FIN.txCount)], ['bal', L('Số dư nhà cung cấp', 'Provider balances'), 214], ['unpaid', L('Chờ khách thanh toán', 'Awaiting customer payment'), unpaid.length], ['adjust', L('Điều chỉnh sổ cái', 'Ledger adjustments'), adjPend], ['recon', L('Đối soát', 'Reconciliation'), null]];
       var primary = tab === 'adjust' ? A.btn(L('Tạo điều chỉnh', 'Create adjustment'), 'adjOpen', { cls: 'primary', icon: 'plus', dis: A.denyTip('adjCreate') }) :
-        tab === 'recon' ? A.btn(L('Xuất file đối soát', 'Export reconciliation'), 'reconExport', { cls: 'primary', icon: 'download-simple', dis: A.can('export') || A.S.role === 'acc' ? '' : A.denyTip('export') }) :
+        tab === 'recon' ? (A.S.p.rs === 'gateway' ? A.btn(L('Xuất file đối soát', 'Export reconciliation'), 'reconExport', { cls: 'primary', icon: 'download-simple', dis: A.can('export') || A.S.role === 'acc' ? '' : A.denyTip('export') }) : '') :
         (tab === 'txn' && A.can('export') ? A.btn(L('Xuất Excel', 'Export to Excel'), 'txnExport', { cls: 'primary', icon: 'download-simple' }) : '');
       var h = '<div class="page-h"><div><h1>' + L('Giao dịch & đối soát', 'Transactions & reconciliation') + '</h1><div class="sub">' + L('Mọi bút toán chỉ thêm, không sửa, không xoá', 'Entries are append-only: no edits, no deletes') + '</div></div><div class="acts">' + primary + '</div></div>';
       h += '<div class="tabs" role="tablist">' + tabs.map(function (t) { return '<button type="button" role="tab" aria-selected="' + (tab === t[0]) + '" class="' + (tab === t[0] ? 'on' : '') + '" data-act="tab" data-id="' + t[0] + '">' + t[1] + (t[2] != null ? '<span class="n' + (t[0] === 'adjust' && t[2] ? ' red' : '') + '">' + t[2] + '</span>' : '') + '</button>'; }).join('') + '</div>';
@@ -66,6 +67,8 @@
       return { id: t[0], order: t[1], cust: o ? o.cust : ex[0], prov: o ? o.prov : ex[1], amount: t[2], method: t[3], st: t[4], time: t[5] };
     });
   }
+  /* Phương thức: tiền mặt là viên trung tính có icon, các phương thức khác giữ chữ thường */
+  function methodCell(m) { return m === 'cash' ? '<span class="badge plain t-neutral">' + ic('money') + L('Tiền mặt', 'Cash') + '</span>' : L(D.PAY_METHOD[m][0], D.PAY_METHOD[m][1]); }
   function txnTab() {
     var q = VN.fold(A.ui('txnQ', '')), fm = A.ui('txnM', ''), fs = A.ui('txnS', ''), ft = A.ui('txnT', '');
     var rows = txnRows().filter(function (r) {
@@ -77,9 +80,9 @@
       sel('txnM', [['', L('Mọi phương thức', 'All methods')]].concat(Object.keys(D.PAY_METHOD).map(function (k) { return [k, L(D.PAY_METHOD[k][0], D.PAY_METHOD[k][1])]; })), L('Phương thức', 'Method')) +
       sel('txnS', [['', L('Mọi trạng thái', 'All statuses')]].concat(Object.keys(D.TXN_STATUS).map(function (k) { return [k, L(D.TXN_STATUS[k][0], D.TXN_STATUS[k][1])]; })), L('Trạng thái', 'Status')) + '</div>';
     h += '<div class="card" style="overflow:hidden"><div style="overflow-x:auto"><table class="tbl"><thead><tr><th>' + L('Mã giao dịch', 'Transaction') + '</th><th>' + L('Mã đơn', 'Order') + '</th><th>' + L('Khách hàng', 'Customer') + '</th><th>' + L('Nhà cung cấp', 'Provider') + '</th>' + A.sortable('amount', L('Số tiền', 'Amount'), 'num') + '<th>' + L('Phương thức', 'Method') + '</th><th>' + L('Trạng thái', 'Status') + '</th>' + A.sortable('time', L('Thời gian', 'Time')) + '</tr></thead><tbody>' +
-      (rows.length ? rows.map(function (r) { return '<tr><td class="id">' + r.id + '</td><td>' + A.ordLink(r.order, 'money') + '</td><td class="ell">' + esc(r.cust || '') + '</td><td class="ell">' + A.provLink(r.prov) + '</td><td class="num">' + VN.money(r.amount) + '</td><td>' + L(D.PAY_METHOD[r.method][0], D.PAY_METHOD[r.method][1]) + '</td><td>' + A.badge(D.TXN_STATUS[r.st]) + '</td><td class="muted nw">' + r.time + '</td></tr>'; }).join('') :
+      (rows.length ? rows.map(function (r) { return '<tr><td class="id">' + r.id + '</td><td>' + A.ordLink(r.order, 'money') + '</td><td class="ell">' + esc(r.cust || '') + '</td><td class="ell">' + A.provLink(r.prov) + '</td><td class="num">' + VN.money(r.amount) + '</td><td>' + methodCell(r.method) + '</td><td>' + A.badge(D.TXN_STATUS[r.st]) + '</td><td class="muted nw">' + r.time + '</td></tr>'; }).join('') :
         '<tr><td colspan="8">' + A.empty(L('Không có giao dịch khớp bộ lọc', 'No transactions match'), L('Thử bỏ bớt bộ lọc hoặc tìm theo mã đơn.', 'Remove a filter or search by order ID.'), A.btn(L('Xoá bộ lọc', 'Clear filters'), 'txnClear')) + '</td></tr>') +
-      '</tbody></table></div>' + A.foot(Math.min(15, rows.length), rows.length === txnRows().length ? D.FIN.txCount : rows.length, ['giao dịch', 'transactions']) + '</div>';
+      '</tbody></table></div>' + A.foot(rows.length, rows.length === txnRows().length ? D.FIN.txCount : rows.length, ['giao dịch', 'transactions']) + '</div>';
     return h;
   }
   function sel(k, opts, label) {
@@ -120,7 +123,7 @@
       rows.map(function (o) {
         var notes = A.S.d.DUN_NOTES[o.id] || [], last = notes[0];
         var od = o.overdueDays || 0;
-        return '<tr class="click" tabindex="0" data-act="dunOpen" data-id="' + o.id + '"><td class="id">' + o.id + '</td><td>' + esc(o.cust) + '<div class="muted" style="font-size:12px">' + o.phone.replace(/(\d{4}) (\d{3}) (\d{3})/, '$1 ••• $3') + '</div></td><td class="num">' + VN.money(o.amount) + '</td><td class="muted nw">' + o.accepted + '</td><td class="num">' +
+        return '<tr class="click" tabindex="0" data-act="dunOpen" data-id="' + o.id + '"><td class="id">' + o.id + '</td><td>' + esc(o.cust) + '<div class="muted" style="font-size:12px">' + o.phone.replace(/(\d{4}) (\d{3}) (\d{3})/, '$1 ••• $3') + '</div></td><td class="num">' + VN.money(o.amount) + (o.cashFail ? '<div class="muted" style="font-size:12px">' + L('Tiền mặt chưa thu được', 'Cash not collected') + '</div>' : '') + '</td><td class="muted nw">' + o.accepted + '</td><td class="num">' +
           (od ? '<span class="badge ' + (od > 3 ? 't-warn' : 't-neutral') + '">' + L(od + ' ngày', od + ' days') + '</span>' : '<span class="muted">' + L('Chưa quá hạn · còn ' + o.dueIn + ' giờ', 'Not overdue · ' + o.dueIn + ' h left') + '</span>') + '</td><td>' + A.badge(D.DUN[o.dun || 'none']) + (o.promise ? '<div class="muted" style="font-size:12px;margin-top:3px">' + L('Hẹn ', 'Promised ') + o.promise + '</div>' : '') + '</td><td class="muted" style="font-size:12.5px">' + (last ? esc(last[0]) + ' · ' + last[1] : L('Không có', 'None')) + '</td></tr>';
       }).join('') + '</tbody></table>' + A.foot(rows.length, rows.length, ['đơn', 'orders']) + '</div>';
   }
@@ -205,7 +208,15 @@
     A.S.modal = null; A.render();
   };
 
+  /* Tab Đối soát có 2 tab con: tiền mặt từ nhà cung cấp (mặc định) và cổng thanh toán, lô chi (nội dung có từ trước).
+     Tab con lưu ở A.S.p.rs, không dùng A.S.p.sub vì tab Điều chỉnh sổ cái đã dùng khoá đó. */
   function reconTab() {
+    var rs = A.S.p.rs === 'gateway' ? 'gateway' : 'cash', pend = A.cashPending().length;
+    var h = '<div class="tabs sub" role="tablist" aria-label="' + L('Loại đối soát', 'Reconciliation type') + '">' + [['cash', L('Tiền mặt từ nhà cung cấp', 'Cash from providers'), pend], ['gateway', L('Cổng thanh toán và lô chi', 'Gateway and payout batches'), null]].map(function (t) { return '<button type="button" role="tab" aria-selected="' + (rs === t[0]) + '" class="' + (rs === t[0] ? 'on' : '') + '" data-act="reconSub" data-id="' + t[0] + '">' + t[1] + (t[2] != null ? '<span class="n">' + t[2] + '</span>' : '') + '</button>'; }).join('') + '</div>';
+    return h + (rs === 'cash' ? cashTab() : gatewayTab());
+  }
+  ACT.reconSub = function (el) { A.S.p = Object.assign({}, A.S.p, { rs: el.dataset.id }); A.render(); };
+  function gatewayTab() {
     var loaded = A.ui('reconLoaded', false), per = A.ui('reconPer', '09');
     var h = '<div class="card" style="padding:18px 20px;display:flex;flex-direction:column;gap:14px"><h2 style="margin:0;font-size:15px;font-weight:600">' + L('Xuất file đối soát theo kỳ', 'Export reconciliation file') + '</h2><div class="filters">' + sel('reconPer', [['09', L('Tháng 09/2026 (01-24)', 'September 2026 (1-24)')], ['08', L('Tháng 08/2026', 'August 2026')], ['07', L('Tháng 07/2026', 'July 2026')]], L('Kỳ', 'Period')) +
       '<span class="muted" style="font-size:13px">' + L('File gồm: giao dịch thu, lệnh chi theo lô, hoàn tiền, điều chỉnh. Đối soát với cổng thanh toán làm thủ công bằng file này.', 'Includes collections, payout batches, refunds, adjustments. Gateway reconciliation is manual with this file.') + '</span></div></div>';
@@ -232,6 +243,216 @@
     var name = 'VuongNhan_DoiSoat_2026' + per + '.xls';
     VN.download(name, VN.xls([{ name: L('Đối soát', 'Reconciliation'), rows: rows, head: [0] }]), 'application/vnd.ms-excel');
     A.log(L('Xuất file đối soát', 'Exported reconciliation'), name); flash(L('Đã tạo file ', 'File created: ') + name);
+  };
+
+
+  /* ---------- Đối soát tiền mặt ----------
+     Tiền mặt nằm trong tay nhà cung cấp, nên phần nền tảng lẽ ra giữ lại y như đơn trả qua app (hoa hồng 15% + thuế khấu trừ 2%)
+     thành công nợ. Nhà cung cấp chuyển khoản về theo mã tham chiếu; kế toán đối chiếu sao kê rồi ghi nhận 2 bước.
+     Kỹ thuật viên báo chưa thu được thì không có công nợ: đơn sang Chờ khách thanh toán như đơn trả qua app chưa thanh toán. */
+  A.cashOwe = function (c) { if (c.st === 'fail') return 0; var s = A.split(c); return s.comm + s.tax; };
+  A.cashPending = function () { return A.S.d.CASH.filter(function (c) { return c.st === 'pending'; }); };
+  A.cashDebt = function (pid) { return A.cashPending().filter(function (c) { return c.prov === pid; }).reduce(function (a, c) { return a + A.cashOwe(c); }, 0); };
+  var CASH_ST = { pending: ['Chưa đối soát', 'To reconcile', 'warn'], recon: ['Đã đối soát', 'Reconciled', 'slate'], fail: ['Chưa thu được', 'Uncollected', 'danger'] };
+  A.CASH_ST = CASH_ST;
+  function cashOf(id) { return A.S.d.CASH.filter(function (c) { return c.order === id; })[0]; }
+  function isoOf(dm) { return '2026-' + dm.slice(3, 5) + '-' + dm.slice(0, 2); }
+  function cashRows() {
+    var q = VN.fold(A.ui('cashQ', '')), t = A.ui('cashT', 'month'), st = A.ui('cashS', '');
+    var week = ['24/09', '23/09', '22/09', '21/09', '20/09', '19/09', '18/09'];
+    return A.S.d.CASH.filter(function (c) {
+      var day = c.done.slice(0, 5);
+      return (!q || VN.fold(c.order + ' ' + A.provName(c.prov) + ' ' + c.cust).indexOf(q) >= 0) && (!st || c.st === st) &&
+        (t === 'all' || (t === 'month' && day.slice(3) === '09') || (t === '7d' && week.indexOf(day) >= 0) || (t === 'today' && day === '24/09'));
+    });
+  }
+  function cashForm(c) { var k = 'cashF-' + c.order; if (!A.S.ui[k]) A.S.ui[k] = { amt: '', date: '2026-09-24', code: '', bank: '0', note: '', tried: false }; return A.S.ui[k]; }
+  function cashErr(c, f) {
+    var owe = A.cashOwe(c), e = {};
+    if (!String(f.amt).trim()) e.amt = L('Nhập số tiền đã chuyển', 'Enter the amount transferred');
+    else if (VN.parseMoney(f.amt) !== owe) e.amt = L('Khác số tiền nợ ' + VN.money(owe) + '. Phần chênh lệch ghi ở tab Bút toán điều chỉnh.', 'Differs from the ' + VN.money(owe) + ' owed. Record the difference under Adjustment entry.');
+    if (!f.date) e.date = L('Chọn ngày chuyển khoản', 'Pick the transfer date');
+    else if (f.date < isoOf(c.done) || f.date > '2026-09-24') e.date = L('Ngày chuyển khoản phải từ ngày hoàn thành đơn (' + c.done.slice(0, 5) + ') tới hôm nay', 'The transfer date must be between the completion date (' + c.done.slice(0, 5) + ') and today');
+    if (!String(f.code).trim()) e.code = L('Nhập mã giao dịch trên sao kê ngân hàng', 'Enter the code shown on the bank statement');
+    if (f.bank === '') e.bank = L('Chọn tài khoản nhận tiền', 'Pick the receiving account');
+    return e;
+  }
+  function cashAdjForm(c) { var k = 'cashA-' + c.order; if (!A.S.ui[k]) A.S.ui[k] = { dir: '', amt: '', why: '', file: null, tried: false }; return A.S.ui[k]; }
+  function cashAdjErr(c, g) {
+    var p = A.prov(c.prov), amt = VN.parseMoney(g.amt), e = {};
+    if (g.dir === '') e.dir = L('Chọn tăng hay giảm số dư', 'Choose increase or decrease');
+    if (!amt) e.amt = L('Nhập số tiền điều chỉnh', 'Enter the adjustment amount');
+    else if (g.dir === '-1' && amt > p.bal.avail) e.amt = L('Số tiền giảm vượt số dư Có thể rút (' + VN.money(p.bal.avail) + ')', 'Decrease exceeds the available balance (' + VN.money(p.bal.avail) + ')');
+    if (String(g.why).trim().length < 10) e.why = L('Ghi rõ lý do, ít nhất 10 ký tự', 'Explain the reason, at least 10 characters');
+    return e;
+  }
+  /* Ô nhập có nhãn, dấu bắt buộc và lỗi đặt ngay dưới ô */
+  function fld(id, label, input, err, req) {
+    return '<div class="field"><label for="' + id + '">' + label + (req === false ? '' : ' <span class="req">*</span>') + '</label>' + input + (err ? '<span class="err" id="' + id + '-e">' + err + '</span>' : '') + '</div>';
+  }
+  function bad(err, id) { return err ? ' bad" aria-invalid="true" aria-describedby="' + id + '-e' : ''; }
+  function kvCard(rows) {
+    return '<div style="background:var(--fill);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 14px;font-size:13px;align-items:baseline">' +
+      rows.map(function (r) { return '<span class="muted">' + r[0] + '</span><b style="font-weight:500;text-align:right;overflow-wrap:anywhere">' + r[1] + '</b>'; }).join('') + '</div>';
+  }
+
+  function cashTab() {
+    var rows = cashRows(), sel = A.ui('cashSel', null);
+    if (!rows.some(function (c) { return c.order === sel; })) { var first = rows.filter(function (c) { return c.st === 'pending'; })[0] || rows[0]; sel = first ? first.order : null; A.S.ui.cashSel = sel; }
+    var total = A.cashPending().reduce(function (a, c) { return a + A.cashOwe(c); }, 0);
+    var th = function (t, cls) { return '<th class="' + (cls || '') + '" style="padding:6px 10px;white-space:normal;line-height:1.3">' + t + '</th>'; };
+    var td = function (t, cls) { return '<td class="' + (cls || '') + '" style="padding:0 10px">' + t + '</td>'; };
+    var exDis = A.can('export') || A.can('cashRecon') ? '' : A.denyTip('export');
+    var left = '<section class="card" style="overflow:hidden;min-width:0" aria-labelledby="cash-h"><div class="card-h" style="flex-direction:column;align-items:flex-start;gap:4px"><h2 id="cash-h">' + L('Đơn hàng tiền mặt chờ đối soát', 'Cash orders awaiting reconciliation') + '</h2>' +
+      '<span class="muted" style="font-size:12px;font-style:italic">' + L('Kế toán tự đối chiếu với sao kê ngân hàng. Đối soát tự động: giai đoạn 2.', 'Accountants match bank statements by hand. Automatic matching: phase 2.') + '</span></div>' +
+      '<div class="filters" style="padding:12px 16px">' +
+      '<div class="search-box" style="flex:1 1 180px;width:auto">' + ic('magnifying-glass') + '<label class="sr" for="cash-q">' + L('Tìm', 'Search') + '</label><input id="cash-q" class="inp" data-in="uiset" data-k="cashQ" value="' + esc(A.ui('cashQ', '')) + '" placeholder="' + L('Tìm nhà cung cấp, mã đơn…', 'Provider, order ID…') + '"></div>' +
+      sel_('cashT', [['month', L('Tháng này', 'This month')], ['7d', L('7 ngày', '7 days')], ['today', L('Hôm nay', 'Today')], ['all', L('Mọi thời gian', 'Any time')]], L('Thời gian', 'Time'), 'month') +
+      sel_('cashS', [['', L('Tất cả', 'All')], ['pending', L(CASH_ST.pending[0], CASH_ST.pending[1])], ['recon', L(CASH_ST.recon[0], CASH_ST.recon[1])], ['fail', L(CASH_ST.fail[0], CASH_ST.fail[1])]], L('Trạng thái đối soát', 'Reconciliation status'), '') +
+      A.btn(L('Xuất Excel', 'Export to Excel'), 'cashExport', { icon: 'download-simple', dis: exDis, tipPos: 'left' }) + '</div>' +
+      '<div style="overflow-x:auto"><table class="tbl"><thead><tr>' + th(L('Mã đơn', 'Order')) + th(L('Nhà cung cấp · khách hàng', 'Provider · customer')) + th(L('Giá trị đơn', 'Order value'), 'num') + th(L('Hoa hồng', 'Commission'), 'num') + th(L('Số tiền nhà cung cấp nợ', 'Owed by provider'), 'num') + th(L('Ngày hoàn thành', 'Completed')) + th(L('Trạng thái đối soát', 'Status')) + '</tr></thead><tbody>' +
+      (rows.length ? rows.map(function (c) {
+        var on = c.order === sel;
+        return '<tr id="cash-' + c.order + '" class="click' + (on ? ' sel' : '') + (c.fresh ? ' flash' : '') + '" tabindex="0" data-act="cashSel" data-id="' + c.order + '"' + (on ? ' aria-current="true"' : '') + '>' +
+          td(c.order, 'id') + td('<span class="nw" style="font-weight:500">' + esc(A.provName(c.prov)) + '</span><div class="muted nw" style="font-size:12px">' + esc(c.cust) + '</div>') + td(VN.money(c.amount), 'num nw') + td(VN.money(A.split(c).comm), 'num nw') +
+          td(c.st === 'fail' ? '<span class="muted">' + VN.money(0) + '</span>' : '<b style="font-weight:600">' + VN.money(A.cashOwe(c)) + '</b>', 'num nw') + td(c.done, 'muted nw') + td(A.badge(CASH_ST[c.st]), 'nw') + '</tr>';
+      }).join('') : '<tr><td colspan="7">' + A.empty(L('Không có đơn tiền mặt khớp bộ lọc', 'No cash orders match'), L('Bỏ bớt bộ lọc hoặc tìm theo mã đơn.', 'Remove a filter or search by order ID.'), A.btn(L('Xoá bộ lọc', 'Clear filters'), 'cashClear')) + '</td></tr>') +
+      '</tbody></table></div><div class="tbl-foot"><b style="color:var(--warn);font-weight:700;font-size:13px">' + L('Tổng số tiền chờ đối soát: ', 'Total awaiting reconciliation: ') + VN.money(total) + '</b><span>' + L(rows.length + ' đơn', rows.length + ' orders') + '</span></div></section>';
+    var c = sel ? cashOf(sel) : null, anim = A.S.ui.cashAnim;
+    var right = '<section class="card" style="min-width:0' + (anim ? ';animation:slide .15s var(--ease)' : '') + '" aria-labelledby="cp-h">' + (c ? cashPanel(c, A.ui('cashTab', 'rec')) : A.empty(L('Chưa chọn đơn', 'No order selected'), L('Chọn một đơn ở bảng bên trái để xem chi tiết và ghi nhận chuyển khoản.', 'Pick an order on the left to see details and record the transfer.'), '', 'hand-coins')) + '</section>';
+    if (anim) A.mounts.push(function () { A.S.ui.cashAnim = false; });
+    A.mounts.push(function () {
+      var z = document.getElementById('ca-drop'); if (!z) return;
+      z.addEventListener('dragover', function (e) { e.preventDefault(); });
+      z.addEventListener('drop', function (e) { e.preventDefault(); var f = e.dataTransfer && e.dataTransfer.files[0]; if (f) setFile(f.name, f.size); });
+    });
+    return '<div style="display:grid;grid-template-columns:minmax(0,1.85fr) minmax(360px,1fr);gap:16px;align-items:start">' + left + right + '</div>';
+  }
+  function sel_(k, opts, label, def) {
+    var v = A.ui(k, def);
+    return '<label class="sr" for="s-' + k + '">' + label + '</label><select id="s-' + k + '" class="sel" style="min-width:118px" data-in="uiset" data-k="' + k + '">' + opts.map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>';
+  }
+  function cashPanel(c, tab) {
+    var p = A.prov(c.prov), sp = A.split(c), owe = A.cashOwe(c), debt = A.cashDebt(c.prov);
+    var tabs = '<div style="padding:16px 20px 0"><div class="tabs sub" role="tablist" aria-label="' + L('Thao tác đối soát', 'Reconciliation actions') + '">' +
+      [['rec', L('Ghi nhận chuyển khoản', 'Record transfer')], ['adj', L('Bút toán điều chỉnh', 'Adjustment entry')]].map(function (t) { var on = tab === t[0]; return '<button type="button" role="tab" aria-selected="' + on + '" class="' + (on ? 'on' : '') + '" data-act="cashTab" data-id="' + t[0] + '"' + (t[0] === 'adj' && !on ? ' style="color:var(--muted);font-weight:400"' : '') + '>' + t[1] + '</button>'; }).join('') + '</div></div>';
+    var head = '<div><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><h2 id="cp-h" style="margin:0;font-size:18px;font-weight:600">' + esc(p.name) + '</h2>' + A.badge(CASH_ST[c.st]) + '</div>' +
+      '<div class="muted" style="font-size:12.5px;margin-top:4px">' + L('Đơn ', 'Order ') + (A.order(c.order) ? A.ordLink(c.order, 'money') : '<span class="mono">' + c.order + '</span>') + ' · ' + esc(c.cust) + ' · ' + L('hoàn thành ', 'completed ') + c.done + '</div></div>';
+    var body;
+    if (tab === 'adj') {
+      var g = cashAdjForm(c), ge = g.tried ? cashAdjErr(c, g) : {};
+      body = head + '<p class="muted" style="margin:0;font-size:13px;font-style:italic;line-height:1.5">' + L('Dùng khi số tiền chuyển khoản không khớp với số tiền nợ, hoặc cần điều chỉnh do lỗi nhập liệu đã duyệt.', 'Use when a transfer does not match the amount owed, or to correct an approved data-entry error.') + '</p>' +
+        fld('ca-t', L('Loại điều chỉnh', 'Adjustment type'), '<select id="ca-t" class="sel' + bad(ge.dir, 'ca-t') + '" data-in="cashA" data-k="dir"><option value="">' + L('Chọn loại', 'Select a type') + '</option><option value="1"' + (g.dir === '1' ? ' selected' : '') + '>' + L('Tăng số dư', 'Increase balance') + '</option><option value="-1"' + (g.dir === '-1' ? ' selected' : '') + '>' + L('Giảm số dư', 'Decrease balance') + '</option></select>', ge.dir) +
+        fld('ca-a', L('Số tiền điều chỉnh', 'Adjustment amount'), '<div class="inp-wrap"><input id="ca-a" class="inp mono' + bad(ge.amt, 'ca-a') + '" inputmode="numeric" data-in="cashA" data-k="amt" value="' + esc(g.amt) + '" placeholder="0"><span class="suffix">₫</span></div>', ge.amt) +
+        fld('ca-r', L('Lý do bắt buộc', 'Reason, required'), '<textarea id="ca-r" class="txa' + bad(ge.why, 'ca-r') + '" rows="3" maxlength="300" data-in="cashA" data-k="why" placeholder="' + L('Mô tả lý do điều chỉnh (bắt buộc ghi rõ)…', 'Describe why this adjustment is needed…') + '">' + esc(g.why) + '</textarea>', ge.why) +
+        '<div class="field"><span class="flabel">' + L('Tài liệu đính kèm', 'Attachment') + '</span>' + (g.file ? '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:10px">' + ic('paperclip') + '<span style="flex:1;min-width:0;overflow-wrap:anywhere;font-size:13px">' + esc(g.file[0]) + ' <span class="muted">· ' + VN.num(Math.max(1, Math.round(g.file[1] / 1024))) + ' KB</span></span><button type="button" class="xbtn" data-act="cashUnfile" data-id="' + c.order + '" aria-label="' + L('Bỏ tệp', 'Remove file') + '">' + ic('x') + '</button></div>' :
+          '<label id="ca-drop" class="photo empty-ph" for="ca-f" tabindex="0" data-act="cashPick" style="min-height:76px;flex-direction:column;gap:6px;cursor:pointer;text-align:center;padding:12px">' + ic('upload-simple') + L('Kéo thả hoặc chọn file (PDF, ảnh)', 'Drag and drop, or choose a file (PDF, image)') + '</label><input id="ca-f" type="file" accept=".pdf,image/*" class="sr" tabindex="-1" data-in="cashFile">') + '</div>' +
+        '<div style="display:flex;align-items:center;gap:12px">' + A.btn(L('Lưu bút toán', 'Save entry'), 'cashAdjSave', { id: c.order, dis: A.denyTip('adjCreate') }) + '</div>' +
+        '<p class="muted" style="margin:0;font-size:12px">' + L('Bút toán cần người khác duyệt bước hai ở tab Điều chỉnh sổ cái. Không sửa, không xoá bút toán cũ.', 'Entries need a second approver under Ledger adjustments. Old entries are never edited or deleted.') + '</p>';
+    } else if (c.st === 'pending') {
+      var f = cashForm(c), e = f.tried ? cashErr(c, f) : {};
+      body = head + '<div><div style="font-weight:600;color:var(--info);font-size:14.5px">' + L('Số tiền cần chuyển về: ', 'Amount to transfer back: ') + VN.money(owe) + '</div>' +
+        '<div class="muted" style="font-size:12.5px;margin-top:3px">' + L('Hoa hồng 15% ', '15% commission ') + VN.money(sp.comm) + ' · ' + L('thuế khấu trừ 2% ', '2% tax withheld ') + VN.money(sp.tax) + ' · ' + L('mã tham chiếu ', 'reference ') + '<span class="mono">' + c.ref + '</span></div></div>' +
+        '<div style="border-top:1px solid var(--line)"></div>' +
+        kvCard([[L('Tài khoản nhà cung cấp', 'Provider account'), '<span class="mono">' + esc(p.bank.name) + ' •••• ' + p.bank.no + '</span>'],
+          [L('Công nợ tiền mặt', 'Cash debt'), '<span class="mono" style="color:var(--danger);display:inline-flex;align-items:center;gap:6px">' + ic('warning-circle') + VN.money(-debt) + '</span>'],
+          [L('Có thể rút sau khi trừ nợ', 'Available after debt'), '<span class="mono">' + VN.money(p.bal.avail - debt) + '</span>']]) +
+        '<h3 style="margin:2px 0 0;font-size:14px;font-weight:600">' + L('Xác nhận nhà cung cấp đã chuyển khoản', 'Confirm the provider has transferred') + '</h3>' +
+        fld('cf-a', L('Số tiền đã chuyển', 'Amount transferred'), '<div class="inp-wrap"><input id="cf-a" class="inp mono' + bad(e.amt, 'cf-a') + '" inputmode="numeric" data-in="cashF" data-k="amt" value="' + esc(f.amt) + '" placeholder="' + VN.num(owe) + '"><span class="suffix">₫</span></div>', e.amt) +
+        fld('cf-d', L('Ngày chuyển khoản', 'Transfer date'), '<input id="cf-d" type="date" class="inp' + bad(e.date, 'cf-d') + '" min="' + isoOf(c.done) + '" max="2026-09-24" value="' + esc(f.date) + '" data-in="cashF" data-k="date">', e.date) +
+        fld('cf-c', L('Mã giao dịch ngân hàng', 'Bank transaction code'), '<input id="cf-c" class="inp mono' + bad(e.code, 'cf-c') + '" autocomplete="off" data-in="cashF" data-k="code" value="' + esc(f.code) + '" placeholder="FT26267XXXXXX">', e.code) +
+        fld('cf-b', L('Ngân hàng thụ hưởng', 'Receiving account'), '<select id="cf-b" class="sel' + bad(e.bank, 'cf-b') + '" data-in="cashF" data-k="bank"><option value="0"' + (f.bank === '0' ? ' selected' : '') + '>Techcombank · 1234 5678 910</option></select><span class="hint">' + L('Tài khoản công ty VN Group', 'VN Group company account') + '</span>', e.bank) +
+        fld('cf-n', L('Ghi chú', 'Note'), '<textarea id="cf-n" class="txa" rows="2" style="min-height:58px" maxlength="300" data-in="cashF" data-k="note" placeholder="' + L('Ghi chú thêm nếu có…', 'Anything else worth noting…') + '">' + esc(f.note) + '</textarea>', '', false) +
+        '<div style="display:flex;align-items:center;gap:16px">' + A.btn(L('Xác nhận đối soát', 'Confirm reconciliation'), 'cashGo', { cls: 'primary', id: c.order, dis: A.denyTip('cashRecon') }) + '<button type="button" class="link" data-act="cashReset" data-id="' + c.order + '">' + L('Huỷ', 'Cancel') + '</button></div>' +
+        '<p class="muted" style="margin:0;font-size:12px;font-style:italic;line-height:1.5">' + L('Sau khi xác nhận, công nợ tiền mặt của ' + p.name + ' giảm từ ' + VN.money(debt) + ' về ' + VN.money(debt - owe) + '. Thao tác được ghi vào Nhật ký và không hoàn tác được.', 'Once confirmed, ' + p.name + '\'s cash debt drops from ' + VN.money(debt) + ' to ' + VN.money(debt - owe) + '. The action is logged and cannot be undone.') + '</p>';
+    } else if (c.st === 'recon') {
+      var pd = c.paid;
+      body = head + (c.fresh ? '<div class="note ok">' + ic('check-circle') + '<span><b>' + L('Đã ghi nhận thành công.', 'Recorded successfully.') + '</b> ' + L('Công nợ tiền mặt của ' + p.name + ': ', p.name + ' cash debt: ') + VN.money(debt) + '</span></div>' : '') +
+        kvCard([[L('Số tiền đã chuyển', 'Amount transferred'), '<span class="mono">' + VN.money(pd.amount) + '</span>'], [L('Ngày chuyển khoản', 'Transfer date'), pd.date], [L('Mã giao dịch ngân hàng', 'Bank transaction code'), '<span class="mono">' + esc(pd.bank) + '</span>'],
+          [L('Ngân hàng thụ hưởng', 'Receiving account'), L(D.CASH_BANK[0], D.CASH_BANK[1])], [L('Mã tham chiếu', 'Reference'), '<span class="mono">' + c.ref + '</span>'], [L('Ghi nhận bởi', 'Recorded by'), esc(pd.by) + ' · ' + pd.at]].concat(pd.note ? [[L('Ghi chú', 'Note'), esc(pd.note)]] : [])) +
+        '<p class="muted" style="margin:0;font-size:12px;line-height:1.5">' + L('Bút toán đã khoá, không sửa, không xoá. Sai lệch phát hiện sau này ghi ở tab Bút toán điều chỉnh.', 'This entry is locked. Differences found later go under Adjustment entry.') + '</p>';
+    } else {
+      body = head + '<div class="note danger">' + ic('warning-circle') + '<span>' + L('Kỹ thuật viên ' + c.tech + ' báo không thu được tiền mặt lúc ' + c.done + '. ', 'Technician ' + c.tech + ' reported no cash collected at ' + c.done + '. ') + L(c.why[0], c.why[1]) + '.</span></div>' +
+        '<div class="note neutral">' + ic('info') + '<span>' + L('Nhà cung cấp không nợ khoản này. Đơn chuyển sang Chờ khách thanh toán và được đôn đốc như đơn trả qua app chưa thanh toán.', 'The provider owes nothing here. The order moves to Awaiting customer payment and is followed up like an unpaid app order.') + '</span></div>' +
+        (A.order(c.order) ? '<div>' + A.btn(L('Mở đôn đốc thanh toán', 'Open payment follow-up'), 'dunOpen', { id: c.order, icon: 'phone', dis: A.denyTip('dunNote') }) + '</div>' : '');
+    }
+    return tabs + '<div class="card-b" style="display:flex;flex-direction:column;gap:14px">' + body + '</div>';
+  }
+  function focusBad() { var b = document.querySelector('.content .inp.bad, .content .sel.bad, .content .txa.bad'); if (b) b.focus(); }
+  function setFile(name, size) { var c = cashOf(A.S.ui.cashSel); if (!c) return; cashAdjForm(c).file = [name, size || 0]; A.render(); }
+  ACT.cashSel = function (el) { if (A.S.ui.cashSel !== el.dataset.id) { A.S.ui.cashSel = el.dataset.id; A.S.ui.cashAnim = true; } A.render(); };
+  ACT.cashTab = function (el) { A.S.ui.cashTab = el.dataset.id; A.render(); };
+  ACT.cashClear = function () { A.S.ui.cashQ = ''; A.S.ui.cashS = ''; A.S.ui.cashT = 'month'; A.render(); };
+  ACT.cashReset = function (el) { delete A.S.ui['cashF-' + el.dataset.id]; A.render(); };
+  ACT.cashPick = function () { var i = document.getElementById('ca-f'); if (i) i.click(); };
+  ACT.cashUnfile = function (el) { var c = cashOf(el.dataset.id); if (c) cashAdjForm(c).file = null; A.render(); };
+  /* Ô nhập của form: chỉ vẽ lại khi đang hiện lỗi để lỗi mất ngay khi sửa đúng */
+  A.IN.cashF = function (el, v) { var c = cashOf(A.S.ui.cashSel); if (!c) return; var f = cashForm(c); f[el.dataset.k] = v; if (f.tried || el.tagName === 'SELECT') A.render(); };
+  A.IN.cashA = function (el, v) { var c = cashOf(A.S.ui.cashSel); if (!c) return; var g = cashAdjForm(c); g[el.dataset.k] = v; if (g.tried || el.tagName === 'SELECT') A.render(); };
+  A.IN.cashFile = function (el) { var f = el.files && el.files[0]; if (f) setFile(f.name, f.size); };
+  /* Bước 1: kiểm đủ ô bắt buộc. Thiếu thì tô đỏ, không gửi. Đủ thì mở hộp xác nhận (bước 2) */
+  ACT.cashGo = function (el) {
+    if (!A.can('cashRecon')) { A.toast(A.denyTip('cashRecon'), 'err'); return; }
+    var c = cashOf(el.dataset.id); if (!c || c.st !== 'pending') return;
+    var f = cashForm(c); f.tried = true;
+    if (Object.keys(cashErr(c, f)).length) { A.render(); focusBad(); return; }
+    A.openModal('cashConfirm', { id: c.order });
+  };
+  M.cashConfirm = function (m) {
+    var c = cashOf(m.id), p = A.prov(c.prov), f = cashForm(c), owe = A.cashOwe(c), debt = A.cashDebt(c.prov), d = f.date.split('-');
+    return modalShell(L('Xác nhận đối soát ', 'Confirm reconciliation ') + c.order, esc(p.name) + ' · ' + VN.money(owe) + ' · <span class="mono">' + esc(f.code.trim()) + '</span>',
+      '<div class="kv" tabindex="-1" autofocus style="grid-template-columns:1fr 1fr;outline:0"><div><span>' + L('Ngày chuyển khoản', 'Transfer date') + '</span><b>' + d[2] + '/' + d[1] + '/' + d[0] + '</b></div><div><span>' + L('Mã tham chiếu', 'Reference') + '</span><b class="mono">' + c.ref + '</b></div><div style="grid-column:1/-1"><span>' + L('Ngân hàng thụ hưởng', 'Receiving account') + '</span><b>' + L(D.CASH_BANK[0], D.CASH_BANK[1]) + '</b></div></div>' +
+      A.impact(L('Tác động lên số dư · ', 'Balance impact · ') + esc(p.name), [[L('Công nợ tiền mặt', 'Cash debt'), -debt, -(debt - owe)], [L('Có thể rút sau khi trừ nợ', 'Available after debt'), p.bal.avail - debt, p.bal.avail - debt + owe]]) +
+      '<div class="note warn">' + ic('warning') + '<span>' + L('<b>Bước 2/2.</b> Thao tác được ghi vào Nhật ký và không hoàn tác được.', '<b>Step 2/2.</b> The action is logged and cannot be undone.') + '</span></div>',
+      A.btn(L('Xác nhận đối soát', 'Confirm reconciliation'), 'cashCommit', { cls: 'primary', id: c.order }));
+  };
+  ACT.cashCommit = function () {
+    var m = A.S.modal, c = m && cashOf(m.id);
+    if (!c || c.st !== 'pending' || !A.can('cashRecon')) { A.S.modal = null; A.render(); A.toast(A.denyTip('cashRecon') || L('Đơn này đã được đối soát', 'Already reconciled'), 'err'); return; }
+    var f = cashForm(c), p = A.prov(c.prov), owe = A.cashOwe(c), d = f.date.split('-');
+    A.S.d.CASH.forEach(function (x) { x.fresh = false; });
+    c.st = 'recon'; c.fresh = true; c.paid = { amount: owe, date: d[2] + '/' + d[1] + '/' + d[0], bank: f.code.trim(), note: f.note.trim(), by: A.me(), at: '24/09 ' + VN.nowTime() };
+    A.S.d.TXNS.forEach(function (t) { if (t[0] === c.txn) t[4] = 'cashRecon'; });
+    var o = A.order(c.order); if (o && o.money === 'cashPend') o.money = 'cashRecon';
+    A.book(c.prov, 'cash', ['Nhận chuyển khoản trả công nợ tiền mặt ' + c.order, 'Cash debt transfer received ' + c.order], ['debt', ''], owe, c.paid.bank);
+    A.log(L('Ghi nhận chuyển khoản tiền mặt', 'Recorded cash transfer'), c.order + ' · ' + c.paid.bank);
+    delete A.S.ui['cashF-' + c.order];
+    A.S.modal = null; A.S.ui.cashTab = 'rec'; A.render();
+    flash(L('Đối soát thành công: ' + c.order + ' · ' + p.name, 'Reconciled: ' + c.order + ' · ' + p.name));
+  };
+  ACT.cashAdjSave = function (el) {
+    if (!A.can('adjCreate')) { A.toast(A.denyTip('adjCreate'), 'err'); return; }
+    var c = cashOf(el.dataset.id); if (!c) return;
+    var g = cashAdjForm(c); g.tried = true;
+    if (Object.keys(cashAdjErr(c, g)).length) { A.render(); focusBad(); return; }
+    var id = 'DC-09' + (24 + A.S.d.ADJUSTS.length), why = String(g.why).trim();
+    A.S.d.ADJUSTS.forEach(function (a) { a.fresh = false; });
+    A.S.d.ADJUSTS.unshift({ id: id, prov: c.prov, pocket: 'avail', dir: +g.dir, amount: VN.parseMoney(g.amt), reason: [why, why], link: c.order, st: 'pending', by: A.me(), at: '24/09 ' + VN.nowTime(), fresh: true, note: g.file ? g.file[0] : '' });
+    A.log(L('Tạo bút toán điều chỉnh từ đối soát tiền mặt', 'Created adjustment from cash reconciliation'), id + ' · ' + c.order);
+    delete A.S.ui['cashA-' + c.order]; A.render();
+    flash(L('Đã ghi bút toán điều chỉnh ' + id + ', chờ duyệt bước hai ở tab Điều chỉnh sổ cái', 'Adjustment ' + id + ' saved, awaiting step-two approval under Ledger adjustments'));
+  };
+  ACT.cashExport = function () {
+    if (!A.can('export') && !A.can('cashRecon')) { A.toast(A.denyTip('export'), 'err'); return; }
+    var rows = [[L('Mã đơn', 'Order'), L('Nhà cung cấp', 'Provider'), L('Khách hàng', 'Customer'), L('Giá trị đơn', 'Order value'), L('Hoa hồng', 'Commission'), L('Thuế khấu trừ', 'Tax withheld'), L('Số tiền nhà cung cấp nợ', 'Owed by provider'), L('Ngày hoàn thành', 'Completed'), L('Trạng thái đối soát', 'Status'), L('Mã tham chiếu', 'Reference'), L('Mã giao dịch ngân hàng', 'Bank transaction')]].concat(cashRows().map(function (c) {
+      var sp = A.split(c); return [c.order, A.provName(c.prov), c.cust, c.amount, sp.comm, sp.tax, A.cashOwe(c), c.done, L(CASH_ST[c.st][0], CASH_ST[c.st][1]), c.ref, c.paid ? c.paid.bank : ''];
+    }));
+    var name = 'VuongNhan_DoiSoatTienMat_20260924.xls';
+    VN.download(name, VN.xls([{ name: L('Tiền mặt', 'Cash'), rows: rows, head: [0] }]), 'application/vnd.ms-excel');
+    A.log(L('Xuất file đối soát tiền mặt', 'Exported cash reconciliation'), name); flash(L('Đã tạo file ', 'File created: ') + name);
+  };
+  /* Kịch bản 17: VN-240931 (đơn dùng chung của 3 app) hoàn tất bằng tiền mặt lúc 10:42, lên đầu bảng và được chọn sẵn */
+  A.SETUP.cash31 = function () {
+    var d = A.S.d, o = A.order('VN-240931');
+    if (o && !cashOf('VN-240931')) {
+      d.CASH.unshift({ order: 'VN-240931', prov: 'phucan', cust: o.cust, tech: o.tech, amount: o.amount, done: '24/09 10:42', st: 'pending', txn: 'GD-88481', ref: 'RT-CM-0042' });
+      d.TXNS.unshift(['GD-88481', 'VN-240931', o.amount, 'cash', 'cashPend', '24/09 10:42']);
+      o.status = 'done'; o.money = 'cashPend'; o.payMethod = 'cash'; o.accepted = '24/09 10:40'; o.paidAt = '24/09 10:42'; o.txn = 'GD-88481'; o.warrantyEnd = '01/10'; o.upd = 0;
+      o.ev = (o.ev || []).concat([['10:38', ['Kỹ thuật viên gửi bảng chốt khối lượng', 'Technician sent the sign-off sheet']], ['10:40', ['Khách nghiệm thu', 'Customer signed off']], ['10:42', ['Kỹ thuật viên xác nhận đã thu 450.000 ₫ tiền mặt · GD-88481', 'Technician confirmed 450,000 ₫ cash collected · GD-88481']]]);
+      var sp = A.split(o);
+      A.book('phucan', 'cash', ['Thu tiền mặt VN-240931, ghi công nợ hoa hồng và thuế', 'Cash collected VN-240931, commission and tax owed'], ['', 'debt'], -(sp.comm + sp.tax), 'RT-CM-0042');
+    }
+    A.S.ui.cashSel = 'VN-240931'; A.S.ui.cashTab = 'rec'; A.S.ui.cashQ = ''; A.S.ui.cashS = ''; A.S.ui.cashT = 'month';
   };
 
   /* ---------- Tiền của đơn (B) ---------- */
@@ -262,16 +483,23 @@
     }
   };
   function moreMenu(o) {
-    var refDis = !A.can('refundCreate') ? A.denyTip('refundCreate') : (o.money === 'none' || o.money === 'awaiting') ? L('Khách chưa thanh toán nên không có tiền để hoàn', 'Customer has not paid, nothing to refund') : o.money === 'refunded' ? L('Đơn đã hoàn toàn bộ', 'Already fully refunded') : '';
+    var refDis = !A.can('refundCreate') ? A.denyTip('refundCreate') : (o.payMethod === 'cash' && o.paidAt) ? L('Đơn trả tiền mặt: nền tảng không giữ tiền của khách để hoàn', 'Cash order: the platform holds no customer funds to refund') : (o.money === 'none' || o.money === 'awaiting') ? L('Khách chưa thanh toán nên không có tiền để hoàn', 'Customer has not paid, nothing to refund') : o.money === 'refunded' ? L('Đơn đã hoàn toàn bộ', 'Already fully refunded') : '';
     return '<div class="menu" style="right:0;top:42px;width:280px"><button type="button" data-act="adjFromOrder" data-id="' + o.id + '"' + (A.can('adjCreate') ? '' : ' aria-disabled="true"') + '>' + L('Tạo điều chỉnh', 'Create adjustment') + (A.can('adjCreate') ? '' : '<small>' + A.denyTip('adjCreate') + '</small>') + '</button><hr>' +
       '<button type="button" class="dz" data-act="refundOpen" data-id="' + o.id + '"' + (refDis ? ' aria-disabled="true"' : '') + '>' + L('Hoàn tiền', 'Refund') + (refDis ? '<small>' + refDis + '</small>' : '') + '</button></div>';
   }
   function moneyTimeline(o, s) {
     var ev = [];
     if (o.accepted) ev.push(['done', L('Khách nghiệm thu', 'Customer signed off'), o.accepted]);
+    if (o.cashFail) ev.push(['red', L('Kỹ thuật viên báo chưa thu được tiền mặt', 'Technician reported cash not collected'), o.cashFail]);
     if (o.money === 'none') ev.push(['now', L('Chưa phát sinh tiền: đơn chưa nghiệm thu', 'No money yet: not signed off'), '']);
     if (o.money === 'awaiting') ev.push(['now', L('Chờ khách thanh toán ', 'Awaiting payment of ') + VN.money(o.amount), o.overdueDays ? L('quá hạn ' + o.overdueDays + ' ngày', o.overdueDays + ' days overdue') : '']);
-    if (o.paidAt) {
+    if (o.paidAt && o.payMethod === 'cash') {
+      var cc = cashOf(o.id), ow = s.comm + s.tax;
+      ev.push(['done', L('Khách trả ', 'Customer paid ') + VN.money(o.amount) + L(' tiền mặt cho kỹ thuật viên · ', ' in cash to the technician · ') + (o.txn || ''), o.paidAt]);
+      ev.push(['done', L('Công nợ của nhà cung cấp: hoa hồng ', 'Provider owes: commission ') + VN.money(s.comm) + L(' + thuế ', ' + tax ') + VN.money(s.tax) + ' = ' + VN.money(ow) + (cc && cc.ref ? ' · <span class="nw">' + cc.ref + '</span>' : ''), o.paidAt]);
+      if (cc && cc.st === 'recon') ev.push(['done', L('Kế toán ghi nhận chuyển khoản ', 'Transfer recorded ') + esc(cc.paid.bank) + ' · ' + esc(cc.paid.by), cc.paid.at]);
+      else ev.push(['now', L('Chờ nhà cung cấp chuyển khoản ', 'Awaiting provider transfer of ') + VN.money(ow), '']);
+    } else if (o.paidAt) {
       ev.push(['done', L('Khách thanh toán ', 'Customer paid ') + VN.money(o.amount) + L(' qua ', ' via ') + L(D.PAY_METHOD[o.payMethod][0], D.PAY_METHOD[o.payMethod][1]).toLowerCase() + ' · ' + (o.txn || ''), o.paidAt]);
       ev.push(['done', L('Tách tiền: hoa hồng ', 'Split: commission ') + VN.money(s.comm) + L(' (tạm tính), thuế ', ' (provisional), tax ') + VN.money(s.tax) + L(', nhà cung cấp ', ', provider ') + VN.money(s.share), o.paidAt]);
     }
@@ -285,7 +513,14 @@
   }
   function journal(o, s) {
     var rows = [];
-    if (o.paidAt) {
+    if (o.paidAt && o.payMethod === 'cash') {
+      var cj = cashOf(o.id);
+      rows.push(['BT-' + o.id.slice(3) + '-1', o.paidAt, L('Thu tiền mặt qua kỹ thuật viên', 'Cash collected by the technician'), L('Nhà cung cấp giữ tiền mặt', 'Cash held by provider'), o.amount]);
+      rows.push(['BT-' + o.id.slice(3) + '-2', o.paidAt, L('Hoa hồng tạm tính', 'Provisional commission'), L('Doanh thu nền tảng', 'Platform revenue'), s.comm]);
+      rows.push(['BT-' + o.id.slice(3) + '-3', o.paidAt, L('Thuế khấu trừ', 'Tax withheld'), L('Thuế phải nộp', 'Tax payable'), s.tax]);
+      rows.push(['BT-' + o.id.slice(3) + '-4', o.paidAt, L('Công nợ tiền mặt', 'Cash debt'), L('Phải thu nhà cung cấp', 'Receivable from provider'), s.comm + s.tax]);
+      if (cj && cj.st === 'recon') rows.push(['BT-' + o.id.slice(3) + '-5', cj.paid.at, L('Nhận chuyển khoản ', 'Transfer received ') + esc(cj.paid.bank), L('Phải thu nhà cung cấp → Tiền gửi ngân hàng', 'Receivable → Bank'), -(s.comm + s.tax)]);
+    } else if (o.paidAt) {
       rows.push(['BT-' + o.id.slice(3) + '-1', o.paidAt, L('Thu tiền khách', 'Customer payment'), L('Tiền khách trả', 'Customer funds'), o.amount]);
       rows.push(['BT-' + o.id.slice(3) + '-2', o.paidAt, L('Hoa hồng tạm tính', 'Provisional commission'), L('Doanh thu nền tảng', 'Platform revenue'), s.comm]);
       rows.push(['BT-' + o.id.slice(3) + '-3', o.paidAt, L('Thuế khấu trừ', 'Tax withheld'), L('Thuế phải nộp', 'Tax payable'), s.tax]);
@@ -457,8 +692,8 @@
       var p = A.prov(A.S.p.id), f = A.ui('ledF', 'all');
       if (!p) return A.empty(L('Không có', 'None'), '');
       var rows = A.ledger(p.id).filter(function (r) { return f === 'all' || r[1] === f || (f === 'payout' && r[1] === 'paid'); });
-      var types = [['all', L('Tất cả', 'All')], ['order', L('Ghi nhận đơn', 'Order recorded')], ['warranty', L('Hết bảo hành', 'Warranty ended')], ['payout', L('Rút tiền', 'Payouts')], ['hold', L('Tạm giữ', 'Holds')], ['refund', L('Hoàn tiền', 'Refunds')], ['adjust', L('Điều chỉnh', 'Adjustments')]];
-      var TL = { order: L('Ghi nhận đơn', 'Order'), warranty: L('Hết bảo hành', 'Warranty'), payout: L('Rút tiền', 'Payout'), paid: L('Chi trả', 'Paid'), hold: L('Tạm giữ', 'Hold'), refund: L('Hoàn tiền', 'Refund'), adjust: L('Điều chỉnh', 'Adjustment'), failed: L('Chi thất bại', 'Payout failed') };
+      var types = [['all', L('Tất cả', 'All')], ['order', L('Ghi nhận đơn', 'Order recorded')], ['warranty', L('Hết bảo hành', 'Warranty ended')], ['payout', L('Rút tiền', 'Payouts')], ['hold', L('Tạm giữ', 'Holds')], ['refund', L('Hoàn tiền', 'Refunds')], ['adjust', L('Điều chỉnh', 'Adjustments')], ['cash', L('Tiền mặt', 'Cash')]];
+      var TL = { order: L('Ghi nhận đơn', 'Order'), warranty: L('Hết bảo hành', 'Warranty'), payout: L('Rút tiền', 'Payout'), paid: L('Chi trả', 'Paid'), hold: L('Tạm giữ', 'Hold'), refund: L('Hoàn tiền', 'Refund'), adjust: L('Điều chỉnh', 'Adjustment'), failed: L('Chi thất bại', 'Payout failed'), cash: L('Tiền mặt', 'Cash') };
       var h = '<div class="page-h"><div><h1>' + esc(p.name) + ' ' + A.flagBadges(p) + '</h1><div class="sub">' + L('Số dư & sổ cái', 'Balances & ledger') + ' · ' + (A.sees('providers') ? '<button type="button" class="link" data-act="goProv" data-id="' + p.id + '" data-x="provider">' + L('Hồ sơ nhà cung cấp', 'Provider profile') + '</button>' : '') + '</div></div><div class="acts">' + A.btn(L('Xuất sao kê', 'Export statement'), 'stmtExport', { cls: 'primary', id: p.id, icon: 'download-simple' }) + '</div></div>';
       h += '<div class="grid2"><section class="card" aria-labelledby="led-h"><div class="card-h" style="padding-bottom:12px"><h2 id="led-h">' + L('Biến động', 'Movements') + '</h2></div><div style="padding:0 20px 12px"><div class="tabs sub">' + types.map(function (t) { return '<button type="button" class="' + (f === t[0] ? 'on' : '') + '" data-act="ledF" data-id="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div></div>' +
         (rows.length ? '<table class="tbl"><thead><tr><th>' + L('Thời gian', 'Time') + '</th><th>' + L('Loại', 'Type') + '</th><th>' + L('Nội dung', 'Description') + '</th><th>' + L('Ngăn', 'Pocket') + '</th><th class="num">' + L('Số tiền', 'Amount') + '</th></tr></thead><tbody>' +
@@ -467,6 +702,7 @@
       h += '<div class="stack"><section class="card" aria-labelledby="pk-h"><div class="card-h"><h2 id="pk-h">' + L('Số dư theo ngăn', 'Balance by pocket') + '</h2></div><div class="card-b"><div class="pockets">' +
         pk.map(function (x) { return '<div class="pk' + (p.bal[x[0]] ? '' : ' zero') + '"><div class="rail"><span></span><i></i></div><span class="nm">' + x[1] + '<small>' + x[2] + '</small></span><span class="am">' + VN.money(p.bal[x[0]] || 0) + '</span></div>'; }).join('') + '</div>' +
         '<div class="pk hold' + (p.bal.hold ? '' : ' zero') + '" style="margin-top:6px;padding-top:12px;border-top:1px dashed var(--border)"><div class="rail"><span></span></div><span class="nm">' + L('Đang tạm giữ', 'On hold') + '<small>' + L('Do khiếu nại, chờ phán quyết', 'For disputes, awaiting ruling') + '</small></span><span class="am" style="color:var(--danger)">' + VN.money(p.bal.hold) + '</span></div>' +
+        (A.cashDebt(p.id) ? '<div class="pk hold" style="margin-top:6px"><div class="rail"><span></span></div><span class="nm">' + L('Công nợ tiền mặt', 'Cash debt') + '<small>' + L('Hoa hồng và thuế của đơn tiền mặt, chờ nhà cung cấp chuyển về', 'Commission and tax on cash orders, awaiting transfer') + '</small></span><span class="am" style="color:var(--danger)">' + VN.money(-A.cashDebt(p.id)) + '</span></div>' : '') +
         '<div class="row-kv" style="border-top:1px solid var(--line);margin-top:10px;padding-top:12px;font-weight:600"><span style="color:var(--text)">' + L('Tổng nền tảng đang giữ', 'Total held by platform') + '</span><b style="font-weight:600">' + VN.money(p.bal.warranty + p.bal.hold + p.bal.avail + p.bal.payout) + '</b></div></div></section>' +
         '<section class="card" aria-labelledby="bk-h"><div class="card-h"><h2 id="bk-h">' + L('Tài khoản nhận tiền', 'Payout account') + '</h2></div><div class="card-b" style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;gap:10px"><span class="av sq">' + ic('bank') + '</span><div><b style="font-weight:600">' + p.bank.name + ' •••• ' + p.bank.no + '</b><div class="muted" style="font-size:12.5px">' + esc(p.bank.holder || '') + '</div></div></div>' +
         (p.flags.indexOf('bankFix') >= 0 ? '<span class="badge t-danger">' + L('Chi thất bại: cần cập nhật tài khoản', 'Payout failed: update account') + '</span>' : p.bank.state === 'verified' ? '<span class="badge t-ok">' + L('Đã xác minh', 'Verified') + '</span>' : '<span class="badge t-warn">' + L('Chờ xác minh · vừa đổi ' + (p.bank.changed || 0) + ' ngày trước', 'Pending verification · changed ' + (p.bank.changed || 0) + ' days ago') + '</span>') + '</div></section></div></div>';

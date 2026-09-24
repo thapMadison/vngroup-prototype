@@ -49,6 +49,91 @@
 
 ---
 
+## Đợt 3: Thanh toán tiền mặt (3 ứng dụng) — Ngày: 24/09/2026
+
+**Yêu cầu (nguyên văn):**
+> dùng /evolve-site update thêm tính năng mới được mô tả trong 3 file:
+> Admin - Cash payment flow.md
+> Customer App - Cash payment flow.md
+> Provider App - Cash payment flow.md
+
+### Bối cảnh & Mục tiêu
+- **Khai báo:** `Cấp 2 · cờ: Y, L, D, Q, C · vì thêm luồng con và màn mới ở cả 3 ứng dụng (bước chọn phương thức, bước thu tiền mặt, khu đối soát 2 cột), thêm trường dữ liệu và quy tắc công nợ, và thanh toán tiền mặt nằm trong danh sách loại trừ của estimation` · nâng cấp giữa chừng: không.
+- **Màn hình liên quan:** `admin.html` (Giao dịch & đối soát: tab Giao dịch thu, tab Đối soát; Tổng quan; Tìm nhanh) · `customer.html` (Đặt dịch vụ, Chi tiết đơn, Biên nhận) · `provider.html` (Việc của kỹ thuật viên, Tài chính của chủ đơn vị) · `index.html`.
+- **Nguồn yêu cầu:** 3 file `requirement/* - Cash payment flow.md`. Trái với estimation §4 Scope Exclusions #2 "Thanh toán tiền mặt" và `finance-flow.md` mục Ngoài phạm vi; người dùng chốt dựng như yêu cầu trong MVP (cờ Y, bên dưới).
+- **Mốc trước khi sửa:** `_qa/truoc/dot3/` · preflight 4 file, 0 lỗi, 0 cảnh báo · 35 bộ kiểm, 0 lỗi console, 0 FAIL, 2 lần tràn ngang có sẵn (bước "Vẫn xem, cuộn ngang" của trang quản trị ở 768 và 390, cố ý) · bản chép `site/` ở `_qa/truoc/dot3/site-snapshot/`.
+
+**Phát hiện khi đối chiếu (B1):**
+
+| # | Phát hiện | Bằng chứng |
+|---|---|---|
+| 1 | Tiền mặt ngoài phạm vi MVP | Estimation §4 #2; `finance-flow.md` "Ngoài phạm vi: Tiền mặt, tiền boa, phí huỷ"; `index.html` mục "Ngoài phạm vi prototype" |
+| 2 | 3 file tính công nợ 3 kiểu | File Admin: nợ = hoa hồng 15%, "Chưa thu được" vẫn nợ. File Nhà cung cấp: 382.500 ₫ cạnh "thuế −9.000" (450.000 − 67.500 − 9.000 = 373.500), không thu được "ghi nợ 450.000". File Khách hàng: hoa hồng "khấu trừ vào lần giao dịch điện tử tiếp theo". Prototype giữ thuế 2% tại nguồn (`admin-fin2.js:8`) |
+| 3 | 5/6 mã đơn mẫu của file Admin đã là đơn khác | VN-240931 (Trần Thu Hà, 450.000 ₫, đang thực hiện; kịch bản Admin 7, 8), VN-240928 (App Khách hàng), VN-240915, VN-240911, VN-240908 (`data.js`). Tổng "2.597.500đ" không cộng ra từ 6 dòng |
+| 4 | Tab Đối soát không trống | Đang có Xuất file đối soát và Nhập sao kê; kịch bản 4 chạy trên đó (`admin-fin2.js:208`) |
+| 5 | "Đã thu" và "Chưa đối soát" cùng nghĩa | File Admin, thay đổi 1 |
+| 6 | Chữ trái DESIGN §8 | Emoji 💵 💳 🔴 ⚠ 🛡 ✅, "NCC", gạch dài ở 8 câu, "450.000đ" |
+
+---
+
+### 🛑 Cổng 1 · Vị trí & Lối vào (2 lượt)
+| Hạng mục | Phương án đề xuất | Quyết định của người dùng (nguyên văn) |
+|---|---|---|
+| Tính năng ngoài hoặc trái yêu cầu *(cờ Y)* | Dựng, ghi là đề xuất (Khuyến nghị) · Dựng như yêu cầu trong MVP · Không dựng | "Dựng như yêu cầu trong MVP" |
+| Quy tắc công nợ *(cờ L)* | Hoa hồng + thuế (Khuyến nghị) · Chỉ hoa hồng, đúng số 3 file · Chép nguyên văn từng file | "nói nó dù thu tiền mặt hay chuyển khoản thì công nợ y nhau ( nãy mày tính công thức gì cho chuyển khoản? logic thế nào? thì giờ làm y vậy)" |
+| Dữ liệu mẫu trùng mã *(cờ D)* | VN-240931 chung 3 app (Khuyến nghị) · Chép 6 dòng file, chỉ đổi mã | "VN-240931 chung 3 app (Khuyến nghị)" |
+| Lối vào chính (Trang quản trị) | 2 tab con trong Đối soát (Khuyến nghị) · Tab riêng Đối soát tiền mặt · Thay hẳn nội dung cũ | "2 tab con trong Đối soát (Khuyến nghị)" |
+| Nghĩa của "Đã thu" *(cờ L)* | Bỏ "Đã thu", dùng 3 trạng thái (Khuyến nghị) · "Đã thu" = trừ nợ vào số dư · "Đã thu" = vừa thu, chưa tới hạn | "Bỏ 'Đã thu', dùng 3 trạng thái (Khuyến nghị)" |
+| Lối vào nhanh | Kịch bản 2 app + trang giới thiệu (Khuyến nghị) · Việc cần xử lý ở Tổng quan · Tìm nhanh Ctrl K (chọn nhiều) | "Kịch bản 2 app + trang giới thiệu (Khuyến nghị), Việc cần xử lý ở Tổng quan, Tìm nhanh Ctrl K" |
+
+**Công thức đã trả lời người dùng (đơn chuyển khoản đang tính thế nào, tiền mặt làm y vậy):** đơn 450.000 ₫ trả qua app thì nền tảng giữ hoa hồng 15% = 67.500 ₫ và thuế khấu trừ 2% = 9.000 ₫, đơn vị thực nhận 373.500 ₫ (`A.split`, `admin-fin2.js:8`; `provider.js:119`). Đơn tiền mặt: 450.000 ₫ nằm trong tay đơn vị, phần nền tảng lẽ ra giữ (76.500 ₫) thành công nợ; đơn vị vẫn thực nhận 373.500 ₫, Có thể rút hiện 612.500 − 76.500 = 536.000 ₫ cho tới khi kế toán ghi nhận chuyển khoản. Khách không trả thì như đơn điện tử chưa trả: đơn vị không nợ, đơn sang Chờ khách thanh toán để đôn đốc.
+
+**Suy ra, không hỏi (có căn cứ; người dùng không phản đối khi được báo trước lượt 2):**
+- Chữ theo DESIGN §8: icon Phosphor thay emoji, "nhà cung cấp" thay "NCC", "·" hoặc ":" thay gạch dài, tiền dạng "450.000 ₫".
+- Vị trí theo 3 file: bước chọn phương thức là bước 4/5, trước "Chọn nhà cung cấp" (màn đang chứa tóm tắt và nút Gửi yêu cầu).
+- Phân quyền theo DESIGN §10.2: thao tác mới "Ghi nhận chuyển khoản tiền mặt" cho Kế toán và Super admin; CSKH thấy khu đối soát, nút khoá kèm lý do; Lãnh đạo không thấy mục Tài chính. Bút toán dùng quyền "Tạo điều chỉnh sổ cái" sẵn có. App: bước thu tiền của kỹ thuật viên; công nợ chỉ chủ đơn vị thấy.
+- DESIGN §5: "Xác nhận đối soát" không hoàn tác nên 2 bước (hộp xác nhận có khối Tác động lên số dư). "Lưu bút toán" tạo bút toán chờ duyệt bước hai thật ở tab Điều chỉnh sổ cái, đúng như câu thông báo của file hứa.
+- Theo quy tắc công nợ đã chốt: câu "hoa hồng khấu trừ vào lần giao dịch điện tử tiếp theo" ở App Khách hàng đổi thành câu dành cho khách; tài khoản Phúc An lấy theo dữ liệu chung (Vietcombank •••• 6789); dòng "Chưa thu được" mẫu chuyển sang Kỹ thuật Hoà Bình, ngày 23/09, để số Chờ khách thanh toán 315.400 ₫ của Phúc An mà file App Nhà cung cấp ghi rõ vẫn đúng.
+- Trang giới thiệu: bỏ "Tiền mặt" khỏi "Ngoài phạm vi prototype", ghi tính năng vào các dòng đối chiếu #14-21, #22-36, #52-70, #85-94.
+
+### 🛑 Cổng 2 · Phương án hiển thị
+**Không đi:** 3 file đã chỉ định bố cục từng màn (Trang quản trị 2 cột 60/40 có 2 tab ở cột phải; màn chọn phương thức là 2 thẻ chọn một; bước thu tiền là thẻ chính và 2 nút xếp dọc, 2 bottom sheet; lớp công nợ chèn giữa Có thể rút và Đang rút).
+**Token / component mới *(cờ T)*:** không có. Dựng từ thứ sẵn có: hàng đang chọn `tr.sel` (thay nền xanh của file), 2 cột theo mẫu `grid2e`, tab con `.tabs.sub`, trượt `@keyframes slide`, chấm đỏ `.pk.hold`, thẻ chọn `.opt` + `.rd`, khối `.impact`, `.note`, nút `.abtn.dz` cho "Xác nhận báo cáo" (app không có nút viền đỏ). Icon "money" lấy từ cùng bộ Phosphor 2.1.1 thêm vào sprite.
+
+### 🛑 Cổng 3 · Nghiệm thu tích hợp
+**Các file đã sửa / tạo mới:**
+- `site/assets/data.js`: phương thức `cash`; 3 trạng thái giao dịch tiền mặt, 2 trạng thái tiền của đơn; ngăn `debt`; đơn VN-240935; 5 giao dịch tiền mặt; `CASH` (5 dòng đối soát) và `CASH_BANK`; ngăn chờ thanh toán Hoà Bình 182.600 → 805.100 ₫.
+- `site/assets/admin-shell.js`: quyền `cashRecon` (Kế toán, Super admin); kịch bản 17 có bước dựng dữ liệu `A.SETUP.cash31`; kịch bản 4 mở tab con cũ; Ctrl K ra mục tiền mặt.
+- `site/assets/admin-fin2.js`: viên Tiền mặt ở Giao dịch thu; tab Đối soát 2 tab con; khu đối soát tiền mặt (bảng, panel, form, hộp xác nhận, bút toán, xuất Excel); sổ cái mẫu và dòng công nợ; dòng tiền, bút toán, chặn hoàn tiền của đơn tiền mặt.
+- `site/assets/admin-fin1.js`: việc "Tiền mặt chờ đối soát". `site/assets/admin-ops.js`: dòng Thanh toán ở chi tiết đơn tiền mặt.
+- `site/assets/customer.js`: bước `bookPay` (đặt 5 bước), tóm tắt, viên và mốc tiền mặt, biên nhận tiền mặt, công tắc Demo, kịch bản 07, câu hỏi thường gặp.
+- `site/assets/provider.js`: bước thu tiền mặt, 2 sheet, trạng thái hoàn thành; công nợ trong số dư, thu nhập, đối soát, rút tiền; công tắc Demo, kịch bản 08, 09.
+- `site/assets/icons.js`: icon `money` (Phosphor 2.1.1). `site/index.html`: 27 kịch bản, bảng đối chiếu, bỏ "Tiền mặt" khỏi Ngoài phạm vi.
+- `DESIGN.md` (§5, §9, §10.2-10.4, Lịch sử) · `DECISIONS.md` · `_qa/QA.md` (§3, §13).
+- QA: tạo mới `_qa/run_all.py`, `_qa/compare.py`, `_qa/gen_cash.py`, `_qa/break_test_cash.py`, `steps-cash-admin/cust/prov.json`; thêm bước tiền mặt vào `_qa/gen_textscan.py` (bước cũ giữ nguyên); `_qa/run.mjs` nhận cổng `CDP_PORT`.
+
+**Kết quả tự kiểm hồi quy:**
+- So với mốc: 0 lỗi mới. 35 bộ cũ từ 635 → 690 bước; 0 bước cũ bị mất; 3 giá trị `check` đổi, đều do tính năng (số thao tác của Kế toán 8/24 → 9/25, thêm đơn VN-240935, tóm tắt đặt dịch vụ có phương thức). 2 lần tràn ngang có sẵn, không đổi.
+- Console Errors: 0 · lỗi chữ: 0 · preflight: 0 lỗi, 0 cảnh báo.
+- Responsive: 1440 (trang quản trị, bảng vừa khít cả VI và EN), 390 và 1440 (2 app), 3 khổ của `index.html`: đạt. Ở 1280 bảng tiền mặt cuộn ngang trong thẻ, trang không tràn.
+- Thoát hiểm 2 chiều: hộp xác nhận (X, Huỷ, nền mờ, Esc), 2 sheet (X, Huỷ, nền mờ, Esc): đạt.
+- 5 trạng thái: bình thường · hover/focus · đang tải (khung chờ khi mạng chậm) · rỗng (lọc không ra, chưa chọn đơn) · lỗi (ô bắt buộc, lệch số, ngày sai, mất mạng, không có quyền): đủ.
+- UX 12 điểm: 12/12 (chi tiết ở `_qa/QA.md` §13).
+- Phân quyền hai chiều: đạt (Kế toán, Super admin ghi nhận được; CSKH bị chặn ở nút và ở hàm; Lãnh đạo bị chặn cả URL; chủ đơn vị không gọi được bước thu tiền; kỹ thuật viên không thấy công nợ).
+- Hồi quy theo cờ: cờ D trên 4 trang đọc dữ liệu (trang quản trị qua `data.js`, 2 app có dữ liệu riêng, hub) · cờ C: `icons.js` dùng ở 4 trang, cả 40 bộ đã chạy lại.
+- Bộ mới: `steps-cash-admin` 47 bước (1440), `steps-cash-cust` 19 bước và `steps-cash-prov` 22 bước (390 và 1440): đều PASS.
+- Bẻ thử 11/11 chốt (`_qa/break_test_cash.py`): mỗi chốt kêu đúng bước; site thật im lặng.
+- Lỗi có sẵn không đụng (chi tiết ở `_qa/QA.md` §13): `core.js` coi thẻ SVG `<use href>` là phần tử nhận focus nên modal, sheet của 3 trang không nhận focus khi mở (3 lớp phủ mới né bằng `autofocus`) · đóng sheet, đóng hộp bằng Huỷ không trả focus. Công cụ kiểm `run.mjs`: đã thêm `CDP_PORT` và xoá hồ sơ Edge tạm, vì đợt này cần chạy song song và TEMP đã tích 509 thư mục.
+- Giới hạn: ở 1280 bảng tiền mặt cuộn ngang trong thẻ · Báo cáo chưa tách tiền mặt · 3 ứng dụng không chung trạng thái.
+
+**Quyết định nghiệm thu (nguyên văn):**
+- "Nghiệm thu đợt thanh toán tiền mặt thế nào?" → "Chốt tích hợp (Khuyến nghị)"
+- "Có sửa luôn các lỗi có sẵn tìm thấy trong đợt này không?" → "Xoá 509 thư mục cdp-* cũ"
+
+**Làm theo lựa chọn ở Cổng 3:** xoá 509 thư mục hồ sơ Edge tạm `cdp-*` trong TEMP (tạo từ 07:45 đến 19:32 ngày 24/09, không còn Edge headless nào chạy lúc xoá): 0 lỗi, giải phóng 14,12 GB. Hai lỗi focus trong `core.js`, `app-core.js` và trang quản trị giữ nguyên, ghi ở `_qa/QA.md` §13.
+
+---
+
 ## Đợt 1: Khoá huỷ/đổi lịch khi đang làm · Nhà cung cấp xem giấy tờ — Ngày: 24/09/2026
 
 **Yêu cầu (nguyên văn):**

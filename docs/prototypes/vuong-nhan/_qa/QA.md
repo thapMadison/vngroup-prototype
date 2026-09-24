@@ -40,7 +40,9 @@ Trang quản trị thiết kế cho 1440 × 900, chạy từ 1280 (DESIGN.md §6
 | 3 khổ màn hình | 56 | 0 |
 | **Tổng** | **528** | **0** |
 
-Bộ thêm sau bảng này, cũng phải chạy lại sau mỗi thay đổi: `steps-scroll-prov`, `steps-scroll-admin` (§10) · `steps-lock-cust` (khổ 390 và 1440), `steps-docs-prov` (khổ 390 và 1440) (§11) · `steps-rating-cust` (khổ 390 và 1440) (§12). `steps-scan-prov` nay có 54 bước (thêm 12 bước giấy tờ).
+Bộ thêm sau bảng này, cũng phải chạy lại sau mỗi thay đổi: `steps-scroll-prov`, `steps-scroll-admin` (§10) · `steps-lock-cust` (khổ 390 và 1440), `steps-docs-prov` (khổ 390 và 1440) (§11) · `steps-rating-cust` (khổ 390 và 1440) (§12) · `steps-cash-admin` (1440), `steps-cash-cust`, `steps-cash-prov` (390 và 1440) (§13). Quét chữ nay có `scan-admin` 127 bước, `scan-cust` 79, `scan-prov` 69.
+
+Từ đợt 3, chạy cả 40 bộ một lệnh: `python _qa/run_all.py <thư-mục-ra> [lọc]` (từ `docs/prototypes/vuong-nhan`), rồi so với mốc: `python _qa/compare.py <mốc> <sau>`. Mỗi bộ chạy với một cổng gỡ lỗi riêng (`CDP_PORT`), vì chạy song song mà trùng cổng thì bộ này điều khiển nhầm trình duyệt của bộ kia.
 
 Số tiền được kiểm tự động và cộng khớp:
 - Kịch bản 1, duyệt rồi tạo lô chi: đã chi 782.450.000 ₫; còn phải trả 240.110.000 ₫.
@@ -282,3 +284,84 @@ Khai báo: Cấp 1, không cờ. Quyết định ở `FEATURE-DECISIONS.md`. M�
 **Lỗi có sẵn tìm thấy trong đợt, đã sửa theo lựa chọn ở Cổng 3:**
 - Sạch Xanh Home có điểm 4,9 trên App Khách hàng nhưng 4,8 trên Trang quản trị (`data.js:59`). Nay App Khách hàng lấy 4,8 (`customer.js:12`).
 - Nút sao ở màn đánh giá 34 × 40 px. Nay 44 × 44 px, nhãn tiêu chí nằm trên hàng sao (`customer.js:305`).
+
+## 13. Đợt `evolve-site` 3: thanh toán tiền mặt (24/09/2026)
+
+Khai báo: Cấp 2, cờ Y, L, D, Q, C. Quyết định ở `FEATURE-DECISIONS.md`. Mốc trước khi sửa ở `_qa/truoc/dot3/` (kèm bản chép `site-snapshot/`), kết quả sau khi sửa ở `_qa/sau/dot3/` (mỗi bộ một thư mục có `report.json` và ảnh).
+
+**So với mốc** (`python _qa/compare.py _qa/truoc/dot3 _qa/sau/dot3`, so từng giá trị `check`):
+
+| | Trước | Sau |
+|---|---|---|
+| preflight | 4 file · 0 lỗi · 0 cảnh báo | 4 file · 0 lỗi · 0 cảnh báo |
+| 35 bộ cũ của 4 trang | 635 bước | 690 bước (quét chữ thêm 55: admin 29, khách 11, nhà cung cấp 15) |
+| Bước cũ bị mất | | 0 |
+| `check` cũ đổi giá trị | | 3, đều do tính năng mới (bên dưới) |
+| Lỗi console · lỗi chữ | 0 · 0 | 0 · 0 |
+| Tràn ngang | 2 (có sẵn, cố ý: bước "Vẫn xem, cuộn ngang" của trang quản trị ở 768 và 390) | 2, cùng 2 bước đó |
+
+3 giá trị đổi:
+- `crud-admin` · `role-edit-acc`: "8/24 thao tác" thành "9/25 thao tác", vì thêm thao tác "Ghi nhận chuyển khoản tiền mặt" cho Kế toán.
+- `review-admin` · `search-phone`: 19 thành 20 đơn, vì thêm đơn VN-240935 (tiền mặt chưa thu được).
+- `review-cust` · `book4`: tóm tắt ở bước chọn nhà cung cấp có thêm dòng "Thanh toán điện tử sau nghiệm thu".
+
+**Bộ mới** (mỗi bước trả `PASS` hoặc `FAIL: lý do`, sinh bằng `_qa/gen_cash.py`):
+- `steps-cash-admin.json`, 47 bước, khổ 1440: đều PASS. Nội dung kiểm:
+  - Giao dịch thu: có lựa chọn "Tiền mặt"; lọc ra 5 giao dịch, viên trung tính có icon, chỉ 3 trạng thái (không còn "Đã thu"); chân bảng đếm đúng số dòng.
+  - Tab Đối soát: 2 tab con, mặc định tiền mặt; chỉ 1 nút cam; ghi chú giai đoạn 2 nghiêng; 5 dòng mặc định không trùng mã; công nợ mỗi dòng bằng hoa hồng 15% + thuế 2%; tổng 484.500 ₫ tính từ dữ liệu; bảng không tràn ở 1440 (VI và EN).
+  - Tab con cũ giữ nguyên; kịch bản 4 vẫn mở đúng và thấy dòng lệch 80.000 ₫.
+  - Kịch bản 17: VN-240931 lên đầu và được chọn sẵn; tổng 561.000 ₫; panel hiện 76.500 ₫, Vietcombank •••• 6789, công nợ −76.500 ₫, có thể rút 536.000 ₫.
+  - Form: bấm khi thiếu ô thì tô đỏ, có `aria-invalid`, focus vào ô lỗi đầu, không gửi; sửa đúng thì lỗi mất; sai số tiền và ngày trước ngày hoàn thành đều bị chặn.
+  - Bước 2: hộp xác nhận có khối tác động, `aria-modal`, nền mờ, nút X; focus vào hộp; Esc và nền mờ đều đóng mà không ghi nhận; Tab không lọt ra ngoài.
+  - Ghi nhận: trạng thái, giao dịch, tiền của đơn, sổ cái (+76.500 ₫), Nhật ký, tổng (về 484.500 ₫), toast và trạng thái thành công đều đúng; gọi lần hai không ghi thêm.
+  - Đổi dòng: panel trượt 150 ms một lần, lần vẽ sau không chạy lại; chọn bằng Enter giữ focus trên dòng.
+  - Bút toán: tab nhạt; thiếu ô thì 3 ô đỏ; đủ ô thì tạo bút toán chờ duyệt, có tệp đính kèm, tab Điều chỉnh sổ cái đếm 1.
+  - Dòng "Chưa thu được": nợ 0 ₫, không có form; mở được drawer đôn đốc; đơn nằm ở Chờ khách thanh toán; ngăn chờ thanh toán của Hoà Bình 805.100 ₫.
+  - Dòng đã đối soát chỉ xem; lọc trạng thái, rỗng, xoá bộ lọc; xuất Excel.
+  - Việc cần xử lý của Kế toán (2 khoản, 484.500 ₫) mở đúng chỗ; Ctrl K ra mục "Tiền mặt chờ đối soát".
+  - Sổ cái có dòng công nợ và loại "Tiền mặt"; Tiền của đơn VN-240931 có dòng tiền mặt, hoàn tiền bị chặn kèm lý do; chi tiết VN-240935 có dòng thanh toán.
+  - Phân quyền hai chiều: CSKH thấy khu nhưng nút khoá, gọi thẳng `cashGo`, `cashCommit`, `cashAdjSave` đều không đổi dữ liệu, không thấy việc cần xử lý; Lãnh đạo mở thẳng URL bị chặn, không lộ dữ liệu, không có mục menu; ma trận quyền có thao tác mới.
+  - Mạng chậm có khung chờ, mất mạng có trạng thái lỗi.
+- `steps-cash-cust.json`, 19 bước, khổ 390 và 1440: đều PASS.
+  - Đặt dịch vụ 5 bước; bước 4/5 "Phương thức thanh toán": 2 lựa chọn `role="radio"`, mặc định điện tử, vùng chạm ≥ 44 px, 1 nút cam, không nút trợ giúp, không còn câu hoa hồng dành cho khách.
+  - Chọn tiền mặt; Esc lùi về bước 3 mà giữ lựa chọn; bước 5/5 tóm tắt có phương thức; đơn mới mang phương thức và có viên "Tiền mặt".
+  - Đơn điện tử giữ nguyên; công tắc Demo chuyển VN-240931 sang tiền mặt: viên slate có icon, mốc "Thanh toán tiền mặt".
+  - Kịch bản 07: nghiệm thu sang thẳng biên nhận "Đã thanh toán tiền mặt" (GD-88481, Tiền mặt, 450.000 ₫, cùng ghi chú và nút như bản điện tử); mốc đã xong có dòng "Kỹ thuật viên đã xác nhận thu 450.000 ₫ tiền mặt"; lịch sử giao dịch ghi tiền mặt; đơn đã trả thì không đổi phương thức được.
+  - Đường điện tử (kịch bản 04) vẫn qua hoá đơn, cổng, biên nhận Visa GD-88480. Bản EN. Mạng chậm có khung chờ.
+- `steps-cash-prov.json`, 22 bước, khổ 390 và 1440: đều PASS.
+  - Đơn điện tử không có bước thu tiền; gọi thẳng hàm mở sheet thu tiền cũng bị chặn.
+  - Bật tiền mặt: viên "Thu tiền mặt", các mốc đúng trạng thái (Gửi khách nghiệm thu xong, Xác nhận thu tiền mặt đang ở đây, Hoàn thành chưa tới), thẻ 450.000 ₫ với 2 dòng, ghi chú hoa hồng và thuế, 2 nút đúng kiểu, vùng chạm ≥ 44 px.
+  - Sheet xác nhận: đúng chữ, có nền mờ và nút X, focus vào sheet; Esc và nền mờ đều đóng mà không xác nhận; chủ đơn vị gọi thẳng hàm không đổi dữ liệu.
+  - Xác nhận: Hoàn thành, trạng thái hoàn thành, nút Về trang chủ, toast, công nợ 76.500 ₫ RT-CM-0042; gọi lần hai không đổi.
+  - Chủ đơn vị: đầu thẻ "Có thể rút: 536.000 ₫" và dòng đỏ công nợ; lớp công nợ nằm giữa Có thể rút và Đang rút, chấm đỏ; dòng thu nhập 373.500 ₫ có viên và nhắc chuyển về; thẻ công nợ ở đầu tab Đối soát, không có nút; rút tối đa 536.000 ₫.
+  - Báo không thu được: sheet đỏ, ô mô tả; xác nhận thì không ghi nợ, ngăn chờ thanh toán 688.900 ₫ (3 đơn), toast "kế toán sẽ xử lý". Đơn đã hoàn tất thì không đổi phương thức. Kịch bản 09. Bản EN.
+
+**Bẻ thử** (`python _qa/break_test_cash.py`: chép site sang thư mục tạm, phá từng chốt, mỗi chốt 1 chỗ, tổng 11 chỗ; mỗi bản bị phá chạy bộ tương ứng; phép kiểm ném lỗi cũng tính là FAIL):
+- Site thật: 3 bộ đều 0 FAIL.
+- 11/11 chốt kêu đúng bước mong đợi: bỏ chặn quyền ở bước ghi nhận (`cs-direct-call-blocked`) · bỏ bắt buộc mã giao dịch (`empty-submit-blocked`) · công nợ chỉ tính hoa hồng (11 FAIL, có `recon-default-rows`) · bỏ bước xác nhận thứ 2 (4 FAIL, có `confirm-modal`) · hiệu ứng trượt chạy lại mỗi lần vẽ (`slide-only-once`) · nghiệm thu đơn tiền mặt vẫn qua cổng thanh toán (5 FAIL, có `scenario-7-signoff`) · mặc định chọn tiền mặt (`pay-screen`) · bỏ chặn vai ở bước thu tiền (`owner-cannot-collect`) · bỏ lớp công nợ (`owner-finance-debt`) · rút tiền không trừ công nợ (`withdraw-net`) · sheet xác nhận không nhận focus (`sheet-ok-open`).
+- Lần bẻ đầu, chốt "bỏ bước xác nhận thứ 2" có kêu nhưng không ở `confirm-modal`: phép kiểm của bước này ném lỗi khi không có hộp nên không trả giá trị, và bài bẻ chỉ đếm chữ FAIL. Đã sửa gốc: mọi phép kiểm trong `gen_cash.py` bọc `try/catch` thành FAIL, bài bẻ tính cả bước im lặng.
+
+**UX 12 điểm trên phần mới và trang chứa nó: 12/12.**
+
+| # | Điểm | | Bằng chứng |
+|---|---|---|---|
+| 1 | Hành động chính nổi nhất | ✅ | Tab con tiền mặt bỏ nút cam ở đầu trang, nút cam duy nhất là Xác nhận đối soát `admin-fin2.js:56`, `admin-fin2.js:335`; bước chọn phương thức 1 nút Tiếp tục `customer.js:197`; bước thu tiền: Đã thu đủ tiền mặt là nút chính, báo không thu được là chữ đỏ `provider.js` (chân màn việc) |
+| 2 | ≤ 7 lựa chọn | ✅ | 2 tab con, 2 tab panel, 3 bộ lọc + Xuất Excel `admin-fin2.js:299`; 2 phương thức `customer.js:187`; 2 hành động khi thu tiền |
+| 3 | Gần nhau thì liên quan | ✅ | Panel chia: đầu (đơn vị, số cần chuyển, cách tính), thẻ tài khoản và công nợ, form, lời nhắc dưới nút `admin-fin2.js:335`; thẻ số tiền gom tổng và từng dòng `provider.js:277` |
+| 4 | Phản hồi ≤ 400 ms | ✅ | Ghi nhận cập nhật ngay dòng (nháy `flash`), tổng, toast; panel trượt 150 ms `admin-fin2.js:322`; khung chờ khi mạng chậm |
+| 5 | Theo quy ước | ✅ | Bảng chọn dòng dùng `tr.sel` có sẵn; thẻ chọn `.opt` + `.rd` như bước 1; bottom sheet như sheet Từ chối; lớp công nợ cùng hình các lớp số dư `provider.js:127` |
+| 6 | Hover/focus | ✅ | `tokens.css:58` (`:focus-visible`), `tokens.css:132` (dòng bảng), dòng chọn được bằng Enter và giữ focus (bước `keyboard-select`) |
+| 7 | Tiến độ nhiều bước | ✅ | Đặt dịch vụ "Bước 4/5" `customer.js:191`; hộp xác nhận "Bước 2/2" `admin-fin2.js:401`; mốc Xác nhận thu tiền mặt và Hoàn thành trên dòng thời gian của việc |
+| 8 | Vùng chạm ≥ 44 px | ✅ | Thẻ phương thức và 2 nút thu tiền đo ≥ 44 px trong `steps-cash-cust`, `steps-cash-prov` |
+| 9 | Trạng thái rỗng | ✅ | Lọc không ra có câu hướng dẫn và nút Xoá bộ lọc `admin-fin2.js:319`; panel chưa chọn đơn |
+| 10 | Chia cụm | ✅ | Khối "Đơn hàng tiền mặt chờ đối soát", "Xác nhận nhà cung cấp đã chuyển khoản"; mục "Công nợ tiền mặt" ở đầu tab Đối soát `provider.js:144` |
+| 11 | Thứ bậc | ✅ | Tên đơn vị 18 px > số cần chuyển 14,5 px đậm màu info > cách tính 12,5 px mờ; số cần thu 28 px nét 800 |
+| 12 | Giấu phức tạp | ✅ | Bút toán điều chỉnh là tab phụ, chữ nhạt; mặc định ngày hôm nay, tài khoản công ty điền sẵn, phương thức điện tử chọn sẵn |
+
+**Lỗi có sẵn tìm thấy trong đợt, chưa sửa (ngoài phạm vi, chờ người dùng quyết):**
+- `core.js`: `VN.focusFirst` và `VN.trap` coi thẻ SVG `<use href>` của icon là phần tử nhận focus, nên modal, drawer, sheet của cả 3 trang không đưa focus vào khi mở, và `Shift+Tab` có thể lọt ra ngoài. Đo được: sheet Từ chối yêu cầu có sẵn cũng để focus ở `BODY`. Ba lớp phủ mới né bằng `autofocus` trên đoạn nội dung đầu (`tabindex="-1"`).
+- `app-core.js`: đóng sheet không trả focus về nút đã mở (VN.patch chỉ giữ focus theo `id`). Trang quản trị: đóng hộp bằng Huỷ hoặc nền mờ cũng không trả focus (chỉ Esc trả đúng).
+- `_qa/run.mjs` chọn cổng ngẫu nhiên nên chạy nhiều bộ song song có thể trùng cổng (đã xảy ra một lần trong đợt này: bộ App Khách hàng điều khiển nhầm trình duyệt của bộ trang quản trị). Đã thêm biến `CDP_PORT`, không đổi cách chạy cũ.
+- `_qa/run.mjs` để lại một thư mục hồ sơ Edge `cdp-*` trong TEMP sau mỗi lần chạy (đã tích 509 thư mục, và một lần ghi ảnh báo hết chỗ). Đã thêm bước xoá hồ sơ khi chạy xong. Theo lựa chọn ở Cổng 3, đã xoá 509 thư mục cũ (14,12 GB).
+
+**Giới hạn đã biết của phần mới:** ở khổ 1280 bảng tiền mặt cuộn ngang trong thẻ (trang không tràn) · Báo cáo và cây cầu tiền chưa tách tiền mặt, tổng tháng 9 vẫn khớp `finance-flow.md` · trạng thái giữa 3 ứng dụng không liên thông (kế toán ghi nhận ở Trang quản trị thì App Nhà cung cấp vẫn "Chờ đối soát").

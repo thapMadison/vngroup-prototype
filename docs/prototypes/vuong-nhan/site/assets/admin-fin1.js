@@ -207,6 +207,8 @@
     var bankQ = d.PROVIDERS.filter(function (p) { return p.bank && p.bank.state === 'pending'; }).length;
     if (A.sees('disputes')) list.push(['disputes', {}, 't-danger', 'scales', L('Khiếu nại chờ phân xử', 'Disputes awaiting ruling'), L('Cũ nhất: mở 21/09 17:48', 'Oldest: opened 21/09 17:48'), b.disputes]);
     if (A.sees('payouts')) list.push(['payouts', {}, 't-slate', 'hand-coins', L('Rút tiền chờ duyệt', 'Payouts awaiting approval'), L('Tổng ', 'Total ') + VN.money(d.PAYOUTS.filter(function (p) { return p.st === 'pending'; }).reduce(function (a, p) { return a + p.amount; }, 0)), b.payouts]);
+    /* Tiền mặt chờ đối soát: chỉ vai ghi nhận được chuyển khoản mới thấy việc này */
+    if (A.sees('transactions') && A.can('cashRecon')) { var cp = A.cashPending(); list.push(['transactions', { tab: 'recon', rs: 'cash' }, 't-warn', 'money', L('Tiền mặt chờ đối soát', 'Cash awaiting reconciliation'), L('Tổng ', 'Total ') + VN.money(cp.reduce(function (a, c) { return a + A.cashOwe(c); }, 0)), cp.length]); }
     if (A.sees('refunds')) list.push(['refunds', { tab: 'pending' }, 't-slate', 'arrow-counter-clockwise', L('Hoàn tiền chờ duyệt', 'Refunds awaiting approval'), L('Từ 500.000 ₫, duyệt hai bước', '500,000 ₫ or more, two-step'), pendRef]);
     if (A.sees('refunds')) list.push(['refunds', { tab: 'hold' }, 't-danger', 'lock-simple', L('Khoản đang tạm giữ', 'Funds on hold'), L('Do khiếu nại đang mở', 'Due to open disputes'), holds]);
     if (A.sees('transactions')) list.push(['transactions', { tab: 'unpaid' }, 't-warn', 'clock', L('Đơn quá hạn thanh toán', 'Orders overdue for payment'), L('Lâu nhất: 9 ngày', 'Longest: 9 days'), overdue]);

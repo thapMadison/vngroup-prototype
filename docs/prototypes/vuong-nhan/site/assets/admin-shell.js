@@ -2,7 +2,7 @@
 (function (W) {
   'use strict';
   var VN = W.VN, D = W.VNDATA, L = VN.L, ic = VN.ic, esc = VN.esc;
-  var A = W.ADMIN = { P: {}, M: {}, ACT: {}, IN: {}, mounts: [] };
+  var A = W.ADMIN = { P: {}, M: {}, ACT: {}, IN: {}, mounts: [], SETUP: {} };
 
   /* ---------- Vai trò và quyền ---------- */
   A.ROLES = {
@@ -20,7 +20,7 @@
     export: 'lead acc sa', payApprove: 'acc sa', payBatch: 'acc sa', adjCreate: 'acc sa', adjApprove: 'acc sa',
     refundCreate: 'acc sa', refundApprove: 'acc sa', hold: 'acc cs sa', dunNote: 'acc cs sa', release: 'acc cs sa',
     orderCancel: 'cs sa', orderStatus: 'sa', orderNote: 'sa', provApprove: 'cs sa', provPause: 'cs sa', provLock: 'cs sa', provUnlock: 'sa',
-    bankVerify: 'acc sa', docRemind: 'cs sa', disputeRule: 'cs sa', custLock: 'cs sa', moderate: 'cs sa', broadcast: 'cs sa', config: 'sa', ledgerView: 'acc cs sa'
+    bankVerify: 'acc sa', docRemind: 'cs sa', disputeRule: 'cs sa', custLock: 'cs sa', moderate: 'cs sa', broadcast: 'cs sa', config: 'sa', ledgerView: 'acc cs sa', cashRecon: 'acc sa'
   };
   /* Thao tác được phân quyền, nhóm theo trang để hiện trong ma trận. */
   A.ACTS = {
@@ -29,7 +29,7 @@
     disputeRule: ['disputes', 'Phân xử khiếu nại', 'Rule on disputes'],
     provApprove: ['providers', 'Duyệt hồ sơ đăng ký', 'Approve applications'], provPause: ['providers', 'Tạm dừng nhận đơn', 'Pause providers'], provLock: ['providers', 'Khoá tài khoản', 'Lock accounts'], provUnlock: ['providers', 'Mở khoá tài khoản', 'Unlock accounts'], bankVerify: ['providers', 'Xác minh tài khoản ngân hàng', 'Verify bank accounts'], docRemind: ['providers', 'Nhắc bổ sung giấy tờ', 'Send document reminders'],
     custLock: ['customers', 'Khoá tài khoản khách', 'Lock customer accounts'],
-    ledgerView: ['transactions', 'Xem sổ cái nhà cung cấp', 'View provider ledgers'], adjCreate: ['transactions', 'Tạo điều chỉnh sổ cái', 'Create ledger adjustments'], adjApprove: ['transactions', 'Duyệt điều chỉnh sổ cái', 'Approve ledger adjustments'],
+    ledgerView: ['transactions', 'Xem sổ cái nhà cung cấp', 'View provider ledgers'], adjCreate: ['transactions', 'Tạo điều chỉnh sổ cái', 'Create ledger adjustments'], adjApprove: ['transactions', 'Duyệt điều chỉnh sổ cái', 'Approve ledger adjustments'], cashRecon: ['transactions', 'Ghi nhận chuyển khoản tiền mặt', 'Record cash transfers'],
     payApprove: ['payouts', 'Duyệt rút tiền', 'Approve payouts'], payBatch: ['payouts', 'Tạo lô chi', 'Create payout batches'],
     refundCreate: ['refunds', 'Tạo hoàn tiền', 'Create refunds'], refundApprove: ['refunds', 'Duyệt hoàn tiền bước 2', 'Approve refunds (step 2)'], hold: ['refunds', 'Tạm giữ tiền', 'Hold funds'], release: ['refunds', 'Giải phóng tạm giữ', 'Release holds'],
     moderate: ['moderation', 'Duyệt, gỡ nội dung', 'Approve or remove content'], broadcast: ['broadcast', 'Gửi thông báo', 'Send messages']
@@ -117,7 +117,7 @@
   A.fresh = function () {
     return {
       lang: VN.lang, role: 'acc', page: 'reports', p: {}, hist: [],
-      d: VN.clone({ PROVIDERS: D.PROVIDERS, ORDERS: D.ORDERS, TXNS: D.TXNS, PAYOUTS: D.PAYOUTS, REFUNDS: D.REFUNDS, ADJUSTS: D.ADJUSTS, DISPUTES: D.DISPUTES, REQUESTS: D.REQUESTS, CUSTOMERS: D.CUSTOMERS, RECON: D.RECON, DUN_NOTES: D.DUN_NOTES }),
+      d: VN.clone({ PROVIDERS: D.PROVIDERS, ORDERS: D.ORDERS, TXNS: D.TXNS, PAYOUTS: D.PAYOUTS, REFUNDS: D.REFUNDS, ADJUSTS: D.ADJUSTS, DISPUTES: D.DISPUTES, REQUESTS: D.REQUESTS, CUSTOMERS: D.CUSTOMERS, RECON: D.RECON, DUN_NOTES: D.DUN_NOTES, CASH: D.CASH }),
       adj: [], // biến động tiền trong ngày hôm nay: {kind, amt, prov, cat}
       ui: {}, modal: null, menu: null, demo: false, palette: null, audit: [], notes: {}, rb: A.rbInit()
     };
@@ -277,6 +277,7 @@
       A.S.d.ORDERS.forEach(function (o) { if (norm(o.id + ' ' + o.cust + ' ' + o.phone).indexOf(nq) >= 0) res.push(['order', o.id, o.id + ' · ' + o.cust, L(o.svc[0], o.svc[1])]); });
       if (A.sees('providers')) A.S.d.PROVIDERS.forEach(function (p) { if (norm(p.name + ' ' + p.phone).indexOf(nq) >= 0) res.push(['provider', p.id, p.name, L('Nhà cung cấp', 'Provider')]); });
       A.NAV.forEach(function (g) { g[1].forEach(function (it) { if (A.sees(it[0]) && norm(it[1][0] + ' ' + it[1][1]).indexOf(nq) >= 0) res.push(['page', it[0], L(it[1][0], it[1][1]), L('Mở màn', 'Open screen')]); }); });
+      if (A.sees('transactions') && norm('tien mat cho doi soat cash awaiting reconciliation').indexOf(nq) >= 0) res.push(['page', 'transactions', L('Tiền mặt chờ đối soát', 'Cash awaiting reconciliation'), L('Giao dịch & đối soát · Đối soát', 'Transactions · Reconciliation'), { tab: 'recon', rs: 'cash' }]);
     }
     res = res.slice(0, 8);
     A.S.palette.res = res;
@@ -292,7 +293,7 @@
     [1, ['Rút tiền và lô chi', 'Payouts and payout batch'], ['Kế toán duyệt Phúc An, Sạch Xanh → tạo lô chi → Sạch Xanh thất bại', 'Accountant approves → batch → Sạch Xanh fails'], 'acc', 'payouts', {}],
     [2, ['Hoàn tiền bị chặn', 'Refund blocked'], ['VN-240902 đã chi cho nhà cung cấp 14/09', 'VN-240902 already paid out on 14/09'], 'acc', 'ordermoney', { id: 'VN-240902' }],
     [3, ['Hoàn tiền cần duyệt hai bước', 'Two-step refund'], ['Hoàn 900.000 ₫ cho VN-240921 → đổi Super admin duyệt', 'Refund 900,000 ₫ on VN-240921 → approve as Super admin'], 'acc', 'refunds', { tab: 'hold' }],
-    [4, ['Điều chỉnh sổ cái từ đối soát', 'Ledger adjustment from reconciliation'], ['Dòng lệch 80.000 ₫ → tạo điều chỉnh → duyệt', 'Mismatch 80,000 ₫ → create adjustment → approve'], 'acc', 'transactions', { tab: 'recon' }],
+    [4, ['Điều chỉnh sổ cái từ đối soát', 'Ledger adjustment from reconciliation'], ['Dòng lệch 80.000 ₫ → tạo điều chỉnh → duyệt', 'Mismatch 80,000 ₫ → create adjustment → approve'], 'acc', 'transactions', { tab: 'recon', rs: 'gateway' }],
     [5, ['Phân quyền và đôn đốc', 'Permissions and follow-up'], ['CSKH: đổi trạng thái đôn đốc, thêm ghi chú', 'Support: update follow-up status, add note'], 'cs', 'transactions', { tab: 'unpaid' }],
     [6, ['Lãnh đạo xem báo cáo', 'Executive reviews reports'], ['Đổi kỳ, so với kỳ trước, lọc ngành, xuất Excel', 'Change period, compare, filter, export'], 'lead', 'reports', {}],
     ['Đơn hàng', 'Orders'],
@@ -308,6 +309,8 @@
     [14, ['Vai trò và quyền', 'Roles and permissions'], ['Bỏ quyền Hoàn tiền của Kế toán → đổi sang vai Kế toán, menu mất mục đó', 'Remove Refunds from Accountant → switch to Accountant, the menu item is gone'], 'sa', 'admins', { tab: 'roles' }],
     [15, ['Danh mục dịch vụ', 'Service catalog'], ['Thêm dịch vụ; xoá mục đang dùng bị chặn, đề nghị tắt', 'Add a service; deleting an item in use is blocked, disable instead'], 'sa', 'catalog', {}],
     [16, ['Hồ sơ và bảo mật', 'Profile and security'], ['Sửa hồ sơ, đổi mật khẩu, đăng xuất phiên khác', 'Edit profile, change password, sign out other sessions'], 'acc', 'profile', {}],
+    ['Thanh toán tiền mặt', 'Cash payments'],
+    [17, ['Đối soát tiền mặt', 'Cash reconciliation'], ['VN-240931 thu tiền mặt → ghi nhận chuyển khoản 76.500 ₫', 'VN-240931 paid in cash → record the 76,500 ₫ transfer'], 'acc', 'transactions', { tab: 'recon', rs: 'cash' }, 'cash31'],
   ];
   function demoPanel() {
     var h = '<div class="demo-panel" role="dialog" aria-label="Demo"><div><h3>' + L('Xem với vai trò', 'View as') + '</h3><div class="roles" style="margin-top:8px">';
@@ -361,6 +364,7 @@
     var s = A.SCENARIOS.filter(function (x) { return x[0] === +el.dataset.id; })[0];
     A.S.role = s[3]; A.S.demo = false; A.S.hist = [];
     Object.keys(A.S.ui).forEach(function (k) { if (k.indexOf('sel-') === 0) delete A.S.ui[k]; });
+    if (s[6] && A.SETUP[s[6]]) A.SETUP[s[6]]();
     A.go(s[4], VN.clone(s[5]), true);
     A.toast(L('Kịch bản ', 'Scenario ') + s[0] + ': ' + L(s[1][0], s[1][1]) + ' · ' + A.roleLabel());
   };
@@ -368,7 +372,7 @@
   ACT.closePalette = function () { A.S.palette = null; A.render(); };
   ACT.palGo = function (el) {
     var r = A.S.palette.res[+el.dataset.id]; A.S.palette = null;
-    if (r[0] === 'order') A.goOrder(r[1]); else if (r[0] === 'provider') A.go('provider', { id: r[1] }); else A.go(r[1]);
+    if (r[0] === 'order') A.goOrder(r[1]); else if (r[0] === 'provider') A.go('provider', { id: r[1] }); else A.go(r[1], r[4] ? VN.clone(r[4]) : undefined);
   };
   A.IN.palq = function (el, v) { A.S.palette.q = v; A.S.palette.hl = 0; A.render(); };
   ACT.closeModal = function () { A.closeModal(); };

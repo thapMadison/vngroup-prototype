@@ -42,7 +42,7 @@
       taxId: '0315 907 224', rep: 'Đặng Thành Long', phone: '0937 551 208', email: 'kythuathoabinh@gmail.com', addr: '15 Phan Đăng Lưu, P. Gia Định, TP. Hồ Chí Minh',
       joined: '20/03/2026', bank: { name: 'ACB', no: '2210', holder: 'CONG TY TNHH KY THUAT HOA BINH', state: 'verified' },
       rating: 4.8, reviews: 241, doneMonth: 31, acceptRate: 91, cancelRate: 2.4, repShare: 0.041,
-      bal: { awaiting: 182600, warranty: 3405000, hold: 0, avail: 486000, payout: 3120000 }, flags: [],
+      bal: { awaiting: 805100, warranty: 3405000, hold: 0, avail: 486000, payout: 3120000 }, flags: [],
       docs: [
         { t: ['Giấy phép kinh doanh', 'Business licence'], exp: [30, 6, 2028], st: 'ok' },
         { t: ['Bảo hiểm nghề nghiệp', 'Professional insurance'], exp: [8, 11, 2026], st: 'soon' },
@@ -142,6 +142,9 @@
     { id: 'VN-240925', cust: 'Phạm Gia Bảo', phone: '0903 552 190', addr: '240 Xô Viết Nghệ Tĩnh, P. Thạnh Mỹ Tây', prov: 'thotam', tech: 'Hồ Văn Tâm', cat: 'plumb',
       svc: ['Sửa điện nước', 'Plumbing & electrical repair'], pkg: ['Thay vòi, sửa rò rỉ', 'Tap replacement, leak fix'], amount: 520000, lines: [[['Công sửa', 'Labour'], 300000], [['Vòi sen', 'Shower tap'], 220000]],
       status: 'payment', money: 'awaiting', upd: 1380, sched: ['23/09', '10:30-12:30'], accepted: '23/09 11:40', dueIn: 1, dun: 'none' },
+    { id: 'VN-240935', cust: 'Bùi Thanh Tùng', phone: '0932 615 847', addr: '45 Nguyễn Gia Trí, P. Thạnh Mỹ Tây', prov: 'hoabinh', tech: 'Lý Văn Sang', cat: 'appl',
+      svc: ['Sửa tủ lạnh', 'Fridge repair'], pkg: ['Tủ không đông đá · thay quạt dàn lạnh', 'Freezer not freezing · evaporator fan'], amount: 750000, lines: [[['Công sửa', 'Labour'], 300000], [['Quạt dàn lạnh', 'Evaporator fan'], 450000]],
+      status: 'payment', money: 'awaiting', upd: 1392, sched: ['23/09', '09:00-11:00'], accepted: '23/09 11:25', dueIn: 1, dun: 'none', payMethod: 'cash', cashFail: '23/09 11:30' },
     { id: 'VN-240915', cust: 'Tạ Quang Vinh', phone: '0987 654 321', addr: '12 Đường số 7, P. Tân Hưng', prov: 'hoabinh', tech: 'Lý Văn Sang', cat: 'appl',
       svc: ['Vệ sinh máy giặt', 'Washing machine cleaning'], pkg: ['Vệ sinh lồng giặt', 'Drum cleaning'], amount: 220000, lines: [[['Vệ sinh lồng giặt', 'Drum cleaning'], 220000]],
       status: 'overdue', money: 'awaiting', upd: 4320, sched: ['20/09', '09:00-11:00'], accepted: '20/09 10:45', overdueDays: 3, dun: 'promised', promise: '25/09' },
@@ -190,9 +193,11 @@
     paid: ['Đã chi', 'Paid out', 'ok'],
     failed: ['Chi thất bại', 'Payout failed', 'danger'],
     refunded: ['Đã hoàn tiền', 'Refunded', 'neutral'],
+    cashPend: ['Tiền mặt, chờ đối soát', 'Cash, to reconcile', 'warn'],
+    cashRecon: ['Tiền mặt, đã đối soát', 'Cash, reconciled', 'slate'],
     none: ['Chưa phát sinh', 'Not yet charged', 'neutral']
   };
-  var PAY_METHOD = { card: ['Thẻ', 'Card'], ewallet: ['Ví điện tử', 'E-wallet'], qr: ['Chuyển khoản QR', 'QR transfer'] };
+  var PAY_METHOD = { card: ['Thẻ', 'Card'], ewallet: ['Ví điện tử', 'E-wallet'], qr: ['Chuyển khoản QR', 'QR transfer'], cash: ['Tiền mặt', 'Cash'] };
 
   /* ---------- Tài chính theo ngày: 01/03 - 24/09/2026 (đồng) ---------- */
   var MONTH_GMV = { 3: 348600000, 4: 617300000, 5: 862100000, 6: 1084500000, 7: 1291800000, 8: 1468200000 };
@@ -241,19 +246,25 @@
     ['GD-88466', 'VN-240926', 1250000, 'qr', 'ok', '24/09 09:12'],
     ['GD-88463', 'VN-240925', 520000, 'card', 'failed', '24/09 08:40'],
     ['GD-88455', 'VN-240924', 300000, 'ewallet', 'ok', '23/09 20:05'],
+    ['GD-88450', 'VN-240923', 650000, 'cash', 'cashPend', '23/09 16:40'],
+    ['GD-88445', 'VN-240935', 750000, 'cash', 'cashFail', '23/09 11:30'],
     ['GD-88440', 'VN-240920', 750000, 'ewallet', 'ok', '22/09 16:55'],
     ['GD-88431', 'VN-240921', 900000, 'card', 'ok', '22/09 16:30'],
+    ['GD-88420', 'VN-240922', 2200000, 'cash', 'cashPend', '22/09 11:20'],
     ['GD-88412', 'VN-240918', 450000, 'ewallet', 'ok', '22/09 09:40'],
     ['GD-88397', 'VN-240917', 640000, 'qr', 'ok', '21/09 18:22'],
     ['GD-88370', 'VN-240914', 1150000, 'qr', 'ok', '21/09 15:02'],
+    ['GD-88366', 'VN-240909', 480000, 'cash', 'cashRecon', '21/09 14:55'],
     ['GD-88352', 'VN-240916', 780000, 'card', 'partial', '21/09 11:40'],
     ['GD-88318', 'VN-240910', 420000, 'ewallet', 'ok', '20/09 19:10'],
+    ['GD-88301', 'VN-240907', 900000, 'cash', 'cashRecon', '20/09 10:30'],
     ['GD-88205', 'VN-240913', 1200000, 'card', 'ok', '19/09 10:52'],
     ['GD-87960', 'VN-240908', 560000, 'qr', 'ok', '17/09 14:33'],
     ['GD-86102', 'VN-240902', 650000, 'card', 'ok', '02/09 09:51']
   ];
-  var TXN_EXTRA = { 'VN-240929': ['Phan Thị Ngọc Ánh', 'phucan'], 'VN-240926': ['Đỗ Hữu Phước', 'hoabinh'], 'VN-240924': ['Quách Minh Nhật', 'sachxanh'], 'VN-240917': ['Hà Thị Thu Trang', 'phucan'], 'VN-240916': ['Vương Tuấn Kiệt', 'sachxanh'], 'VN-240910': ['La Mỹ Linh', 'antam'], 'VN-240908': ['Tống Phước Lộc', 'hoabinh'] };
-  var TXN_STATUS = { ok: ['Thành công', 'Succeeded', 'ok'], pending: ['Đang xử lý', 'Processing', 'info'], failed: ['Thất bại', 'Failed', 'danger'], partial: ['Đã hoàn một phần', 'Partially refunded', 'neutral'] };
+  var TXN_EXTRA = { 'VN-240929': ['Phan Thị Ngọc Ánh', 'phucan'], 'VN-240926': ['Đỗ Hữu Phước', 'hoabinh'], 'VN-240924': ['Quách Minh Nhật', 'sachxanh'], 'VN-240917': ['Hà Thị Thu Trang', 'phucan'], 'VN-240916': ['Vương Tuấn Kiệt', 'sachxanh'], 'VN-240910': ['La Mỹ Linh', 'antam'], 'VN-240908': ['Tống Phước Lộc', 'hoabinh'], 'VN-240923': ['Nguyễn Thị Mai', 'sachxanh'], 'VN-240922': ['Lê Bảo Châu', 'hoabinh'], 'VN-240909': ['Phạm Quốc Dũng', 'thotam'], 'VN-240907': ['Hồ Thị Lan', 'antam'] };
+  var TXN_STATUS = { ok: ['Thành công', 'Succeeded', 'ok'], pending: ['Đang xử lý', 'Processing', 'info'], failed: ['Thất bại', 'Failed', 'danger'], partial: ['Đã hoàn một phần', 'Partially refunded', 'neutral'],
+    cashPend: ['Chưa đối soát', 'To reconcile', 'warn'], cashRecon: ['Đã đối soát', 'Reconciled', 'slate'], cashFail: ['Chưa thu được', 'Uncollected', 'danger'] };
 
   /* ---------- Rút tiền ---------- */
   var PAYOUTS = [
@@ -297,7 +308,7 @@
     { id: 'DC-0921', prov: 'antam', pocket: 'avail', dir: -1, amount: 55000, reason: ['Phí chuyển khoản lỗi do nhà cung cấp nhập sai số tài khoản', 'Transfer fee from wrong account number'], link: 'L-0917', st: 'approved', by: 'Lê Minh Anh', ap: 'Nguyễn Hải', at: '21/09 10:20' },
     { id: 'DC-0919', prov: 'hoabinh', pocket: 'warranty', dir: 1, amount: 120000, reason: ['Ghi thiếu phụ thu ngoài giờ', 'Missing after-hours surcharge'], link: 'VN-240897', st: 'rejected', by: 'Phạm Thu Trang', ap: 'Nguyễn Hải', at: '19/09 15:45', rej: ['Phụ thu đã có trong bảng chốt, không thiếu', 'Surcharge already on sign-off sheet'] }
   ];
-  var POCKETS = { awaiting: ['Chờ khách thanh toán', 'Awaiting payment'], warranty: ['Đang bảo hành', 'In warranty hold'], hold: ['Đang tạm giữ', 'On hold'], avail: ['Có thể rút', 'Available'], payout: ['Đang rút', 'Payout in progress'] };
+  var POCKETS = { awaiting: ['Chờ khách thanh toán', 'Awaiting payment'], warranty: ['Đang bảo hành', 'In warranty hold'], hold: ['Đang tạm giữ', 'On hold'], avail: ['Có thể rút', 'Available'], payout: ['Đang rút', 'Payout in progress'], debt: ['Công nợ tiền mặt', 'Cash debt'] };
 
   /* ---------- Đối soát: sao kê mẫu ---------- */
   var RECON = [
@@ -307,6 +318,20 @@
     ['L-0912', 'RT-24062', 'An Tâm Pest', 980000, 980000],
     ['L-0912', 'RT-24064', 'Điện máy Quang Minh', 2150000, 2150000]
   ];
+
+  /* ---------- Đối soát tiền mặt ----------
+     Tiền mặt nằm trong tay nhà cung cấp, nên phần nền tảng lẽ ra giữ lại như đơn trả qua app (hoa hồng 15% + thuế khấu trừ 2%)
+     thành công nợ; nhà cung cấp chuyển khoản về theo mã tham chiếu, kế toán đối chiếu sao kê rồi ghi nhận.
+     st: pending (chưa đối soát) | recon (đã đối soát) | fail (kỹ thuật viên báo chưa thu được: không có công nợ, đơn sang Chờ khách thanh toán) */
+  var CASH = [
+    { order: 'VN-240923', prov: 'sachxanh', cust: 'Nguyễn Thị Mai', tech: 'Đinh Thị Hoa', amount: 650000, done: '23/09 16:40', st: 'pending', txn: 'GD-88450', ref: 'RT-CM-0041' },
+    { order: 'VN-240935', prov: 'hoabinh', cust: 'Bùi Thanh Tùng', tech: 'Lý Văn Sang', amount: 750000, done: '23/09 11:30', st: 'fail', txn: 'GD-88445', ref: '', why: ['Khách hẹn chuyển khoản sau khi kiểm tra tủ chạy ổn định', 'Customer will transfer once the fridge runs well'] },
+    { order: 'VN-240922', prov: 'hoabinh', cust: 'Lê Bảo Châu', tech: 'Đặng Thành Long', amount: 2200000, done: '22/09 11:20', st: 'pending', txn: 'GD-88420', ref: 'RT-CM-0040' },
+    { order: 'VN-240909', prov: 'thotam', cust: 'Phạm Quốc Dũng', tech: 'Hồ Văn Tâm', amount: 480000, done: '21/09 14:55', st: 'recon', txn: 'GD-88366', ref: 'RT-CM-0038', paid: { amount: 81600, date: '22/09/2026', bank: 'FT26265418207', note: '', by: 'Lê Minh Anh', at: '22/09 15:10' } },
+    { order: 'VN-240907', prov: 'antam', cust: 'Hồ Thị Lan', tech: 'Lâm Chí Thanh', amount: 900000, done: '20/09 10:30', st: 'recon', txn: 'GD-88301', ref: 'RT-CM-0037', paid: { amount: 153000, date: '21/09/2026', bank: 'FT26264093551', note: '', by: 'Lê Minh Anh', at: '21/09 09:40' } }
+  ];
+  /* Tài khoản nhận tiền của công ty VN Group (số minh hoạ) */
+  var CASH_BANK = ['Techcombank · 1234 5678 910 (tài khoản công ty VN Group)', 'Techcombank · 1234 5678 910 (VN Group company account)'];
 
   /* ---------- Khiếu nại ---------- */
   var DISPUTES = [
@@ -346,6 +371,6 @@
     CATS: CATS, PROVIDERS: PROVIDERS, OTHER_PROVIDERS: OTHER_PROVIDERS, ORDERS: ORDERS, ORDER_STATUS: ORDER_STATUS, MONEY_STATUS: MONEY_STATUS, PAY_METHOD: PAY_METHOD,
     FIN: FIN, TXNS: TXNS, TXN_EXTRA: TXN_EXTRA, TXN_STATUS: TXN_STATUS, PAYOUTS: PAYOUTS, PAYOUT_RULES: PAYOUT_RULES, REFUNDS: REFUNDS, REFUND_THRESHOLD: REFUND_THRESHOLD,
     DUN: DUN, DUN_NOTES: DUN_NOTES, ADJUSTS: ADJUSTS, POCKETS: POCKETS, RECON: RECON, DISPUTES: DISPUTES, REQUESTS: REQUESTS, REQ_STATUS: REQ_STATUS,
-    CUSTOMERS: CUSTOMERS, CUSTOMER_COUNT: CUSTOMER_COUNT
+    CUSTOMERS: CUSTOMERS, CUSTOMER_COUNT: CUSTOMER_COUNT, CASH: CASH, CASH_BANK: CASH_BANK
   };
 })(window);

@@ -1,3 +1,5 @@
 # Tài liệu nghiệp vụ nội bộ, không đẩy lên remote
 /requirement/
 .claude
+# Bộ kiểm, báo cáo, ảnh chụp của prototype: chỉ giữ trên máy
+docs/prototypes/vuong-nhan/_qa/

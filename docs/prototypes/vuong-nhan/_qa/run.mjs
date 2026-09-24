@@ -1,7 +1,7 @@
 // Bộ chạy thử: mở 1 trang, thực hiện chuỗi bước (JS), chụp ảnh từng bước, gom lỗi console.
 // node --experimental-websocket run.mjs <file.html> <steps.json> <outdir> [w] [h] [mobile]
 import { spawn } from 'node:child_process';
-import { writeFileSync, readFileSync, mkdtempSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdtempSync, mkdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -10,7 +10,8 @@ const [file, stepsFile, outdir, w = '1440', h = '900', mobile = '0'] = process.a
 const steps = JSON.parse(readFileSync(stepsFile, 'utf8'));
 mkdirSync(outdir, { recursive: true });
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-const port = 9300 + Math.floor(Math.random() * 600);
+// CDP_PORT: cổng riêng khi chạy nhiều bộ song song (run_all.py); không có thì chọn ngẫu nhiên
+const port = +process.env.CDP_PORT || 9300 + Math.floor(Math.random() * 600);
 const prof = mkdtempSync(join(tmpdir(), 'cdp-'));
 const proc = spawn(EDGE, ['--headless=new', '--disable-gpu', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, '--no-first-run', 'about:blank'], { stdio: 'ignore' });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -49,4 +50,7 @@ for (const s of steps.steps) {
   report.push({ step: s.name, errors, check: val, dims: JSON.parse(dims) });
 }
 console.log(JSON.stringify(report, null, 1));
-ws.close(); proc.kill(); process.exit(0);
+ws.close(); proc.kill();
+// Xoá hồ sơ Edge tạm của lần chạy này (trước đây để lại, mỗi lần chạy một thư mục cdp-* trong TEMP)
+await sleep(400); try { rmSync(prof, { recursive: true, force: true }); } catch {}
+process.exit(0);

@@ -31,6 +31,28 @@ for lang in (0, 1):
     for n, js in admin_overlays:
         steps.append({"name": f"{lang}-{n}", "js": f"VN.lang={lang};ADMIN.S.modal=null;ADMIN.S.demo=false;{js}", "check": CHK})
 steps.append({"name": "close", "js": "ADMIN.S.modal=null;ADMIN.S.menu=null;ADMIN.S.demo=false;ADMIN.render()"})
+# Đợt 3: đối soát tiền mặt (tab con, lỗi, hộp xác nhận, đã ghi nhận, bút toán, chưa thu được, lọc Giao dịch thu, rỗng)
+FILL = "var s=function(i,v){var e=document.getElementById(i);e.value=v;e.dispatchEvent(new Event('input',{bubbles:true}))};"
+admin_cash = [
+    ('cash-17', "ADMIN.ACT.reset();ADMIN.ACT.scenario({dataset:{id:'17'}})"),
+    ('cash-err', "ADMIN.ACT.scenario({dataset:{id:'17'}});document.querySelector('[data-act=cashGo]').click()"),
+    ('cash-modal', "ADMIN.ACT.scenario({dataset:{id:'17'}});" + FILL + "s('cf-a','76500');s('cf-c','FT26267512345');document.querySelector('[data-act=cashGo]').click()"),
+    ('cash-done', "ADMIN.ACT.scenario({dataset:{id:'17'}});" + FILL + "s('cf-a','76500');s('cf-c','FT26267512345');document.querySelector('[data-act=cashGo]').click();document.querySelector('#ov [data-act=cashCommit]').click()"),
+    ('cash-adj', "ADMIN.ACT.cashSel({dataset:{id:'VN-240922'}});ADMIN.ACT.cashTab({dataset:{id:'adj'}});document.querySelector('[data-act=cashAdjSave]').click()"),
+    ('cash-fail', "ADMIN.ACT.cashTab({dataset:{id:'rec'}});ADMIN.ACT.cashSel({dataset:{id:'VN-240935'}})"),
+    ('cash-recon', "ADMIN.ACT.cashSel({dataset:{id:'VN-240909'}})"),
+    ('cash-gateway', "ADMIN.go('transactions',{tab:'recon',rs:'gateway'})"),
+    ('cash-txn', "ADMIN.S.ui.txnM='cash';ADMIN.go('transactions',{tab:'txn'})"),
+    ('cash-empty', "ADMIN.S.ui.txnM='';ADMIN.S.ui.cashQ='zzz';ADMIN.go('transactions',{tab:'recon'})"),
+    ('cash-money', "ADMIN.S.ui.cashQ='';ADMIN.go('ordermoney',{id:'VN-240931'})"),
+    ('cash-order', "ADMIN.go('order',{id:'VN-240935'})"),
+    ('cash-ledger', "ADMIN.go('ledger',{id:'hoabinh'})"),
+    ('cash-dash', "ADMIN.go('dashboard',{})"),
+]
+for lang in (0, 1):
+    for n, js in admin_cash:
+        steps.append({"name": f"{lang}-{n}", "js": f"VN.lang={lang};ADMIN.S.modal=null;ADMIN.S.demo=false;{js}", "check": CHK})
+steps.append({"name": "close-cash", "js": "ADMIN.S.modal=null;ADMIN.S.ui.cashQ='';ADMIN.render()"})
 json.dump({"steps": steps}, open('steps-scan-admin.json', 'w', encoding='utf-8'), ensure_ascii=False)
 
 cust = ['home', 'orders', 'inbox', 'account', 'search', 'notifs', 'addrs', 'addrEdit', 'txns', 'sessions', 'help', 'profile', 'notifset', 'terms']
@@ -44,6 +66,14 @@ for lang in (0, 1):
 # Bước 4 có khối tóm tắt (thêm sau soát UX 30 luật)
 for lang in (0, 1):
     steps.append({"name": f"{lang}-book4sum", "js": f"CUST.S.lang={lang};CUST.root('home');CUST.ACT.bookStart({{dataset:{{id:'acclean'}}}});CUST.S.book.slots=['24 13:00-15:00'];CUST.push('book2');CUST.push('book3');CUST.push('book4')", "check": CHK})
+# Đợt 3: thanh toán tiền mặt (bước chọn phương thức, tóm tắt, chi tiết đơn, biên nhận)
+for lang in (0, 1):
+    steps.append({"name": f"{lang}-bookpay", "js": f"CUST.S.lang={lang};CUST.root('home');CUST.ACT.bookStart({{dataset:{{id:'acclean'}}}});CUST.S.book.pay='cash';CUST.push('bookPay')", "check": CHK})
+    steps.append({"name": f"{lang}-book4cash", "js": f"CUST.S.lang={lang};CUST.push('book4')", "check": CHK})
+    steps.append({"name": f"{lang}-cash-order", "js": f"CUST.S.lang={lang};CUST.ACT.reset();CUST.ACT.scn({{dataset:{{id:'7'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-receipt", "js": f"CUST.S.lang={lang};CUST.ACT.signoff({{dataset:{{id:'VN-240931'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-paid", "js": f"CUST.S.lang={lang};CUST.root('orders');CUST.push('order',{{id:'VN-240931'}})", "check": CHK})
+steps.append({"name": "reset-cash", "js": "CUST.ACT.reset()"})
 json.dump({"steps": steps}, open('steps-scan-cust.json', 'w', encoding='utf-8'), ensure_ascii=False)
 
 prov = ['requests', 'dispatch', 'finance', 'account', 'profile', 'pricing', 'area', 'hours', 'team', 'quality', 'notifs', 'help', 'withdraw']
@@ -61,5 +91,15 @@ for lang in (0, 1):
     for p in ["{id:'VN-240931'}", "{id:'VN-240934'}"]:
         steps.append({"name": f"{lang}-job{p}", "js": f"PROV.S.lang={lang};PROV.S.role='tech';PROV.root('today');PROV.push('job',{p})", "check": CHK})
     steps.append({"name": f"{lang}-onb", "js": f"PROV.S.lang={lang};PROV.S.role='new';PROV.root('onb')", "check": CHK})
+# Đợt 3: thu tiền mặt của kỹ thuật viên, công nợ tiền mặt của chủ đơn vị
+for lang in (0, 1):
+    steps.append({"name": f"{lang}-cash-collect", "js": f"PROV.ACT.reset();PROV.S.lang={lang};PROV.ACT.scn({{dataset:{{id:'8'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-sheet-ok", "js": f"PROV.S.lang={lang};PROV.ACT.sheetCashOk({{dataset:{{id:'VN-240931'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-sheet-fail", "js": f"PROV.S.lang={lang};PROV.ACT.sheetCashFail({{dataset:{{id:'VN-240931'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-paid", "js": f"PROV.S.lang={lang};PROV.ACT.cashOkGo({{dataset:{{id:'VN-240931'}}}})", "check": CHK})
+    steps.append({"name": f"{lang}-cash-fin", "js": f"PROV.S.lang={lang};PROV.S.role='owner';PROV.S.form.ft='income';PROV.root('finance')", "check": CHK})
+    steps.append({"name": f"{lang}-cash-recon", "js": f"PROV.S.lang={lang};PROV.S.form.ft='recon';PROV.root('finance')", "check": CHK})
+    steps.append({"name": f"{lang}-cash-wd", "js": f"PROV.S.lang={lang};PROV.push('withdraw')", "check": CHK})
+steps.append({"name": "reset-cash", "js": "PROV.ACT.reset()"})
 json.dump({"steps": steps}, open('steps-scan-prov.json', 'w', encoding='utf-8'), ensure_ascii=False)
 print('ok')

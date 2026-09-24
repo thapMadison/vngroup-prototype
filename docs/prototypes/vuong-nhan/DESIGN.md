@@ -73,6 +73,8 @@ Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, 
 - **Bảng:** tiêu đề chữ hoa 11,5px, dòng 50px, cột số căn phải, sắp xếp cột, tìm + tối đa 3 bộ lọc, trạng thái rỗng có hướng dẫn, phân trang "Hiển thị 1-8 trên 1.284".
 - **Timeline:** chấm đặc = đã xong, vòng xanh = đang ở đây (nhấp nháy nhẹ), vòng xám = chưa tới; đường liền nối mốc; mốc can thiệp thủ công có icon tia sét.
 - **Drawer 440px** (xem, sửa nhanh) · **Modal** (xác nhận) · **Menu "Thao tác khác ▾"** (ít dùng, nguy hiểm cuối, chữ đỏ).
+- **Bảng chọn dòng + panel thao tác** (đối soát tiền mặt): bảng trái, panel phải rộng tối thiểu 360px; dòng chọn dùng `tr.sel`, bấm hoặc Enter để chọn; panel trượt `slide` 150ms chỉ ở lần vẽ ngay sau khi đổi dòng. Form trong panel báo lỗi khi bấm nút (ô đỏ, lời lỗi dưới ô, focus vào ô lỗi đầu tiên).
+- **Tiền mặt:** icon `money` (Phosphor, thêm vào sprite ở đợt 3) · viên "Tiền mặt" dùng TONE neutral ở Trang quản trị, slate ở App Khách hàng · lớp "Công nợ tiền mặt" trong số dư dùng `.pk.hold` (chấm đỏ).
 - **Toast** góc phải trên, tự đóng 3 giây, `role="status"`.
 - **Đang tải / rỗng / lỗi:** skeleton đúng hình (không spinner tròn) · rỗng có câu hướng dẫn + nút · lỗi đặt cạnh chỗ lỗi (mẫu "Giá sàn phải nhỏ hơn giá trần").
 - **Đặc trưng dự án:** thanh 5 điều kiện sẵn sàng nhận đơn · số dư 3 lớp nối bằng đường liền · cây cầu tiền có dấu "✓ Khớp" · đếm ngược thời hạn phản hồi (vàng khi < 5 phút) · khối cam đầu app · thẻ nhà cung cấp "đã làm cho N nhà ở phường bạn" (ảnh đội, điểm sao kèm số đánh giá) · trục giờ đội kỹ thuật viên.
@@ -108,6 +110,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Rút tiền chờ duyệt | 8 yêu cầu, tổng 14.620.000 ₫ (Phúc An 2.450.000 · Sạch Xanh 1.800.000 sai số tài khoản · …) |
 | App Khách hàng | Trần Thu Hà · 0903 ••• 552 · 128 Nguyễn Đình Chiểu, P. Xuân Hòa |
 | App Nhà cung cấp | Chủ đơn vị Trần Văn Phúc (Phúc An) · Kỹ thuật viên Lê Văn Tài |
+| Tiền mặt | Công nợ = phần nền tảng giữ lại như đơn trả qua app: hoa hồng 15% + thuế khấu trừ 2%. VN-240931 (450.000 ₫) là đơn tiền mặt chung của 3 ứng dụng: nợ 76.500 ₫, mã tham chiếu RT-CM-0042, giao dịch GD-88481; Có thể rút của Phúc An sau khi trừ nợ 536.000 ₫. Ở Trang quản trị VN-240931 chỉ thành đơn tiền mặt qua kịch bản 17. Mẫu đối soát: VN-240923 Sạch Xanh (chờ, 110.500 ₫) · VN-240922 Hoà Bình (chờ, 374.000 ₫) · VN-240935 Hoà Bình (chưa thu được, không nợ, nằm ở Chờ khách thanh toán) · VN-240909 Thợ Tâm, VN-240907 An Tâm (đã đối soát). Tài khoản công ty nhận tiền: Techcombank 1234 5678 910 (số minh hoạ) |
 
 ## 10. Sơ đồ trang
 ### 10.1 Hub · `site/index.html`
@@ -127,7 +130,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Khiếu nại (#88) | Hàng chờ duyệt: danh sách trái · màn phân xử phải (ảnh trước/sau, ảnh khách, dấu thời gian và vị trí, timeline, tin nhắn, bảng chốt) · 4 phán quyết kèm lý do, nối sang Tạm giữ tiền | Ra phán quyết | luồng chính |
 | **Nhà cung cấp** (#74, 76-77) | Tab **Danh sách** (P1) · **Hàng chờ duyệt 3** (P3, mẫu Hàng chờ duyệt) · **Giấy tờ & ngân hàng** (P4: sắp hết hạn · xác minh tài khoản) · **Chi tiết** (P2: tab Hồ sơ, Giấy tờ, Kỹ thuật viên, Lịch sử; thẻ Trạng thái, 5 điều kiện, Tài chính nhanh → Số dư & sổ cái) | Duyệt / tạm dừng / khoá theo quyền | sâu |
 | Khách hàng (#74) | Danh sách + drawer chi tiết: đơn gần đây, khiếu nại, lịch sử hoạt động; khoá/mở kèm lý do | Khoá tài khoản | luồng chính |
-| **Giao dịch & đối soát** (#85) | A: 5 tab Giao dịch thu · Số dư nhà cung cấp · Chờ khách thanh toán (drawer đôn đốc) · Điều chỉnh sổ cái (duyệt 2 bước) · Đối soát (xuất file, nhập sao kê tuỳ chọn) · **Tiền của đơn** (B) · **Số dư & sổ cái** (C) | Tạo điều chỉnh / Xuất file | sâu |
+| **Giao dịch & đối soát** (#85) | A: 5 tab Giao dịch thu (lọc Tiền mặt) · Số dư nhà cung cấp · Chờ khách thanh toán (drawer đôn đốc) · Điều chỉnh sổ cái (duyệt 2 bước) · Đối soát, 2 tab con: **Tiền mặt từ nhà cung cấp** (bảng trái, panel phải: Ghi nhận chuyển khoản 2 bước, Bút toán điều chỉnh chờ duyệt bước hai) và **Cổng thanh toán và lô chi** (xuất file, nhập sao kê tuỳ chọn) · **Tiền của đơn** (B) · **Số dư & sổ cái** (C, có dòng Công nợ tiền mặt) | Tạo điều chỉnh / Xuất file / Xác nhận đối soát | sâu |
 | **Rút tiền** (#86) | D: tab Chờ duyệt · Chờ chi · Đã chi · Từ chối · Chi thất bại; tạo lô chi 3 bước | Duyệt rút tiền | sâu |
 | **Hoàn tiền & tạm giữ** (#87) | E: Đang tạm giữ · Chờ duyệt hoàn tiền · Đã hoàn; ngưỡng 500.000 ₫ gửi duyệt; chặn hoàn khi đã chi | Hoàn tiền cho khách | sâu |
 | Danh mục dịch vụ (#78-79) | Cấu hình: cây 4 cấp Ngành → Danh mục → Dịch vụ → Gói; panel phải: tên VI/EN, bật/tắt, cách tính giá, thứ tự, thêm mục con, xoá (đang dùng thì đề nghị tắt); thuộc tính động thêm, sửa, xoá | Lưu thay đổi | CRUD đầy đủ (sửa sau Cổng 5) |
@@ -139,7 +142,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Tham số vận hành (#92) | Concept 3c: phạm vi, nhóm tham số, drawer chuỗi kế thừa, thay đổi đã lên lịch, lịch sử; form sửa (giá trị, hiệu lực, lý do) | Sửa giá trị | luồng chính |
 | Nhật ký (#94) | Bảng thao tác quản trị (lọc người, mô-đun, thời gian) · tab lịch sử đăng nhập | Xuất Excel | luồng chính |
 
-**Thanh Demo** (nút tròn viền nét đứt góc dưới trái): vai trò · 13 kịch bản Admin (6 của finance-flow + 3 đơn hàng + 4 nhà cung cấp) · đặt lại dữ liệu. Dữ liệu chỉ trong state.
+**Thanh Demo** (nút tròn viền nét đứt góc dưới trái): vai trò · 17 kịch bản Admin (6 của finance-flow + 3 đơn hàng + 4 nhà cung cấp + 3 hệ thống + 1 đối soát tiền mặt) · đặt lại dữ liệu. Dữ liệu chỉ trong state.
 
 **Phân quyền** (ẩn mô-đun không có quyền; thao tác không có quyền thì khoá + tooltip). Bảng dưới là **giá trị khởi tạo**: từ lượt sửa sau Cổng 5, quyền là dữ liệu của vai trò, sửa ở Quản trị viên › Vai trò & quyền và áp dụng ngay vào menu. Hồ sơ của tôi mở từ menu tài khoản trên thanh trên, mọi vai trò đều thấy:
 | Mô-đun | Lãnh đạo | Kế toán | CSKH & phân xử | Super admin |
@@ -148,7 +151,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Đơn hàng | xem | xem | xem, huỷ đơn, ghi chú | toàn quyền (+ đổi trạng thái thủ công) |
 | Yêu cầu dịch vụ, Khiếu nại, Khách hàng, Kiểm duyệt, Thông báo | ẩn | ẩn | toàn quyền | toàn quyền |
 | Nhà cung cấp | ẩn | xem, xác minh tài khoản ngân hàng | duyệt hồ sơ, tạm dừng, khoá | toàn quyền (+ mở khoá) |
-| Tài chính (3 mục) | ẩn | toàn quyền, duyệt 2 bước | xem, tạm giữ, ghi chú đôn đốc | toàn quyền, duyệt bước hai |
+| Tài chính (3 mục) | ẩn | toàn quyền, duyệt 2 bước, ghi nhận chuyển khoản tiền mặt | xem, tạm giữ, ghi chú đôn đốc (nút ghi nhận tiền mặt khoá kèm lý do) | toàn quyền, duyệt bước hai |
 | Danh mục, Giá, Khu vực, Quản trị viên, Tham số, Nhật ký | ẩn | ẩn | ẩn | toàn quyền |
 
 ### 10.3 App Khách hàng · `site/customer.html` (mục 1-36)
@@ -159,10 +162,10 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Trang chủ (khối cam, chip ngành, đơn đang chạy, nhà cung cấp tin cậy ở phường bạn, đặt lại) | Tìm dịch vụ | #8, #34 |
 | Danh mục 4 cấp · Tìm kiếm + lọc (bottom sheet) + sắp xếp | Chọn dịch vụ | #9-10 |
 | Chi tiết dịch vụ · Hồ sơ và bảng giá nhà cung cấp | Đặt dịch vụ | #11-12 |
-| Đặt dịch vụ 4 bước: cấu hình (thuộc tính động) → địa chỉ + 2-3 khung giờ → ghi chú + ảnh → chọn tối đa 5 nhà cung cấp | Gửi yêu cầu | #14-17 |
+| Đặt dịch vụ 5 bước: cấu hình (thuộc tính động) → địa chỉ + 2-3 khung giờ → ghi chú + ảnh → phương thức thanh toán (điện tử mặc định, hoặc tiền mặt) → chọn tối đa 5 nhà cung cấp, tóm tắt có phương thức | Gửi yêu cầu | #14-17, #30 |
 | Chờ phản hồi realtime (đếm ngược, từng đơn vị xác nhận/từ chối) → So sánh và chọn · ngoài luồng: không ai nhận, hết hạn (gửi lại, đổi giờ, huỷ) | Chọn nhà cung cấp | #19-21 |
 | Đơn của tôi (tab trạng thái) → Chi tiết đơn = hành trình 7 mốc (B) · Nhắn tin · Đồng hồ + duyệt vượt ngưỡng · Huỷ / đổi lịch (hiện hệ quả trước; khoá khi thợ đang làm việc, dưới nút có lý do và lối Gọi tổng đài để CSKH huỷ hộ) | Nghiệm thu | #22-27 |
-| Nghiệm thu (bảng chốt khối lượng, ảnh trước/sau) → Hoá đơn → Thanh toán (thẻ, ví điện tử, QR; màn cổng giả lập; thất bại → thanh toán lại) → Biên nhận | Thanh toán | #28-31 |
+| Nghiệm thu (bảng chốt khối lượng, ảnh trước/sau) → Hoá đơn → Thanh toán (thẻ, ví điện tử, QR; màn cổng giả lập; thất bại → thanh toán lại) → Biên nhận. Đơn tiền mặt: chi tiết đơn có viên "Tiền mặt" và mốc "Thanh toán tiền mặt"; nghiệm thu xong sang thẳng biên nhận "Đã thanh toán tiền mặt" (GD-88481); bảng Demo đổi phương thức của VN-240931 | Thanh toán | #28-31 |
 | Đánh giá dịch vụ của nhà cung cấp, đa tiêu chí · Mở khiếu nại kèm bằng chứng · Lịch sử giao dịch | Gửi đánh giá | #31-33 |
 | Thông báo · Trợ giúp · Tài khoản (hồ sơ, phiên đăng nhập, sổ địa chỉ + ghim bản đồ, ngôn ngữ và khu vực, xoá tài khoản) | — | #4-7, #35-36 |
 
@@ -173,11 +176,11 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Chủ đơn vị | Điều phối: đơn chưa phân công + gợi ý người, trục giờ đội | Phân công | #55 |
 | Chủ đơn vị | Đội: mời kỹ thuật viên, kỹ năng, chứng chỉ, lịch ca, hiệu suất | Mời kỹ thuật viên | #48-51 |
 | Chủ đơn vị | Dịch vụ & bảng giá (lỗi vượt trần/sàn), khu vực phục vụ (bán kính), giờ làm việc + phụ thu | Lưu bảng giá | #44-47 |
-| Chủ đơn vị | Tài chính: số dư 3 lớp · thu nhập theo đơn · rút tiền (ngưỡng, phí) · đối soát xuất file | Rút tiền | #64-67 |
+| Chủ đơn vị | Tài chính: số dư 3 lớp, thêm lớp Công nợ tiền mặt (giữa Có thể rút và Đang rút) khi có nợ, đầu thẻ hiện Có thể rút đã trừ nợ · thu nhập theo đơn (đơn tiền mặt có viên và nhắc chuyển về) · rút tiền (ngưỡng, phí, tối đa là số đã trừ nợ) · đối soát: thẻ công nợ tiền mặt ở đầu tab, xuất file | Rút tiền | #64-67 |
 | Chủ đơn vị | Hồ sơ đơn vị: đăng ký, giấy tờ, trạng thái duyệt, tài khoản ngân hàng, 5 điều kiện sẵn sàng · đánh giá và chỉ số | Hoàn thiện hồ sơ | #38-43, #69 |
 | Chủ đơn vị | Chi tiết giấy tờ (chạm dòng giấy tờ hoặc thông báo hết hạn): bản chụp A4, hạn, ngành áp dụng, ngày nộp, ngày duyệt, lời nhắc theo tình trạng · tải bản mới (đang tải lên → chờ duyệt). Kỹ thuật viên mở thẳng màn này thì bị chặn | Tải bản mới | #39 |
 | Kỹ thuật viên | Hôm nay (trục giờ) · bật sẵn sàng · lịch tuần | Bắt đầu việc | #56 |
-| Kỹ thuật viên | Việc: Lên đường → Đã đến (check-in GPS, bán kính) → Ảnh trước → Bắt đầu (đồng hồ) → Kết thúc: khối lượng + ảnh sau → gửi bảng chốt · Báo sự cố / khách vắng mặt / dừng giữa chừng · Nhắn tin | Bước kế tiếp | #58-63 |
+| Kỹ thuật viên | Việc: Lên đường → Đã đến (check-in GPS, bán kính) → Ảnh trước → Bắt đầu (đồng hồ) → Kết thúc: khối lượng + ảnh sau → gửi bảng chốt · Báo sự cố / khách vắng mặt / dừng giữa chừng · Nhắn tin. Đơn tiền mặt: sau nghiệm thu có bước Xác nhận thu tiền mặt (thẻ số tiền, Đã thu đủ tiền mặt hoặc báo không thu được, mỗi nút một sheet xác nhận) rồi Hoàn thành | Bước kế tiếp | #58-63 |
 | Cả hai | Chuyển vai trò/đơn vị · thông báo · trợ giúp · ngôn ngữ | — | #68, #70 |
 
 **Kỹ thuật:** HTML + CSS thuần (CSS variables) + JavaScript thuần, không Tailwind, không framework; font Google Fonts; icon sprite nhúng sẵn. Chạy bằng cách mở file, không cần máy chủ; đăng được thành Artifact.
@@ -189,3 +192,4 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | 24/09/2026 | §5 thêm kiểu khoá cho nút phụ trong app; §10.3 khoá huỷ, đổi lịch khi thợ đang làm; §10.4 thêm màn Chi tiết giấy tờ | `evolve-site` đợt 1, xem `FEATURE-DECISIONS.md` |
 | 24/09/2026 | §5 thêm kiểu khoá cho nút đỏ trong app và quy tắc phím Esc | Người dùng chọn sửa 2 lỗi có sẵn tìm thấy ở Cổng 3 của `evolve-site` đợt 1 |
 | 24/09/2026 | §1, §5: thẻ người thợ ở trang chủ thành thẻ nhà cung cấp · §8 thêm luật điểm sao chỉ gắn với nhà cung cấp · §10.3 | `evolve-site` đợt 2, xem `FEATURE-DECISIONS.md` |
+| 24/09/2026 | §5 thêm mẫu bảng chọn dòng + panel thao tác và quy ước tiền mặt · §9 thêm dòng Tiền mặt · §10.2 Đối soát 2 tab con, 17 kịch bản, quyền ghi nhận chuyển khoản tiền mặt · §10.3 đặt 5 bước, đơn tiền mặt · §10.4 thu tiền mặt, công nợ | `evolve-site` đợt 3, xem `FEATURE-DECISIONS.md` |
