@@ -1,0 +1,359 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "sa",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "dashboard",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "reports",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "requests",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "orders",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "disputes",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "providers",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "customers",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "payouts",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "refunds",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "catalog",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "pricing",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "regions",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "moderation",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "broadcast",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "admins",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "parameters",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "audit",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "order{id:'VN-240931'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "ordermoney{id:'VN-240921'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "ledger{id:'sachxanh'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "provider{id:'thotam'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "orders{tab:'attention'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "providers{tab:'queue'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "providers{tab:'docs'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions{tab:'unpaid'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions{tab:'adjust'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions{tab:'recon'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions{tab:'bal'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "refunds{tab:'pending'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "admins{tab:'roles'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "audit{tab:'login'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "payouts{tab:'approved'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "clip-profile{}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "clip-profile{tab:'security'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "clip-profile{tab:'noti'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "clip-profile{tab:'activity'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "clip-admins{tab:'roles'}",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

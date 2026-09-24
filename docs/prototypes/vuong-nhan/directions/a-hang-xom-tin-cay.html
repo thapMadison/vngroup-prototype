@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- HƯỚNG A · AN TOÀN · "Hàng xóm tin cậy"
+     Nền: sáng ấm (canvas concept) · Điều hướng: sidebar 232 + tab dưới 4 mục · Mật độ: Admin dày, app vừa
+     Trục tổ chức: theo việc · Chữ: grotesk sạch, thân app 16 · Ý tưởng: hộp dụng cụ ngăn nắp -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hướng A · Hàng xóm tin cậy</title>
+<meta name="description" content="Hướng thiết kế A cho prototype Vương Nhân: Trang quản trị, App Khách hàng, App Nhà cung cấp.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .todo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+  .todo a{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-left:1px solid var(--line);color:var(--text);text-decoration:none}
+  .todo a:first-child{border-left:0}
+  .todo a:hover{background:oklch(0.985 0.01 60)}
+  .todo .n{font-size:26px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+  .todo .n .ic{font-size:20px}
+  .todo .l{font-size:13px;color:var(--text-2);line-height:1.4}
+  .todo .go{font-size:12.5px;font-weight:500;color:var(--link);margin-top:auto}
+  .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .row2{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:12px}
+  .funnel{padding:14px 20px 18px;display:flex;flex-direction:column;gap:12px}
+  .fstep{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;font-size:13px}
+  .fstep .bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--fill);overflow:hidden}
+  .fstep .bar i{display:block;height:100%;border-radius:4px;background:var(--series-1)}
+  .fstep b{font-weight:600}
+  .fstep small{color:var(--muted);font-size:12px}
+  /* app */
+  .app-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 20px 0}
+  .loc{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .loc small{font-size:12px;color:var(--muted)}
+  .loc b{font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hello{padding:18px 20px 14px}
+  .hello h2{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .hello p{margin:4px 0 0;color:var(--text-2);font-size:15px}
+  .asearch{margin:0 20px;height:50px;border-radius:14px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--subtle);font-size:15px;box-shadow:var(--shadow-card)}
+  .asearch .ic{font-size:20px;color:var(--muted)}
+  .live{margin:16px 20px 0;padding:16px;border-radius:var(--r-app);background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+  .live-top{display:flex;justify-content:space-between;align-items:center}
+  .live h4{margin:0;font-size:16px;font-weight:600}
+  .live p{margin:0;font-size:14px;color:var(--text-2);line-height:1.5}
+  .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+  .steps4 i{height:4px;border-radius:2px;background:var(--line)}
+  .steps4 i.d{background:var(--info)}
+  .steps4-l{display:grid;grid-template-columns:repeat(4,1fr);font-size:11.5px;color:var(--muted)}
+  .steps4-l span.on{color:var(--info);font-weight:600}
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;padding:0 16px}
+  .cat{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12.5px;text-align:center;line-height:1.3;background:none;border:0;padding:0;color:var(--text)}
+  .cat i{width:58px;height:58px;border-radius:18px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--nav-active)}
+  .cat.more i{background:var(--fill);color:var(--text-2)}
+  .hs{display:flex;gap:12px;overflow-x:auto;padding:0 20px 4px;scrollbar-width:none}
+  .pcard{flex:none;width:236px;border-radius:var(--r-app);background:var(--surface);border:1px solid var(--border);overflow:hidden}
+  .pcard .photo{height:128px;border-radius:0}
+  .pcard .b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
+  .pcard b{font-size:15px;font-weight:600}
+  .meta{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-2)}
+  .meta .star{color:oklch(0.62 0.15 70)}
+  .price{font-size:13.5px;margin-top:4px}
+  .price b{font-size:13.5px}
+  .again{margin:0 20px 20px;padding:14px 16px;border-radius:var(--r-app);background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;gap:12px}
+  .again .av{width:44px;height:44px;border-radius:12px}
+  .again div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .again div b{font-size:14.5px;font-weight:600}
+  .again div span{font-size:13px;color:var(--muted)}
+  .pill-btn{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--control);background:var(--surface);font-size:14px;font-weight:600}
+  /* provider */
+  .ph-h{padding:6px 20px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .unit{display:flex;align-items:center;gap:10px;min-width:0}
+  .unit .av{width:40px;height:40px;border-radius:12px;font-size:13px}
+  .unit div{display:flex;flex-direction:column;min-width:0}
+  .unit b{font-size:15px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap}
+  .unit small{font-size:12.5px;color:var(--muted)}
+  .switch{flex:none;white-space:nowrap;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;color:var(--ok)}
+  .sw{width:44px;height:26px;border-radius:13px;background:var(--ok);position:relative;flex:none}
+  .sw::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .ptitle{padding:18px 20px 12px}
+  .ptitle h2{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .ptitle p{margin:4px 0 0;font-size:14.5px;color:var(--text-2)}
+  .ptabs{display:flex;gap:6px;padding:0 16px 14px;overflow-x:auto;scrollbar-width:none}
+  .ptabs button{flex:none;height:36px;padding:0 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:13px;font-weight:500;display:flex;align-items:center;gap:5px}
+  .ptabs button.on{background:var(--text);border-color:var(--text);color:#fff}
+  .ptabs button i{font-style:normal;font-size:12px;font-weight:600;opacity:.8}
+  .req{margin:0 16px 12px;padding:16px;border-radius:var(--r-app);background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+  .req-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .req h4{margin:0;font-size:16px;font-weight:600}
+  .req .id{font:500 12px var(--mono);color:var(--muted)}
+  .cd{flex:none;display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:600}
+  .rline{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
+  .rline .ic{font-size:17px;color:var(--muted)}
+  .slots{display:flex;flex-wrap:wrap;gap:6px}
+  .slots span{font-size:12.5px;padding:4px 9px;border-radius:7px;background:var(--fill);border:1px solid var(--line)}
+  .req-f{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--line)}
+  .req-f .est{display:flex;flex-direction:column}
+  .req-f .est small{font-size:12px;color:var(--muted)}
+  .req-f .est b{font-size:16px;font-weight:600}
+</style>
+</head>
+<body>
+<header class="dir-head">
+  <div>
+    <a class="back" href="index.html">← So sánh 3 hướng</a>
+    <div class="dir-tag" style="margin-top:14px">HƯỚNG A · AN TOÀN</div>
+    <h1>Hàng xóm tin cậy</h1>
+    <p>Bám sát bố cục 2a của concept. Tổng quan xếp theo việc: việc cần xử lý đứng đầu, rồi chỉ số, rồi biểu đồ. Hai app dùng thẻ trắng bo 16 trên nền ấm, lời chào gần gũi, mỗi màn một nút chính.</p>
+  </div>
+  <div class="axes">
+    <span>Nền <b>sáng ấm</b></span><span>Tổ chức <b>theo việc</b></span><span>Mật độ <b>Admin dày · app vừa</b></span><span>Chữ <b>grotesk sạch</b></span><span>Điều hướng <b>sidebar · tab 4 mục</b></span>
+  </div>
+</header>
+
+<main class="dir-body">
+  <section aria-labelledby="cap-admin">
+    <h2 class="stage-cap" id="cap-admin">Trang quản trị · Tổng quan <small>1280 × 800 · vai trò Kế toán</small></h2>
+    <div class="scroll-x">
+      <div class="admin">
+        <div id="side"></div>
+        <div class="main">
+          <div id="top"></div>
+          <div class="content">
+            <div class="page-h">
+              <div><h2>Tổng quan</h2><div class="sub">Thứ Năm, 24/09/2026 · cập nhật lúc 10:42</div></div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div class="seg" role="group" aria-label="Kỳ"><button>Hôm nay</button><button>7 ngày</button><button class="on">Tháng này</button><button>Quý này</button></div>
+                <button class="btn">Xuất Excel</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-h" style="padding-bottom:12px;border-bottom:1px solid var(--line)"><h3>Việc cần xử lý</h3><span style="font-size:12.5px;color:var(--muted)">Chỉ hiện việc thuộc quyền của bạn</span></div>
+              <div class="todo">
+                <a href="#disputes"><span class="n" style="color:var(--danger)"><svg class="ic"><use href="#i-scales"/></svg>5</span><span class="l">Khiếu nại chờ phân xử</span><span class="go">Mở hàng chờ ›</span></a>
+                <a href="#payouts"><span class="n"><svg class="ic"><use href="#i-hand-coins"/></svg>8</span><span class="l">Yêu cầu rút tiền chờ duyệt</span><span class="go">Duyệt ›</span></a>
+                <a href="#refunds"><span class="n"><svg class="ic"><use href="#i-arrow-counter-clockwise"/></svg>2</span><span class="l">Hoàn tiền chờ duyệt bước hai</span><span class="go">Duyệt ›</span></a>
+                <a href="#holds"><span class="n"><svg class="ic"><use href="#i-lock-simple"/></svg>1</span><span class="l">Khoản đang tạm giữ do khiếu nại</span><span class="go">Xem ›</span></a>
+                <a href="#unpaid"><span class="n" style="color:var(--warn)"><svg class="ic"><use href="#i-clock"/></svg>4</span><span class="l">Đơn quá hạn thanh toán</span><span class="go">Đôn đốc ›</span></a>
+              </div>
+            </div>
+
+            <div class="kpis">
+              <div class="card kpi"><span class="k">Hoa hồng thực thu <svg class="ic" style="color:var(--subtle)"><use href="#i-info"/></svg></span><span class="v">150.300.000 ₫</span><span class="s">Tạm tính thêm <span class="nw">34.500.000 ₫</span> (đơn còn bảo hành)</span></div>
+              <div class="card kpi"><span class="k">Tổng giao dịch (GMV)</span><span class="v">1.232.000.000 ₫</span><span class="s"><span class="delta-up">▲ 8,4%</span> so với 01-24/08</span></div>
+              <div class="card kpi"><span class="k">Đã chi cho nhà cung cấp</span><span class="v">780.000.000 ₫</span><span class="s">Từ trước đến nay: <span class="nw">5.126.400.000 ₫</span></span></div>
+              <div class="card kpi"><span class="k">Còn phải trả nhà cung cấp</span><span class="v">242.560.000 ₫</span><span class="s">Tính tại thời điểm xem</span></div>
+            </div>
+
+            <div class="row2">
+              <div class="card">
+                <div class="card-h"><h3>GMV và hoa hồng thực thu theo ngày</h3><div class="legend"><span><i style="background:var(--series-1)"></i>GMV</span><span><i style="background:var(--series-2)"></i>Hoa hồng thực thu</span></div></div>
+                <div class="chart" id="chart" style="margin:12px 16px 14px"></div>
+              </div>
+              <div class="card">
+                <div class="card-h"><h3>Phễu đặt đơn</h3><span style="font-size:12.5px;color:var(--muted)">01-24/09</span></div>
+                <div class="funnel">
+                  <div class="fstep"><span>Yêu cầu đã gửi</span><b>3.412</b><div class="bar"><i style="width:100%"></i></div></div>
+                  <div class="fstep"><span>Có nhà cung cấp xác nhận</span><b>3.046 <small>89%</small></b><div class="bar"><i style="width:89%"></i></div></div>
+                  <div class="fstep"><span>Khách chốt đơn</span><b>2.781 <small>82%</small></b><div class="bar"><i style="width:82%"></i></div></div>
+                  <div class="fstep"><span>Hoàn tất nghiệm thu</span><b>2.694 <small>79%</small></b><div class="bar"><i style="width:79%"></i></div></div>
+                  <div class="fstep"><span>Đã thanh toán</span><b>2.652 <small>78%</small></b><div class="bar"><i style="width:78%"></i></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cap-apps">
+    <h2 class="stage-cap" id="cap-apps">Hai ứng dụng di động <small>390 × 844</small></h2>
+    <div class="phones">
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+          <div class="scr">
+            <div class="app-h">
+              <div class="loc"><small>Làm tại</small><b>128 Nguyễn Đình Chiểu, P. Xuân Hòa <svg class="ic"><use href="#i-caret-down"/></svg></b></div>
+              <button class="iconbtn" aria-label="Thông báo" style="flex:none;border-radius:12px;width:42px;height:42px"><svg class="ic"><use href="#i-bell"/></svg><span class="dot"></span></button>
+            </div>
+            <div class="hello"><h2>Chào chị Hà,</h2><p>Hôm nay nhà mình cần làm gì?</p></div>
+            <div class="asearch"><svg class="ic"><use href="#i-magnifying-glass"/></svg>Ví dụ: vệ sinh máy lạnh</div>
+
+            <div class="live">
+              <div class="live-top"><span class="badge t-info">Đang thực hiện</span><span class="mono" style="font-size:12px;color:var(--muted)">VN-240931</span></div>
+              <h4>Vệ sinh máy lạnh · 2 máy</h4>
+              <p>Kỹ thuật viên Lê Văn Tài đã bắt đầu làm lúc 09:02.</p>
+              <div class="steps4"><i class="d"></i><i class="d"></i><i class="d"></i><i></i></div>
+              <div class="steps4-l"><span>Đã chốt</span><span>Đang đến</span><span class="on">Đang làm</span><span>Nghiệm thu</span></div>
+            </div>
+
+            <div class="sec-h" style="margin-top:22px"><h3>Dịch vụ</h3></div>
+            <div class="cats">
+              <button class="cat"><i><svg class="ic"><use href="#i-snowflake"/></svg></i>Điện lạnh</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-broom"/></svg></i>Dọn dẹp</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-drop"/></svg></i>Điện nước</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-washing-machine"/></svg></i>Đồ gia dụng</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-couch"/></svg></i>Giặt sofa, nệm</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-bug"/></svg></i>Diệt côn trùng</button>
+              <button class="cat"><i><svg class="ic"><use href="#i-paint-roller"/></svg></i>Sơn sửa nhà</button>
+              <button class="cat more"><i><svg class="ic"><use href="#i-squares-four"/></svg></i>Tất cả</button>
+            </div>
+
+            <div class="sec-h" style="margin-top:24px"><h3>Được hàng xóm tin chọn</h3><a href="#all">Xem tất cả</a></div>
+            <div class="hs">
+              <div class="pcard"><div class="photo"><span>Ảnh: kỹ thuật viên Phúc An, 472×256</span></div><div class="b"><b>Điện lạnh Phúc An</b><span class="meta"><svg class="ic star"><use href="#i-star-fill"/></svg>4,9 (312) · 1,2 km</span><span class="price">Từ <b>200.000 ₫</b>/máy</span></div></div>
+              <div class="pcard"><div class="photo"><span>Ảnh: đội Sạch Xanh Home, 472×256</span></div><div class="b"><b>Sạch Xanh Home</b><span class="meta"><svg class="ic star"><use href="#i-star-fill"/></svg>4,8 (188) · 2,6 km</span><span class="price">Từ <b>90.000 ₫</b>/giờ</span></div></div>
+            </div>
+
+            <div class="sec-h" style="margin-top:24px"><h3>Đặt lại</h3></div>
+            <div class="again"><span class="av">SX</span><div><b>Dọn nhà theo giờ</b><span>Sạch Xanh Home · 3 giờ · 12/09</span></div><button class="pill-btn">Đặt lại</button></div>
+          </div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab on"><svg class="ic"><use href="#i-house-fill"/></svg>Trang chủ</button>
+            <button class="tab"><svg class="ic"><use href="#i-receipt"/></svg>Đơn của tôi</button>
+            <button class="tab"><span class="pip"><svg class="ic"><use href="#i-chat-circle-dots"/></svg><i>2</i></span>Tin nhắn</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tài khoản</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Khách hàng · Trang chủ</b>
+        <p>Đơn đang chạy nằm ngay dưới ô tìm kiếm để khách không phải đi tìm. Lưới 8 ngành, nhà cung cấp gần nhà, đặt lại một chạm.</p>
+      </div>
+
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+          <div class="scr">
+            <div class="ph-h">
+              <div class="unit"><span class="av">PA</span><div><b>Điện lạnh Phúc An <svg class="ic"><use href="#i-caret-down"/></svg></b><small>Chủ đơn vị</small></div></div>
+              <span class="switch">Đang nhận<span class="sw" role="img" aria-label="Đang nhận yêu cầu"></span></span>
+            </div>
+            <div class="ptitle"><h2>Yêu cầu mới</h2><p>3 yêu cầu đang chờ bạn xác nhận</p></div>
+            <div class="ptabs"><button class="on">Chờ xác nhận <i>3</i></button><button>Chờ khách chọn <i>2</i></button><button>Được chọn <i>1</i></button></div>
+
+            <div class="req">
+              <div class="req-top"><div><h4>Vệ sinh máy lạnh</h4><span class="id">YC-58213</span></div><span class="cd t-warn"><svg class="ic"><use href="#i-timer"/></svg>còn 04:12</span></div>
+              <span class="rline"><svg class="ic"><use href="#i-snowflake"/></svg>3 máy · Treo tường 1-1,5 HP</span>
+              <span class="rline"><svg class="ic"><use href="#i-map-pin"/></svg>P. Tân Định · cách 3,1 km</span>
+              <div class="slots"><span>Hôm nay 14:00-16:00</span><span>Thứ Sáu 08:00-10:00</span></div>
+              <div class="req-f"><div class="est"><small>Giá dự kiến theo bảng giá</small><b>600.000 ₫</b></div><button class="btn" style="height:40px;border-radius:10px">Xem và xác nhận</button></div>
+            </div>
+            <div class="req">
+              <div class="req-top"><div><h4>Sửa máy lạnh không lạnh</h4><span class="id">YC-58209</span></div><span class="cd t-info"><svg class="ic"><use href="#i-timer"/></svg>còn 11:40</span></div>
+              <span class="rline"><svg class="ic"><use href="#i-snowflake"/></svg>1 máy · Âm trần · 2 ảnh hiện trạng</span>
+              <span class="rline"><svg class="ic"><use href="#i-map-pin"/></svg>P. Gia Định · cách 4,8 km</span>
+              <div class="slots"><span>Hôm nay 16:00-18:00</span><span>Thứ Bảy 09:00-11:00</span><span>Thứ Bảy 14:00-16:00</span></div>
+              <div class="req-f"><div class="est"><small>Giá dự kiến theo bảng giá</small><b>350.000 ₫</b></div><button class="btn" style="height:40px;border-radius:10px">Xem và xác nhận</button></div>
+            </div>
+          </div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab on"><span class="pip"><svg class="ic"><use href="#i-clipboard-text-fill"/></svg><i>3</i></span>Yêu cầu</button>
+            <button class="tab"><svg class="ic"><use href="#i-calendar-blank"/></svg>Điều phối</button>
+            <button class="tab"><svg class="ic"><use href="#i-wallet"/></svg>Tài chính</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tài khoản</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Nhà cung cấp · Yêu cầu mới (chủ đơn vị)</b>
+        <p>Đếm ngược thời hạn phản hồi chuyển vàng khi dưới 5 phút. Giá dự kiến lấy từ bảng giá niêm yết, nên chủ đơn vị không phải tự tính.</p>
+      </div>
+
+      <aside class="notes" aria-label="Đánh giá hướng A">
+        <div><h3>Điểm mạnh</h3><ul><li>Gần concept đã duyệt nhất, khách hàng nhận ra ngay.</li><li>Người mới dùng hiểu ngay: mỗi khối một việc, đọc từ trên xuống.</li><li>Dễ mở rộng thêm module mà không vỡ bố cục.</li></ul></div>
+        <div><h3>Rủi ro</h3><ul><li>Ít cá tính. Chất "cộng đồng" chỉ nằm ở lời chào và mục "Được hàng xóm tin chọn".</li><li>Hai app trông giống nhiều app đặt dịch vụ khác.</li></ul></div>
+        <div><h3>Hợp với</h3><ul><li>Buổi demo cần duyệt nhanh, ít tranh luận về giao diện, tập trung vào nghiệp vụ.</li></ul></div>
+      </aside>
+    </div>
+  </section>
+</main>
+<script src="../site/assets/icons.js"></script>
+<script src="_shared.js"></script>
+<script>
+  document.getElementById('side').outerHTML = sideHTML('dashboard');
+  document.getElementById('top').outerHTML = topbarHTML();
+  barChart(document.getElementById('chart'), 214);
+</script>
+</body>
+</html>

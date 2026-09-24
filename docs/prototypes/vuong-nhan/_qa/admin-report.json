@@ -1,0 +1,224 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role sa",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "reports",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "dashboard",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "requests",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "orders",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "disputes",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "providers",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "customers",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "transactions",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "payouts",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "refunds",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "catalog",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "pricing",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "regions",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "moderation",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "broadcast",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "admins",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "parameters",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "audit",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "order",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "ordermoney",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "ledger",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "provider",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

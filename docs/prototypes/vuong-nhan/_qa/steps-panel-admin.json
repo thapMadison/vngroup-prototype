@@ -1,0 +1,1 @@
+{"steps":[{"name":"panel","js":"document.querySelector(\".demo-fab\").click()","check":"JSON.stringify(document.querySelector(\".demo-panel\").getBoundingClientRect())","shot":"admin-1440-panel","jpeg":true}]}

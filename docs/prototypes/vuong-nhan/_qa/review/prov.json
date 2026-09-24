@@ -1,0 +1,26 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "locating",
+  "errors": [],
+  "check": "Đang xác định vị trí…Báo sự cố",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "arrived",
+  "errors": [],
+  "check": "arrived",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ }
+]

@@ -1,0 +1,1 @@
+{"steps":[{"name":"disp","js":"PROV.S.tab='dispatch';PROV.root('dispatch')","wait":600,"shot":"provider","jpeg":true,"clip":".device","scale":0.8}]}

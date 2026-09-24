@@ -1,0 +1,449 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "s1 start",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 approve PA",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 approve PA go",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 approve SX",
+  "errors": [],
+  "check": "{\"disputes\":5,\"orders\":4,\"providers\":3,\"payouts\":6}",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 approved tab",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 batch 1",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 batch 3",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 batch done",
+  "errors": [],
+  "check": "{\"paid\":1250000000,\"ref\":18000000,\"gmv\":1232000000,\"real\":150300000,\"prov\":34500000,\"tax\":24640000,\"paidTo\":782450000,\"due\":240110000,\"paidOut\":782450000,\"owe\":240110000,\"ok\":true}",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 ledger SX",
+  "errors": [],
+  "check": "{\"awaiting\":298800,\"warranty\":1460800,\"hold\":747000,\"avail\":2015000,\"payout\":0}[\"bankChanged\",\"bankFix\"]",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s1 report",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s2",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s2 refund",
+  "errors": [],
+  "check": "true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3 refund modal",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3 send",
+  "errors": [],
+  "check": "Bạn là người tạo yêu cầu này",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3 sa approve",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3 go",
+  "errors": [],
+  "check": "{\"paid\":1250000000,\"ref\":18900000,\"gmv\":1231100000,\"real\":150300000,\"prov\":34365000,\"tax\":24622000,\"paidTo\":782450000,\"due\":239363000,\"paidOut\":782450000,\"owe\":239363000,\"ok\":true}",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s3 money",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s4",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s4 adj",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s4 save",
+  "errors": [],
+  "check": "Bạn là người tạo yêu cầu này",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s4 sa",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s4 go",
+  "errors": [],
+  "check": "{\"paid\":1250000000,\"ref\":18900000,\"gmv\":1231100000,\"real\":150300000,\"prov\":34365000,\"tax\":24622000,\"paidTo\":782370000,\"due\":239443000,\"paidOut\":782370000,\"owe\":239443000,\"ok\":true}",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s5",
+  "errors": [],
+  "check": "Tổng quan|Báo cáo|Yêu cầu dịch vụ|Đơn hàng|Khiếu nại|Nhà cung cấp|Khách hàng|Giao dịch & đối soát|Rút tiền|Hoàn tiền & tạm giữ|Kiểm duyệt|Thông báo & banner",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s5 dun",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s5 save",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s6",
+  "errors": [],
+  "check": "Tổng quan|Báo cáo|Đơn hàng",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s6 all cat",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s6 export",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "s6 wb",
+  "errors": [],
+  "check": 1927643,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o7",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o7 step2",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o7 go",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o8",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o8 go",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o9",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o9 overdue",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "o9 close",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p10",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p10 go",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p11",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p11 go",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p12",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p12 more",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p13",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "p13 bank",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "en",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "en2",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "palette",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

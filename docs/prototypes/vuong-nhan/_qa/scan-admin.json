@@ -1,0 +1,890 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "sa",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-dashboard",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-reports",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-requests",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-orders",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-disputes",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-providers",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-customers",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-transactions",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-payouts",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-refunds",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-catalog",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-pricing",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-regions",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-moderation",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-broadcast",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-admins",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-parameters",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-audit",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-order-{id:'VN-240931'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-ordermoney-{id:'VN-240921'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-ledger-{id:'sachxanh'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-provider-{id:'thotam'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-orders-{tab:'attention'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-providers-{tab:'queue'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-providers-{tab:'docs'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-transactions-{tab:'unpaid'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-transactions-{tab:'adjust'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-transactions-{tab:'recon'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-transactions-{tab:'bal'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-refunds-{tab:'pending'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-refunds-{tab:'done'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-payouts-{tab:'approved'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-profile-{}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-profile-{tab:'security'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-profile-{tab:'noti'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-profile-{tab:'activity'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-admins-{tab:'roles'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-dashboard",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-reports",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-requests",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-orders",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-disputes",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-providers",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-customers",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-transactions",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-payouts",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-refunds",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-catalog",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-pricing",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-regions",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-moderation",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-broadcast",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-admins",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-parameters",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-audit",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-order-{id:'VN-240931'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-ordermoney-{id:'VN-240921'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-ledger-{id:'sachxanh'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-provider-{id:'thotam'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-orders-{tab:'attention'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-providers-{tab:'queue'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-providers-{tab:'docs'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-transactions-{tab:'unpaid'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-transactions-{tab:'adjust'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-transactions-{tab:'recon'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-transactions-{tab:'bal'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-refunds-{tab:'pending'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-refunds-{tab:'done'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-payouts-{tab:'approved'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-profile-{}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-profile-{tab:'security'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-profile-{tab:'noti'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-profile-{tab:'activity'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-admins-{tab:'roles'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-role-drawer",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-role-new",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-adm-drawer",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-adm-disable",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-cat-add",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-cat-del-used",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-cat-del-free",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-attr",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-pwd",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-menu-me",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-demo-panel",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-role-drawer",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-role-new",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-adm-drawer",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-adm-disable",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-cat-add",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-cat-del-used",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-cat-del-free",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-attr",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-pwd",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-menu-me",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-demo-panel",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "close",
+  "errors": [],
+  "check": null,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

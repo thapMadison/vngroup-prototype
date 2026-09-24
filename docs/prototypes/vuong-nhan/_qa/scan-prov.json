@@ -1,0 +1,386 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "0-requests",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-dispatch",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-finance",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-account",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-profile",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-pricing",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-area",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-hours",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-team",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-quality",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-notifs",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-help",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-withdraw",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-req",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-tech",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-t-today",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-t-week",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-t-chats",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-job{id:'VN-240931'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-job{id:'VN-240934'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "0-onb",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-requests",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-dispatch",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-finance",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-account",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-profile",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-pricing",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-area",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-hours",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-team",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-quality",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-notifs",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-help",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-withdraw",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-req",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-tech",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-t-today",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-t-week",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-t-chats",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-job{id:'VN-240931'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-job{id:'VN-240934'}",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1-onb",
+  "errors": [],
+  "check": "",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

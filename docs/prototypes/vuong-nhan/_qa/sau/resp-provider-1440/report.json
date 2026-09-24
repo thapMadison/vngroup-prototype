@@ -1,0 +1,35 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "1440-req",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1440-fin",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1440-job",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

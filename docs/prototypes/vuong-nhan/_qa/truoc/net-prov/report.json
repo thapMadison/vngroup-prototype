@@ -1,0 +1,44 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "slow",
+  "errors": [],
+  "check": true,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "slow-done",
+  "errors": [],
+  "check": true,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "off",
+  "errors": [],
+  "check": "Không có kết nối mạng",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "retry",
+  "errors": [],
+  "check": true,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

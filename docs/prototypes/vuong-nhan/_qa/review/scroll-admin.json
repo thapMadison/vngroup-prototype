@@ -1,0 +1,26 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "sa",
+  "errors": [],
+  "check": "899>569",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "nav-scroll-click",
+  "errors": [],
+  "check": "parameters navTop=300",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

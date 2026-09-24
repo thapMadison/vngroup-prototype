@@ -1,0 +1,341 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "setup",
+  "errors": [],
+  "check": 13,
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-add-root",
+  "errors": [],
+  "check": "Sửa khoáTắt | Đã thêm ngành \"Sửa khoá\". Đang tắt nên khách chưa thấy",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-add-child",
+  "errors": [],
+  "check": "Cây danh mục | Đã thêm danh mục \"Khoá cửa\"",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-dup",
+  "errors": [],
+  "check": "Đã có mục cùng tên ở cấp này | true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-del-used",
+  "errors": [],
+  "check": "Không xoá được dịch vụ \"Vệ sinh máy lạnh\" | true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-off",
+  "errors": [],
+  "check": "Đã tắt \"Vệ sinh máy lạnh\". Khách không đặt mới được, đơn đang chạy vẫn tiếp tục | false",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-del-free",
+  "errors": [],
+  "check": "Xoá dịch vụ \"Lắp đặt máy lạnh\"? | true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-del-go",
+  "errors": [],
+  "check": "Đã xoá dịch vụ \"Lắp đặt máy lạnh\" | sel=ac1 | ac1 kids=2",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "cat-move",
+  "errors": [],
+  "check": "Dọn dẹp,Điện lạnh,Điện nước,Đồ gia dụng,Giặt sofa, nệm,Diệt côn trùng,Sửa khoáTắt",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "attr-edit",
+  "errors": [],
+  "check": "4 lines",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "attr-save",
+  "errors": [],
+  "check": "Đã lưu thuộc tính \"Công suất\" | 1-1,5 HP · 2-2,5 HP · 3-4 HP · Trên 4 HP",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "attr-del",
+  "errors": [],
+  "check": "Đã xoá thuộc tính \"Tình trạng hiện tại\" | rows=3",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "params-scroll",
+  "errors": [],
+  "check": "1020>840",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "adm-list",
+  "errors": [],
+  "check": "7 rows | Hồ Thị MaiChuyên viên danh mụcthimai.ho@",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "adm-self",
+  "errors": [],
+  "check": "Bạn không tự vô hiệu hoá tài khoản của mình được | role select disabled=true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "adm-edit",
+  "errors": [],
+  "check": "Đã lưu tài khoản Phạm Thu Trang | Phạm Thu TrangKế toán công nợthutrang.pham@vngroup.infoKế toánTP. HCM24/09 08:15Đã bậtĐang hoạt độngSửa",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "adm-disable",
+  "errors": [],
+  "check": "Đã vô hiệu hoá Trần Ngọc Hân. Đã đăng xuất khỏi mọi thiết bị",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "persona-disabled",
+  "errors": [],
+  "check": "Tài khoản đã bị vô hiệu hoá | nav items=0",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "adm-enable",
+  "errors": [],
+  "check": "Đã kích hoạt lại Trần Ngọc Hân. Lần đăng nhập tới cần xác thực 2 lớp",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-tab",
+  "errors": [],
+  "check": "6 roles",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-edit-acc",
+  "errors": [],
+  "check": "Thấy 7/18 mục menu · 8/24 thao tác",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-save-acc",
+  "errors": [],
+  "check": "Đã lưu vai trò \"Kế toán\", áp dụng ngay cho 2 tài khoản. Đổi sang vai này ở bảng Demo để xem menu mới",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "acc-menu",
+  "errors": [],
+  "check": "Tổng quan|Báo cáo|Đơn hàng|Nhà cung cấp|Khách hàng|Giao dịch & đối soát|Rút tiền | seesRefunds=false",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-new",
+  "errors": [],
+  "check": "Đã tạo vai trò \"Đối soát ngân hàng\". Gán cho tài khoản ở tab Tài khoản | roles=7",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-dup-block",
+  "errors": [],
+  "check": "Đã có vai trò cùng tên | Nhập đủ tên tiếng Việt và tiếng Anh, không trùng",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-used-block",
+  "errors": [],
+  "check": "Còn 1 tài khoản dùng vai trò này. Chuyển họ sang vai trò khác trước.",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-assign",
+  "errors": [],
+  "check": "Đã lưu tài khoản Phạm Thu Trang. Quyền mới áp dụng ngay | Đối soát ngân hàng",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "role-del",
+  "errors": [],
+  "check": "Đã xoá vai trò \"Đối soát ngân hàng\" | roles=6",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "profile-menu",
+  "errors": [],
+  "check": "Hồ sơ của tôi | Kế toán",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "profile-save",
+  "errors": [],
+  "check": "Đã lưu hồ sơ | Lê Minh Anh",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "profile-sec",
+  "errors": [],
+  "check": "3 sessions",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "pw",
+  "errors": [],
+  "check": "4/4 | null",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "pw-go",
+  "errors": [],
+  "check": "Đã đổi mật khẩu. Đã đăng xuất 2 phiên khác | sessions=1",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "profile-noti",
+  "errors": [],
+  "check": "5 events | true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "profile-act",
+  "errors": [],
+  "check": "5 rows",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "sa-2fa-locked",
+  "errors": [],
+  "check": "Bắt buộc với vai trò Super admin",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "audit",
+  "errors": [],
+  "check": "23 | Kế toán",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

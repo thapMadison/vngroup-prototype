@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!-- HƯỚNG C · TÁO BẠO · "Hội tụ cộng đồng"
+     Nền: khối màu đặc (đầu app cam, dải chỉ số admin nâu than) · Điều hướng: rail icon 72px + tab dưới 4 mục · Mật độ: Admin dày, app vừa
+     Trục tổ chức: theo người và nơi chốn · Chữ: display nặng 800 cho số và lời chào · Ý tưởng: hệ sống, con người làm nhân vật -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hướng C · Hội tụ cộng đồng</title>
+<meta name="description" content="Hướng thiết kế C cho prototype Vương Nhân: con người và nơi chốn làm trục của cả hệ.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .admin.rail{grid-template-columns:72px minmax(0,1fr)}
+  .rl{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;min-height:0}
+  .rl-logo{height:60px;width:100%;flex:none;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
+  .rl-logo span{width:44px;height:40px;overflow:hidden;display:flex;align-items:center}
+  .rl-logo img{height:44px;width:auto;margin-left:-2px}
+  .rl nav{flex:1;overflow:auto;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
+  .rl hr{width:28px;border:0;border-top:1px solid var(--line);margin:6px 0}
+  .ri{position:relative;width:44px;height:44px;border-radius:12px;border:0;background:none;display:flex;align-items:center;justify-content:center;font-size:21px;color:var(--text-2)}
+  .ri:hover{background:var(--fill)}
+  .ri.on{background:var(--primary-soft);color:var(--nav-active)}
+  .ri .cnt{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;background:oklch(0.94 0.004 60);color:var(--text-2);border:2px solid #fff}
+  .ri .cnt.red{background:var(--danger);color:#fff}
+  .ri[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:52px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--text);color:#fff;font-size:12.5px;font-weight:500;padding:5px 9px;border-radius:6px;z-index:5}
+  .band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:var(--r-card);background:oklch(0.24 0.012 60);color:#fff;overflow:hidden}
+  .band div{padding:18px 20px;display:flex;flex-direction:column;gap:4px;border-left:1px solid oklch(0.34 0.012 60)}
+  .band div:first-child{border-left:0}
+  .band .k{font-size:12.5px;color:oklch(0.82 0.01 60)}
+  .band .v{font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .band .s{font-size:12px;color:oklch(0.78 0.01 60)}
+  .band .up{color:oklch(0.82 0.13 148);font-weight:600}
+  .row2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px}
+  .heat{padding:4px 20px 18px}
+  .hm{display:grid;grid-template-columns:110px repeat(7,minmax(0,1fr));gap:3px;font-size:12px}
+  .hm .ch{text-align:center;color:var(--muted);padding:6px 0 4px;font-size:11.5px}
+  .hm .rh{display:flex;align-items:center;font-size:12.5px;color:var(--text-2)}
+  .hm .c{height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11.5px;color:var(--text)}
+  .s1{background:#cde2fb}.s2{background:#9ec5f4}.s3{background:#6da7ec}.s4{background:#3987e5;color:#fff!important}.s5{background:#256abf;color:#fff!important}.s6{background:#184f95;color:#fff!important}
+  .hm-l{display:flex;align-items:center;gap:4px;margin-top:12px;font-size:11.5px;color:var(--muted)}
+  .hm-l i{width:22px;height:10px;border-radius:2px}
+  .watch{padding:4px 0 6px}
+  .w{display:flex;align-items:center;gap:12px;padding:11px 20px;border-top:1px solid var(--line)}
+  .w:first-child{border-top:0}
+  .w .av{width:36px;height:36px;border-radius:10px}
+  .w div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+  .w b{font-weight:500}
+  .w .badge{align-self:flex-start;height:22px;font-size:11.5px}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .person{padding:14px;display:flex;gap:12px;align-items:center}
+  .person .av{width:46px;height:46px;border-radius:23px;font-size:14px}
+  .person div{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .person b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .person small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .person span.m{font-size:12.5px;color:var(--text-2)}
+  /* app khách */
+  .hero{background:var(--primary);color:#fff;padding:0 0 22px}
+  .hero .sbar{color:#fff}
+  .hero-top{display:flex;justify-content:space-between;align-items:center;padding:4px 20px 0}
+  .hero-top small{font-size:12.5px;opacity:.9}
+  .hero-top b{display:flex;align-items:center;gap:4px;font-size:14.5px;font-weight:600}
+  .hero .iconbtn{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.28);color:#fff;border-radius:12px;width:42px;height:42px}
+  .hero .iconbtn .dot{border-color:var(--primary);background:#fff}
+  .hero h2{margin:18px 20px 4px;font-size:30px;line-height:1.12;font-weight:800;letter-spacing:-.02em}
+  .hero p{margin:0 20px 16px;font-size:15px;opacity:.92}
+  .hsearch{margin:0 20px;height:52px;border-radius:14px;background:#fff;color:var(--subtle);display:flex;align-items:center;gap:10px;padding:0 16px;font-size:15px}
+  .hsearch .ic{font-size:20px;color:var(--muted)}
+  .hchips{display:flex;gap:8px;overflow-x:auto;padding:14px 20px 0;scrollbar-width:none}
+  .hchips button{flex:none;height:40px;padding:0 14px;border-radius:20px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.14);color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center;gap:7px}
+  .hchips .ic{font-size:18px}
+  .mini{margin:-14px 16px 0;position:relative;padding:14px 16px;border-radius:16px;background:var(--surface);box-shadow:0 6px 20px rgba(40,30,20,.12);display:flex;align-items:center;gap:12px}
+  .mini .pic{width:44px;height:44px;border-radius:12px;background:var(--info-bg);color:var(--info);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none}
+  .mini div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .mini b{font-size:14.5px;font-weight:600}
+  .mini small{font-size:12.5px;color:var(--info);font-weight:500}
+  .pro{margin:0 16px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--border);overflow:hidden}
+  .pro .photo{height:170px;border-radius:0}
+  .pro .b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+  .pro .nm{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .pro h4{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em}
+  .pro .org{font-size:13.5px;color:var(--text-2)}
+  .pro .rate{display:flex;align-items:center;gap:4px;font-size:14px;font-weight:700;white-space:nowrap}
+  .pro .rate .ic{color:oklch(0.62 0.15 70)}
+  .near{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--primary-soft);font-size:13px;color:var(--nav-active);font-weight:500}
+  /* app điều phối */
+  .dh{padding:8px 20px 14px}
+  .dh small{font-size:13px;color:var(--muted)}
+  .dh h2{margin:2px 0 0;font-size:28px;font-weight:800;letter-spacing:-.02em}
+  .unassigned{margin:0 16px 16px;padding:16px;border-radius:18px;background:var(--surface);border:2px solid oklch(0.85 0.08 75);display:flex;flex-direction:column;gap:10px}
+  .unassigned .top{display:flex;justify-content:space-between;align-items:center}
+  .unassigned h4{margin:0;font-size:16px;font-weight:600}
+  .sug{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--fill)}
+  .sug .av{width:38px;height:38px;border-radius:19px}
+  .sug div{flex:1;display:flex;flex-direction:column;min-width:0}
+  .sug b{font-size:14px;font-weight:600}
+  .sug small{font-size:12.5px;color:var(--text-2)}
+  .team{margin:0 16px;border-radius:18px;background:var(--surface);border:1px solid var(--border);overflow:hidden}
+  .tm-h{display:flex;justify-content:space-between;padding:10px 14px 6px 106px;font-size:11px;color:var(--muted)}
+  .mem{display:grid;grid-template-columns:82px minmax(0,1fr);gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line)}
+  .mem .who{display:flex;align-items:center;gap:8px;min-width:0}
+  .mem .av{width:32px;height:32px;border-radius:16px;font-size:11.5px}
+  .mem .who div{display:flex;flex-direction:column;min-width:0}
+  .mem .who b{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mem .who small{font-size:11.5px}
+  .track{position:relative;height:26px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--fill) 0 calc(20% - 1px),var(--line) calc(20% - 1px) 20%)}
+  .track i{position:absolute;top:3px;bottom:3px;border-radius:4px;font-style:normal;font-size:10.5px;font-weight:600;display:flex;align-items:center;padding:0 5px;overflow:hidden;white-space:nowrap}
+  .track .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--danger);left:16.8%}
+</style>
+</head>
+<body>
+<header class="dir-head">
+  <div>
+    <a class="back" href="index.html">← So sánh 3 hướng</a>
+    <div class="dir-tag" style="margin-top:14px">HƯỚNG C · TÁO BẠO</div>
+    <h1>Hội tụ cộng đồng</h1>
+    <p>Bám slogan của VN Group. Con người và nơi chốn làm nhân vật: khách thấy thợ giỏi trong phường mình, chủ đơn vị điều phối theo từng người trong đội, admin nhìn nhu cầu chưa được đáp ứng theo ngành và khung giờ. Khối màu cam đặc ở đầu app, số lớn nét đậm.</p>
+  </div>
+  <div class="axes">
+    <span>Nền <b>khối màu đặc</b></span><span>Tổ chức <b>theo người, nơi chốn</b></span><span>Mật độ <b>Admin dày · app vừa</b></span><span>Chữ <b>số và lời chào 800</b></span><span>Điều hướng <b>rail icon · tab 4 mục</b></span>
+  </div>
+</header>
+
+<main class="dir-body">
+  <section aria-labelledby="cap-admin">
+    <h2 class="stage-cap" id="cap-admin">Trang quản trị · Tổng quan <small>1280 × 800 · vai trò Kế toán</small></h2>
+    <div class="scroll-x">
+      <div class="admin rail">
+        <aside class="rl">
+          <div class="rl-logo"><span><img src="../site/assets/vngroup-logo.png" alt="VN Group"></span></div>
+          <nav aria-label="Menu quản trị" id="rail"></nav>
+        </aside>
+        <div class="main">
+          <div id="top"></div>
+          <div class="content">
+            <div class="page-h">
+              <div><h2 style="font-weight:700">Tổng quan</h2><div class="sub">Thứ Năm, 24/09/2026 · TP. Hồ Chí Minh</div></div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div class="seg" role="group" aria-label="Kỳ"><button>Hôm nay</button><button>7 ngày</button><button class="on">Tháng này</button><button>Quý này</button></div>
+                <button class="btn">Xuất Excel</button>
+              </div>
+            </div>
+            <div class="band">
+              <div><span class="k">Hoa hồng thực thu</span><span class="v">150,3 tr ₫</span><span class="s">+ 34,5 tr ₫ tạm tính</span></div>
+              <div><span class="k">Tổng giao dịch (GMV)</span><span class="v">1,23 tỷ ₫</span><span class="s"><span class="up">▲ 8,4%</span> so với 01-24/08</span></div>
+              <div><span class="k">Đã chi cho nhà cung cấp</span><span class="v">780 tr ₫</span><span class="s">312 lượt chi</span></div>
+              <div><span class="k">Còn phải trả nhà cung cấp</span><span class="v">242,6 tr ₫</span><span class="s">tại thời điểm xem</span></div>
+            </div>
+            <div class="row2">
+              <div class="card">
+                <div class="card-h" style="padding-bottom:8px"><h3>Yêu cầu không ai nhận, theo ngành và khung giờ</h3><span style="font-size:12.5px;color:var(--muted)">% trên tổng yêu cầu</span></div>
+                <div class="heat"><div class="hm" id="hm"></div>
+                  <div class="hm-l">Ít<i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i><i class="s6"></i>Nhiều · rê chuột vào ô để xem số yêu cầu</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-h" style="padding-bottom:8px"><h3>Nhà cung cấp cần chú ý</h3><a href="#providers" style="font-size:13px">Tất cả</a></div>
+                <div class="watch">
+                  <div class="w"><span class="av">SX</span><div><b>Sạch Xanh Home</b><span class="badge t-warn">Tài khoản ngân hàng vừa đổi 2 ngày trước</span></div></div>
+                  <div class="w"><span class="av">AT</span><div><b>An Tâm Pest</b><span class="badge t-danger">Tỷ lệ huỷ tuần này 12%</span></div></div>
+                  <div class="w"><span class="av">TT</span><div><b>Thợ Tâm</b><span class="badge t-warn">Chứng chỉ nghề hết hạn 30/09</span></div></div>
+                  <div class="w"><span class="av">HB</span><div><b>Kỹ thuật Hoà Bình</b><span class="badge t-slate">Chưa ai sẵn sàng ca tối nay</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="people">
+              <div class="card person"><span class="av">LT</span><div><b>Lê Văn Tài</b><small>Điện lạnh Phúc An</small><span class="m"><svg class="ic" style="color:oklch(0.62 0.15 70)" aria-hidden="true"><use href="#i-star-fill"/></svg> 4,9 · 86 việc tháng này</span></div></div>
+              <div class="card person"><span class="av">NT</span><div><b>Ngô Thị Thu</b><small>Sạch Xanh Home</small><span class="m"><svg class="ic" style="color:oklch(0.62 0.15 70)" aria-hidden="true"><use href="#i-star-fill"/></svg> 4,9 · 74 việc tháng này</span></div></div>
+              <div class="card person"><span class="av">PĐ</span><div><b>Phạm Minh Đức</b><small>Kỹ thuật Hoà Bình</small><span class="m"><svg class="ic" style="color:oklch(0.62 0.15 70)" aria-hidden="true"><use href="#i-star-fill"/></svg> 4,8 · 69 việc tháng này</span></div></div>
+              <div class="card person"><span class="av">TK</span><div><b>Trương Văn Khải</b><small>Thợ Tâm</small><span class="m"><svg class="ic" style="color:oklch(0.62 0.15 70)" aria-hidden="true"><use href="#i-star-fill"/></svg> 4,8 · 51 việc tháng này</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cap-apps">
+    <h2 class="stage-cap" id="cap-apps">Hai ứng dụng di động <small>390 × 844</small></h2>
+    <div class="phones">
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="scr">
+            <div class="hero">
+              <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+              <div class="hero-top"><div><small>Làm tại</small><b>P. Xuân Hòa, TP.HCM <svg class="ic"><use href="#i-caret-down"/></svg></b></div><button class="iconbtn" aria-label="Thông báo"><svg class="ic"><use href="#i-bell"/></svg><span class="dot"></span></button></div>
+              <h2>Chào chị Hà, cần<br>thợ giỏi gần nhà?</h2>
+              <div class="hsearch"><svg class="ic"><use href="#i-magnifying-glass"/></svg>Ví dụ: vệ sinh máy lạnh</div>
+              <div class="hchips">
+                <button><svg class="ic"><use href="#i-snowflake"/></svg>Điện lạnh</button>
+                <button><svg class="ic"><use href="#i-broom"/></svg>Dọn dẹp</button>
+                <button><svg class="ic"><use href="#i-drop"/></svg>Điện nước</button>
+                <button><svg class="ic"><use href="#i-bug"/></svg>Côn trùng</button>
+              </div>
+            </div>
+            <div class="mini"><span class="pic"><svg class="ic"><use href="#i-snowflake"/></svg></span><div><b>Vệ sinh máy lạnh · 2 máy</b><small>Anh Tài đang làm việc · từ 09:02</small></div><svg class="ic" style="font-size:20px;color:var(--muted)"><use href="#i-caret-right"/></svg></div>
+            <div class="sec-h" style="margin-top:22px"><h3>Thợ được tin chọn ở phường bạn</h3></div>
+            <div class="pro">
+              <div class="photo"><span>Ảnh: anh Lê Văn Tài đang làm việc, 740×340</span></div>
+              <div class="b">
+                <div class="nm"><div><h4>Lê Văn Tài</h4><span class="org">Điện lạnh Phúc An · 5 năm nghề</span></div><span class="rate"><svg class="ic"><use href="#i-star-fill"/></svg>4,9</span></div>
+                <span class="near"><svg class="ic"><use href="#i-house-line"/></svg>Đã làm cho 28 nhà ở P. Xuân Hòa</span>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="photo"><span>Ảnh: chị Ngô Thị Thu, Sạch Xanh Home, 740×340</span></div>
+              <div class="b">
+                <div class="nm"><div><h4>Ngô Thị Thu</h4><span class="org">Sạch Xanh Home · 3 năm nghề</span></div><span class="rate"><svg class="ic"><use href="#i-star-fill"/></svg>4,9</span></div>
+                <span class="near"><svg class="ic"><use href="#i-house-line"/></svg>Đã làm cho 41 nhà ở P. Xuân Hòa</span>
+              </div>
+            </div>
+          </div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab on"><svg class="ic"><use href="#i-house-fill"/></svg>Trang chủ</button>
+            <button class="tab"><svg class="ic"><use href="#i-receipt"/></svg>Đơn của tôi</button>
+            <button class="tab"><span class="pip"><svg class="ic"><use href="#i-chat-circle-dots"/></svg><i>2</i></span>Tin nhắn</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tài khoản</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Khách hàng · Trang chủ</b>
+        <p>Khối cam đầu trang mang giọng thương hiệu. Người thợ, không phải tên doanh nghiệp, là nhân vật; số nhà đã phục vụ trong phường là bằng chứng gần gũi nhất.</p>
+      </div>
+
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+          <div class="scr">
+            <div class="dh"><small>Điện lạnh Phúc An · Chủ đơn vị</small><h2>Đội hôm nay</h2></div>
+            <div class="unassigned">
+              <div class="top"><span class="badge t-warn">Chưa phân công</span><span class="mono" style="font-size:12px;color:var(--muted)">VN-240936</span></div>
+              <h4>Vệ sinh máy lạnh · 3 máy · 14:00</h4>
+              <span style="font-size:13.5px;color:var(--text-2)">P. Tân Định · phải phân công trước 12:00</span>
+              <div class="sug"><span class="av">TH</span><div><b>Gợi ý: Trần Quốc Huy</b><small>Rảnh 13:00-17:00 · có kỹ năng điện lạnh · cách 2,1 km</small></div></div>
+              <button class="btn primary" style="width:100%;height:46px;border-radius:12px">Phân công cho Huy</button>
+            </div>
+            <div class="team">
+              <div class="tm-h"><span>8h</span><span>10h</span><span>12h</span><span>14h</span><span>16h</span><span>18h</span></div>
+              <div class="mem"><div class="who"><span class="av">LT</span><div><b title="Lê Văn Tài">Tài</b><small style="color:var(--info)">Đang làm</small></div></div><div class="track"><i class="t-info" style="left:8%;width:14%" title="VN-240931"></i><i class="t-slate" style="left:30%;width:14%" title="VN-240934"></i><span class="now"></span></div></div>
+              <div class="mem"><div class="who"><span class="av">PĐ</span><div><b title="Phạm Minh Đức">Đức</b><small style="color:var(--info)">Di chuyển</small></div></div><div class="track"><i class="t-info" style="left:14%;width:12%" title="VN-240932"></i><i class="t-slate" style="left:62%;width:16%" title="VN-240939"></i><span class="now"></span></div></div>
+              <div class="mem"><div class="who"><span class="av">TH</span><div><b title="Trần Quốc Huy">Huy</b><small style="color:var(--ok)">Rảnh</small></div></div><div class="track"><i class="t-slate" style="left:20%;width:14%" title="VN-240933"></i><span class="now"></span></div></div>
+              <div class="mem"><div class="who"><span class="av">VN</span><div><b title="Võ Hoàng Nam">Nam</b><small style="color:var(--muted)">Nghỉ phép</small></div></div><div class="track" style="opacity:.5"><span class="now"></span></div></div>
+            </div>
+          </div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab"><span class="pip"><svg class="ic"><use href="#i-clipboard-text"/></svg><i>3</i></span>Yêu cầu</button>
+            <button class="tab on"><svg class="ic"><use href="#i-calendar-blank-fill"/></svg>Điều phối</button>
+            <button class="tab"><svg class="ic"><use href="#i-wallet"/></svg>Tài chính</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tài khoản</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Nhà cung cấp · Điều phối (chủ đơn vị)</b>
+        <p>Đơn chưa phân công nổi lên đầu kèm gợi ý người phù hợp theo kỹ năng, lịch trống và khoảng cách. Mỗi người trong đội là một hàng trên trục giờ, vạch đỏ là bây giờ.</p>
+      </div>
+
+      <aside class="notes" aria-label="Đánh giá hướng C">
+        <div><h3>Điểm mạnh</h3><ul><li>Cá tính rõ nhất, gắn với slogan "Hội tụ nguồn lực, phát triển cộng đồng".</li><li>Heatmap chỉ ngay chỗ thiếu thợ (côn trùng, điện nước buổi tối), trả lời mục 72 của estimation.</li><li>Rail icon trả lại 160px ngang cho bảng dữ liệu.</li></ul></div>
+        <div><h3>Rủi ro</h3><ul><li>Rail icon buộc người mới rê chuột để đọc tên mục; đi ngược bố cục 2a đã duyệt.</li><li>Cần ảnh thật của thợ; nếu thiếu ảnh, app mất nửa sức hút.</li><li>Số rút gọn (1,23 tỷ ₫) trên dải chỉ số cần tooltip số đủ.</li></ul></div>
+        <div><h3>Hợp với</h3><ul><li>Chủ đầu tư muốn thương hiệu nổi bật khi ra mắt thị trường.</li></ul></div>
+      </aside>
+    </div>
+  </section>
+</main>
+<script src="../site/assets/icons.js"></script>
+<script src="_shared.js"></script>
+<script>
+  document.getElementById('top').outerHTML = topbarHTML();
+  var rail = '';
+  NAV.forEach(function(g, gi){
+    if (gi) rail += '<hr>';
+    g[1].forEach(function(it){
+      rail += '<button class="ri' + (it[0] === 'dashboard' ? ' on' : '') + '" data-tip="' + it[1] + '" aria-label="' + it[1] + '">' + ic(it[2]) + (it[3] ? '<span class="cnt' + (it[4] ? ' red' : '') + '">' + it[3] + '</span>' : '') + '</button>';
+    });
+  });
+  document.getElementById('rail').innerHTML = rail;
+  var ROWS = ['Điện lạnh','Dọn dẹp','Điện nước','Đồ gia dụng','Sofa, nệm','Côn trùng'];
+  var COLS = ['07-09','09-11','11-13','13-15','15-17','17-19','19-21'];
+  var V = [[2,1,1,3,4,9,18],[1,0,2,2,3,6,12],[3,2,2,4,5,11,24],[2,1,2,2,4,7,15],[0,1,1,2,2,5,9],[4,3,5,6,8,14,27]];
+  var N = [[48,62,40,55,58,71,39],[80,96,72,64,70,52,25],[31,40,28,30,36,44,29],[22,30,25,21,27,30,20],[12,18,15,14,16,11,7],[10,12,9,11,13,14,11]];
+  var bin = function(v){ return v <= 2 ? 1 : v <= 5 ? 2 : v <= 9 ? 3 : v <= 14 ? 4 : v <= 19 ? 5 : 6; };
+  var h = '<span></span>' + COLS.map(function(c){ return '<span class="ch">' + c + '</span>'; }).join('');
+  ROWS.forEach(function(r, i){
+    h += '<span class="rh">' + r + '</span>';
+    V[i].forEach(function(v, j){
+      var miss = Math.round(N[i][j] * v / 100);
+      h += '<span class="c s' + bin(v) + '" title="' + r + ', ' + COLS[j] + ': ' + miss + ' trên ' + N[i][j] + ' yêu cầu không ai nhận (' + v + '%)">' + v + '%</span>';
+    });
+  });
+  document.getElementById('hm').innerHTML = h;
+</script>
+</body>
+</html>

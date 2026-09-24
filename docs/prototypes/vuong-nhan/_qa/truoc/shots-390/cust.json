@@ -1,0 +1,35 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "order-hourly-progress",
+  "errors": [],
+  "check": "Từ chối [mở] | Đồng ý [mở] | Đổi lịch [khoá] | Huỷ đơn [mở]",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "order-ac-progress",
+  "errors": [],
+  "check": "Đổi lịch [khoá] | Huỷ đơn [mở]",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "cancel-sheet-progress",
+  "errors": [],
+  "check": "Huỷ đơn VN-240931?",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ }
+]

@@ -1,0 +1,53 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "390-dash",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-orders",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-order",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-payouts",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-wide",
+  "errors": [],
+  "check": "true 1280",
+  "dims": {
+   "sw": 1280,
+   "cw": 390
+  }
+ }
+]

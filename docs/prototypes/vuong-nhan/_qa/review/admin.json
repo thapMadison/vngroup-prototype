@@ -1,0 +1,107 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "setup",
+  "errors": [],
+  "check": "2 items | groups=6 | shut badges=Vận hành9,Người dùng3,Tài chính8,Dịch vụ & giá,Nội dung,Hệ thống",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "open-group",
+  "errors": [],
+  "check": "5 items",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "nav-to-payouts",
+  "errors": [],
+  "check": "payouts | finance open=true",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "acc-all-open",
+  "errors": [],
+  "check": "7 items | shut=0",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "search-fold",
+  "errors": [],
+  "check": "1 rows | VN-240931Trần Thu HàĐiện lạnh Phúc AnVệ ",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "search-phone",
+  "errors": [],
+  "check": "19 all",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "search-prov",
+  "errors": [],
+  "check": "1 | PAĐiện lạnh Phúc AnDoanh nghiệ",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "search-adm",
+  "errors": [],
+  "check": "1 | Lê Minh AnhKế toán t",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "reason-counter",
+  "errors": [],
+  "check": "300 | 30/300",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "scn14",
+  "errors": [],
+  "check": "admins/roles | sa",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "scn16",
+  "errors": [],
+  "check": "profile | Hồ sơ của tôi",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

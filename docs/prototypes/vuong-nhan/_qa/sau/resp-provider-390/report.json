@@ -1,0 +1,35 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "390-req",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-fin",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "390-job",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ }
+]

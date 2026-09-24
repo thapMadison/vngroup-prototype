@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- HƯỚNG B · CÂN BẰNG · "Hành trình của đơn"
+     Nền: kem ấm trầm hơn · Điều hướng: sidebar 232 + tab dưới có nút "Đặt" ở giữa · Mật độ: Admin vừa, app vừa
+     Trục tổ chức: theo luồng thời gian (mốc nối bằng đường liền) · Chữ: grotesk tinh, tiêu đề lớn 28/700
+     Điểm lạ: đường liền nối mốc của concept thành xương sống của cả 3 ứng dụng -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hướng B · Hành trình của đơn</title>
+<meta name="description" content="Hướng thiết kế B cho prototype Vương Nhân: mọi màn hình xoay quanh hành trình của một đơn.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_base.css">
+<style>
+  :root{--canvas:oklch(0.978 0.007 70);--page:oklch(0.93 0.008 70);--series-3:#e87ba4}
+  .page-h h2{font-size:28px;font-weight:700;letter-spacing:-.02em}
+  /* dòng chảy đơn */
+  .flow{padding:18px 22px 22px}
+  .flow-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .flow-h h3{margin:0;font-size:15px;font-weight:600}
+  .flow-h span{font-size:12.5px;color:var(--muted)}
+  .stages{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));position:relative}
+  .stages::before{content:"";position:absolute;left:7px;right:calc(100% / 7 - 7px);top:6px;height:2px;background:oklch(0.3 0.01 60)}
+  .stg{position:relative;display:flex;flex-direction:column;gap:4px;padding-right:12px;background:none;border:0;text-align:left;font:inherit;color:inherit}
+  .stg .d{width:14px;height:14px;border-radius:7px;background:oklch(0.3 0.01 60);border:3px solid var(--surface);box-shadow:0 0 0 2px oklch(0.3 0.01 60);margin:0 0 12px;position:relative}
+  .stg .n{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .stg .l{font-size:13px;color:var(--text-2);line-height:1.35}
+  .stg .flag{margin-top:6px;align-self:flex-start;font-size:11.5px;height:22px;padding:0 8px}
+  .stg:hover .n{color:var(--link)}
+  .row2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px}
+  .bridge{padding:18px 22px 20px;display:flex;flex-direction:column;gap:14px}
+  .bridge-top{display:flex;justify-content:space-between;align-items:baseline}
+  .bridge-top h3{margin:0;font-size:15px;font-weight:600}
+  .eq{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--text-2)}
+  .eq b{font-size:15px;color:var(--text);font-weight:600}
+  .eq .big{font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .stack{display:flex;gap:2px;height:28px;border-radius:6px;overflow:hidden}
+  .stack i{display:block;height:100%}
+  .hatch-1{background:repeating-linear-gradient(135deg,var(--series-2) 0 3px,oklch(0.86 0.05 285) 3px 6px)}
+  .hatch-3{background:repeating-linear-gradient(135deg,var(--series-1) 0 3px,oklch(0.86 0.05 250) 3px 6px)}
+  .btable{width:100%;border-collapse:collapse;font-size:13px}
+  .btable td{padding:5px 0;border-top:1px solid var(--line);white-space:nowrap}
+  .btable tr:first-child td{border-top:0}
+  .btable td:nth-child(2){padding-left:8px;color:var(--text-2);width:100%}
+  .btable td.v{text-align:right;font-weight:500;padding-left:16px}
+  .btable td.p{text-align:right;color:var(--muted);padding-left:14px;width:52px}
+  .btable i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px}
+  .btable .asm{color:var(--warn);font-size:12px;margin-left:6px}
+  .match{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ok)}
+  .tasks{padding:6px 0}
+  .task{display:flex;align-items:center;gap:12px;padding:12px 20px;border-top:1px solid var(--line);color:var(--text);text-decoration:none}
+  .task:first-of-type{border-top:0}
+  .task:hover{background:oklch(0.985 0.01 60);text-decoration:none}
+  .task .ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+  .task div{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .task b{font-weight:500}
+  .task small{font-size:12px;color:var(--muted)}
+  .task .num{font-size:18px;font-weight:700}
+  /* app khách */
+  .ah{display:flex;justify-content:space-between;align-items:center;padding:8px 20px 16px}
+  .ah h2{margin:0;font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+  .ah p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+  .ah .av{width:44px;height:44px;border-radius:22px;font-size:14px}
+  .journey{margin:0 16px;padding:18px;border-radius:20px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-card)}
+  .j-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .j-top h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .j-top .mono{font-size:12px;color:var(--muted)}
+  .tech{display:flex;align-items:center;gap:10px;margin:14px 0 16px;padding:10px 12px;border-radius:14px;background:var(--fill)}
+  .tech .av{width:40px;height:40px;border-radius:20px}
+  .tech div{flex:1;min-width:0;display:flex;flex-direction:column}
+  .tech b{font-size:14.5px;font-weight:600}
+  .tech small{font-size:12.5px;color:var(--muted)}
+  .round{width:44px;height:44px;border-radius:22px;border:1px solid var(--border);background:var(--surface);display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:var(--text)}
+  .tl{display:flex;flex-direction:column}
+  .tli{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:12px;min-height:40px}
+  .tli .rail{display:flex;flex-direction:column;align-items:center}
+  .tli .rail span{width:14px;height:14px;border-radius:7px;margin-top:3px;flex:none;box-sizing:border-box}
+  .tli .rail i{flex:1;width:2px;margin:3px 0;background:oklch(0.9 0.004 60)}
+  .tli.done .rail span{background:oklch(0.3 0.01 60)}
+  .tli.done .rail i{background:oklch(0.3 0.01 60)}
+  .tli.now .rail span{background:#fff;border:3px solid var(--info)}
+  .tli.todo .rail span{background:#fff;border:2px solid oklch(0.85 0.005 60)}
+  .tli:last-child .rail i{background:transparent}
+  .tli .t{font-size:14.5px;line-height:20px}
+  .tli.now .t{font-weight:600}
+  .tli.todo .t{color:var(--subtle)}
+  .tli .t small{display:block;font-size:12.5px;color:var(--muted);font-weight:400}
+  .tli .tm{font-size:12.5px;color:var(--muted);line-height:20px}
+  .how{margin:22px 16px 0;padding:16px;border-radius:20px;background:var(--primary-soft)}
+  .how h3{margin:0 0 12px;font-size:16px;font-weight:600}
+  .how ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative}
+  .how ol::before{content:"";position:absolute;top:13px;left:14%;right:14%;height:2px;background:oklch(0.85 0.08 45)}
+  .how li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;font-size:12.5px;line-height:1.35;position:relative}
+  .how li b{width:28px;height:28px;border-radius:14px;background:var(--surface);color:var(--nav-active);display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid oklch(0.85 0.08 45)}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding:0 16px 18px;scrollbar-width:none}
+  .chips button{flex:none;height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}
+  .chips .ic{font-size:20px;color:var(--nav-active)}
+  .tab.plus .ic{font-size:26px}
+  .tab.plus span.fab{width:52px;height:52px;border-radius:26px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:-22px;box-shadow:0 6px 16px rgba(180,70,20,.35);border:4px solid var(--surface)}
+  /* app kỹ thuật viên */
+  .th{display:flex;justify-content:space-between;align-items:flex-end;padding:8px 20px 14px}
+  .th small{font-size:13px;color:var(--muted)}
+  .th h2{margin:2px 0 0;font-size:28px;font-weight:700;letter-spacing:-.02em}
+  .ready{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:18px;background:var(--ok-bg);color:var(--ok);font-size:13px;font-weight:600;white-space:nowrap}
+  .ready i{width:8px;height:8px;border-radius:4px;background:var(--ok)}
+  .day{padding:0 16px 16px;display:flex;flex-direction:column}
+  .slot{display:grid;grid-template-columns:48px 18px minmax(0,1fr);gap:10px}
+  .slot .time{font-size:13px;font-weight:600;padding-top:14px;text-align:right}
+  .slot .rail{display:flex;flex-direction:column;align-items:center}
+  .slot .rail span{width:14px;height:14px;border-radius:7px;margin-top:17px;flex:none;background:#fff;border:2px solid oklch(0.85 0.005 60)}
+  .slot .rail i{flex:1;width:2px;background:oklch(0.9 0.004 60)}
+  .slot.now .rail span{border:3px solid var(--info)}
+  .slot:last-child .rail i{background:transparent}
+  .job{margin:6px 0 10px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+  .slot.now .job{border:2px solid var(--info);box-shadow:var(--shadow-card)}
+  .job h4{margin:0;font-size:15.5px;font-weight:600}
+  .job .rl{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--text-2)}
+  .job .rl .ic{font-size:16px;color:var(--muted)}
+  .timer{display:flex;flex-direction:column;gap:0;margin:4px 0}
+  .timer b{font:600 30px var(--mono);letter-spacing:-.02em}
+  .timer small{font-size:12.5px;color:var(--muted)}
+  .check{display:flex;flex-direction:column;gap:6px;padding:10px 0 2px;border-top:1px solid var(--line);font-size:13.5px}
+  .check span{display:flex;align-items:center;gap:8px}
+  .check .ok{color:var(--ok)}
+  .check .pend{color:var(--subtle)}
+  .sticky{flex:none;padding:12px 16px;background:var(--surface);border-top:1px solid var(--border)}
+  .sticky .btn.primary{width:100%;height:50px;border-radius:14px;font-size:15.5px}
+</style>
+</head>
+<body>
+<header class="dir-head">
+  <div>
+    <a class="back" href="index.html">← So sánh 3 hướng</a>
+    <div class="dir-tag" style="margin-top:14px">HƯỚNG B · CÂN BẰNG</div>
+    <h1>Hành trình của đơn</h1>
+    <p>Đường liền nối các mốc trong concept trở thành xương sống của cả ba ứng dụng. Admin nhìn dòng chảy đơn theo từng chặng, khách thấy đơn mình đang ở bước nào, kỹ thuật viên thấy một ngày làm việc trên cùng một trục thời gian.</p>
+  </div>
+  <div class="axes">
+    <span>Nền <b>kem ấm</b></span><span>Tổ chức <b>theo luồng thời gian</b></span><span>Mật độ <b>vừa</b></span><span>Chữ <b>tiêu đề lớn 28/700</b></span><span>Điều hướng <b>sidebar · tab có nút Đặt</b></span>
+  </div>
+</header>
+
+<main class="dir-body">
+  <section aria-labelledby="cap-admin">
+    <h2 class="stage-cap" id="cap-admin">Trang quản trị · Tổng quan <small>1280 × 800 · vai trò Kế toán</small></h2>
+    <div class="scroll-x">
+      <div class="admin">
+        <div id="side"></div>
+        <div class="main">
+          <div id="top"></div>
+          <div class="content">
+            <div class="page-h">
+              <div><h2>Tổng quan</h2><div class="sub">Thứ Năm, 24/09/2026 · cập nhật lúc 10:42</div></div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div class="seg" role="group" aria-label="Kỳ"><button>Hôm nay</button><button>7 ngày</button><button class="on">Tháng này</button><button>Quý này</button></div>
+                <button class="btn">Xuất Excel</button>
+              </div>
+            </div>
+
+            <div class="card flow">
+              <div class="flow-h"><h3>Dòng chảy đơn lúc này</h3><span>Bấm một chặng để mở danh sách đơn ở chặng đó</span></div>
+              <div class="stages">
+                <button class="stg"><span class="d"></span><span class="n">38</span><span class="l">Yêu cầu mới</span><span class="badge t-warn flag">3 chưa ai nhận</span></button>
+                <button class="stg"><span class="d"></span><span class="n">12</span><span class="l">Chờ khách chọn</span></button>
+                <button class="stg"><span class="d"></span><span class="n">46</span><span class="l">Đã phân công</span></button>
+                <button class="stg"><span class="d"></span><span class="n">19</span><span class="l">Đang thực hiện</span></button>
+                <button class="stg"><span class="d"></span><span class="n">8</span><span class="l">Chờ nghiệm thu</span></button>
+                <button class="stg"><span class="d"></span><span class="n">27</span><span class="l">Chờ thanh toán</span><span class="badge t-warn flag">4 quá hạn</span></button>
+                <button class="stg"><span class="d"></span><span class="n">412</span><span class="l">Đang bảo hành</span><span class="badge t-danger flag">1 đang tạm giữ</span></button>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="card bridge">
+                <div class="bridge-top"><h3>Tiền đi đâu trong tháng 9</h3><span class="match"><svg class="ic"><use href="#i-check-circle"/></svg>Khớp</span></div>
+                <div class="eq"><span>Khách đã trả <b>1.250.000.000 ₫</b></span><span>trừ đã hoàn <b>18.000.000 ₫</b></span><span>=</span><span>GMV <b class="big">1.232.000.000 ₫</b></span></div>
+                <div class="stack" role="img" aria-label="GMV chia thành hoa hồng 15%, thuế khấu trừ 2%, phần nhà cung cấp 83%">
+                  <i style="width:12.2%;background:var(--series-2)" title="Hoa hồng thực thu 150.300.000 ₫"></i>
+                  <i class="hatch-1" style="width:2.8%" title="Hoa hồng tạm tính 34.500.000 ₫"></i>
+                  <i style="width:2%;background:var(--series-3)" title="Thuế khấu trừ 24.640.000 ₫"></i>
+                  <i style="width:63.3%;background:var(--series-1)" title="Nhà cung cấp đã nhận 780.000.000 ₫"></i>
+                  <i class="hatch-3" style="width:19.7%" title="Còn phải trả nhà cung cấp 242.560.000 ₫"></i>
+                </div>
+                <table class="btable">
+                  <tr><td><i style="background:var(--series-2)"></i></td><td>Hoa hồng thực thu</td><td class="v">150.300.000 ₫</td><td class="p">12,2%</td></tr>
+                  <tr><td><i class="hatch-1"></i></td><td>Hoa hồng tạm tính, đơn còn bảo hành</td><td class="v">34.500.000 ₫</td><td class="p">2,8%</td></tr>
+                  <tr><td><i style="background:var(--series-3)"></i></td><td>Thuế khấu trừ 2%<span class="asm">Giả định, chờ xác nhận</span></td><td class="v">24.640.000 ₫</td><td class="p">2,0%</td></tr>
+                  <tr><td><i style="background:var(--series-1)"></i></td><td>Nhà cung cấp đã nhận</td><td class="v">780.000.000 ₫</td><td class="p">63,3%</td></tr>
+                  <tr><td><i class="hatch-3"></i></td><td>Còn phải trả nhà cung cấp</td><td class="v">242.560.000 ₫</td><td class="p">19,7%</td></tr>
+                </table>
+              </div>
+              <div class="card">
+                <div class="card-h"><h3>Việc cần xử lý</h3></div>
+                <div class="tasks">
+                  <a class="task" href="#disputes"><span class="ico t-danger"><svg class="ic"><use href="#i-scales"/></svg></span><div><b>Khiếu nại chờ phân xử</b><small>Cũ nhất: mở 23/09 18:20</small></div><span class="num">5</span></a>
+                  <a class="task" href="#payouts"><span class="ico t-slate"><svg class="ic"><use href="#i-hand-coins"/></svg></span><div><b>Rút tiền chờ duyệt</b><small>Tổng 14.620.000 ₫</small></div><span class="num">8</span></a>
+                  <a class="task" href="#refunds"><span class="ico t-slate"><svg class="ic"><use href="#i-arrow-counter-clockwise"/></svg></span><div><b>Hoàn tiền chờ duyệt bước hai</b><small>Người tạo: Lê Minh Anh</small></div><span class="num">2</span></a>
+                  <a class="task" href="#unpaid"><span class="ico t-warn"><svg class="ic"><use href="#i-clock"/></svg></span><div><b>Đơn quá hạn thanh toán</b><small>Lâu nhất: 9 ngày</small></div><span class="num">4</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cap-apps">
+    <h2 class="stage-cap" id="cap-apps">Hai ứng dụng di động <small>390 × 844</small></h2>
+    <div class="phones">
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+          <div class="scr">
+            <div class="ah"><div><h2>Chào chị Hà</h2><p>128 Nguyễn Đình Chiểu, P. Xuân Hòa</p></div><span class="av">TH</span></div>
+            <div class="journey">
+              <div class="j-top"><div><span class="badge t-info">Đang thực hiện</span><h3 style="margin-top:8px">Vệ sinh máy lạnh · 2 máy</h3></div><span class="mono">VN-240931</span></div>
+              <div class="tech"><span class="av">LT</span><div><b>Lê Văn Tài</b><small>Điện lạnh Phúc An · <svg class="ic" style="color:oklch(0.62 0.15 70)" aria-hidden="true"><use href="#i-star-fill"/></svg> 4,9</small></div><button class="round" aria-label="Nhắn tin"><svg class="ic"><use href="#i-chat-circle-dots"/></svg></button></div>
+              <div class="tl">
+                <div class="tli done"><div class="rail"><span></span><i></i></div><span class="t">Đã gửi tới 3 nhà cung cấp</span><span class="tm">20:14</span></div>
+                <div class="tli done"><div class="rail"><span></span><i></i></div><span class="t">Bạn đã chọn Điện lạnh Phúc An</span><span class="tm">20:31</span></div>
+                <div class="tli done"><div class="rail"><span></span><i></i></div><span class="t">Kỹ thuật viên đã đến<small>Xác thực vị trí, cách 18 m</small></span><span class="tm">08:58</span></div>
+                <div class="tli now"><div class="rail"><span></span><i></i></div><span class="t">Đang làm việc<small>Bắt đầu 09:02 · tạm tính <span class="nw">450.000 ₫</span></small></span><span class="tm">39 phút</span></div>
+                <div class="tli todo"><div class="rail"><span></span><i></i></div><span class="t">Nghiệm thu khối lượng</span><span class="tm"></span></div>
+                <div class="tli todo"><div class="rail"><span></span><i></i></div><span class="t">Thanh toán</span><span class="tm"></span></div>
+                <div class="tli todo"><div class="rail"><span></span><i></i></div><span class="t">Bảo hành 7 ngày</span><span class="tm"></span></div>
+              </div>
+            </div>
+            <div class="how">
+              <h3>Đặt dịch vụ trong 3 bước</h3>
+              <ol><li><b>1</b>Chọn dịch vụ và giờ</li><li><b>2</b>Gửi tới tối đa 5 nhà cung cấp</li><li><b>3</b>Chọn đơn vị đã xác nhận</li></ol>
+            </div>
+            <div class="sec-h" style="margin-top:22px"><h3>Hay được đặt</h3></div>
+            <div class="chips">
+              <button><svg class="ic"><use href="#i-snowflake"/></svg>Điện lạnh</button>
+              <button><svg class="ic"><use href="#i-broom"/></svg>Dọn nhà theo giờ</button>
+              <button><svg class="ic"><use href="#i-drop"/></svg>Điện nước</button>
+              <button><svg class="ic"><use href="#i-couch"/></svg>Giặt sofa</button>
+            </div>
+          </div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab on"><svg class="ic"><use href="#i-house-fill"/></svg>Trang chủ</button>
+            <button class="tab"><svg class="ic"><use href="#i-receipt"/></svg>Đơn</button>
+            <button class="tab plus" aria-label="Đặt dịch vụ"><span class="fab"><svg class="ic"><use href="#i-plus"/></svg></span>Đặt</button>
+            <button class="tab"><span class="pip"><svg class="ic"><use href="#i-chat-circle-dots"/></svg><i>2</i></span>Tin nhắn</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tôi</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Khách hàng · Trang chủ</b>
+        <p>Đơn đang chạy chiếm màn đầu dưới dạng hành trình 7 mốc, nên khách không cần gọi hỏi "thợ tới chưa". Người mới được hướng dẫn 3 bước đặt dịch vụ ngay trên trang chủ.</p>
+      </div>
+
+      <div class="phone-col">
+        <div class="phone"><div class="screen">
+          <div class="sbar"><span>9:41</span><span class="r">5G <span class="batt"></span></span></div>
+          <div class="scr">
+            <div class="th"><div><small>Thứ Năm, 24/09 · 4 việc</small><h2>Hôm nay</h2></div><span class="ready"><i></i>Sẵn sàng</span></div>
+            <div class="day">
+              <div class="slot now"><span class="time">09:02</span><div class="rail"><span></span><i></i></div>
+                <div class="job">
+                  <span class="badge t-info" style="align-self:flex-start">Đang làm việc</span>
+                  <h4>Vệ sinh máy lạnh · 2 máy</h4>
+                  <span class="rl"><svg class="ic"><use href="#i-map-pin"/></svg>128 Nguyễn Đình Chiểu, P. Xuân Hòa</span>
+                  <div class="timer"><b>00:39:12</b><small>tính từ lúc xác thực vị trí</small></div>
+                  <div class="check">
+                    <span class="ok"><svg class="ic"><use href="#i-check-circle-fill"/></svg>Ảnh trước khi làm · 4 ảnh</span>
+                    <span class="pend"><svg class="ic"><use href="#i-camera"/></svg>Ảnh sau khi làm · bắt buộc</span>
+                    <span class="pend"><svg class="ic"><use href="#i-list-checks"/></svg>Khối lượng thực tế · 2 máy</span>
+                  </div>
+                </div>
+              </div>
+              <div class="slot"><span class="time">11:00</span><div class="rail"><span></span><i></i></div>
+                <div class="job"><h4>Sửa máy lạnh không lạnh</h4><span class="rl"><svg class="ic"><use href="#i-map-pin"/></svg>P. Gia Định · cách 4,8 km</span><span class="rl"><svg class="ic"><use href="#i-user"/></svg>Nguyễn Minh Quân · <span class="nw">VN-240934</span></span></div>
+              </div>
+              <div class="slot"><span class="time">14:00</span><div class="rail"><span></span><i></i></div>
+                <div class="job"><h4>Vệ sinh máy lạnh · 3 máy</h4><span class="rl"><svg class="ic"><use href="#i-map-pin"/></svg>P. Tân Định · cách 3,1 km</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="sticky"><button class="btn primary">Chụp ảnh sau và kết thúc</button></div>
+          <nav class="tabbar" aria-label="Điều hướng chính">
+            <button class="tab on"><svg class="ic"><use href="#i-calendar-blank-fill"/></svg>Hôm nay</button>
+            <button class="tab"><svg class="ic"><use href="#i-calendar-check"/></svg>Lịch tuần</button>
+            <button class="tab"><svg class="ic"><use href="#i-chat-circle-dots"/></svg>Tin nhắn</button>
+            <button class="tab"><svg class="ic"><use href="#i-user"/></svg>Tôi</button>
+          </nav>
+        </div></div>
+        <b style="font-size:15px">App Nhà cung cấp · Hôm nay (kỹ thuật viên)</b>
+        <p>Một ngày làm việc là một trục thời gian. Việc đang làm nở ra thành thẻ có đồng hồ và danh sách bắt buộc; nút chính luôn ở đáy, trong tầm ngón cái.</p>
+      </div>
+
+      <aside class="notes" aria-label="Đánh giá hướng B">
+        <div><h3>Điểm mạnh</h3><ul><li>Một hình ảnh (mốc nối bằng đường liền) xuyên suốt 3 ứng dụng, khách hàng và nhân viên nói cùng một ngôn ngữ.</li><li>Admin thấy ngay chỗ tắc: chặng nào có cờ vàng/đỏ.</li><li>Thanh "Tiền đi đâu" giải thích công thức tiền chỉ trong một dòng.</li></ul></div>
+        <div><h3>Rủi ro</h3><ul><li>Màn đầu app Khách hàng dài hơn khi không có đơn đang chạy; cần trạng thái rỗng riêng.</li><li>Nút "Đặt" ở giữa thanh tab là quy ước của app tiêu dùng, có thể lạ với người lớn tuổi.</li></ul></div>
+        <div><h3>Hợp với</h3><ul><li>Demo cần kể câu chuyện đầu cuối: từ lúc khách gửi yêu cầu tới lúc tiền về tài khoản nhà cung cấp.</li></ul></div>
+      </aside>
+    </div>
+  </section>
+</main>
+<script src="../site/assets/icons.js"></script>
+<script src="_shared.js"></script>
+<script>
+  document.getElementById('side').outerHTML = sideHTML('dashboard');
+  document.getElementById('top').outerHTML = topbarHTML();
+</script>
+</body>
+</html>

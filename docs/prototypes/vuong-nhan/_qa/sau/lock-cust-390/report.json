@@ -1,0 +1,161 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "progress-footer-locked",
+  "errors": [],
+  "check": "PASS Đổi lịch[khoá] | Huỷ đơn[khoá] | Cần dừng việc? Gọi tổng đài | độ mờ 0.45,0.45",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "tap-cancel-locked",
+  "errors": [],
+  "check": "PASS bấm Huỷ đơn không mở sheet",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "tap-resched-locked",
+  "errors": [],
+  "check": "PASS bấm Đổi lịch không mở sheet",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "direct-call-blocked",
+  "errors": [],
+  "check": "PASS trạng thái progress · lịch 24/09 10:00-12:00 · toast Thợ đang làm việc nên không huỷ hay đổi lịch được.",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "call-support",
+  "errors": [],
+  "check": "PASS Đang gọi tổng đài hỗ trợ 0765 848 586",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "english",
+  "errors": [],
+  "check": "PASS Work is in progress, so you cannot cancel or reschedule. | Need to stop? Call support",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "hourly-progress-locked",
+  "errors": [],
+  "check": "PASS nút khoá 2",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "moving-allowed",
+  "errors": [],
+  "check": "PASS Đổi lịch | Huỷ đơn · khoá 0",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "moving-open-cancel",
+  "errors": [],
+  "check": "PASS Hiện chưa tính phí huỷ. Việc huỷ được ghi nhận vào lịch sử của bạn. Khi thợ đã bắt đầu làm việc, đơn không huỷ được nữa.",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "fastforward-while-sheet-open",
+  "errors": [],
+  "check": "PASS trạng thái progress",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "assigned-resched-works",
+  "errors": [],
+  "check": "PASS lịch mới 25/09 13:00-15:00",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "help-faq",
+  "errors": [],
+  "check": "PASS Hiện chưa tính phí huỷ. Hãy huỷ sớm để thợ sắp xếp lịch khác. Khi thợ đã bắt đầu làm việc, bạn không huỷ hay đổi lịch trong app được nữa; cần dừng việc thì gọi tổng đài hỗ trợ.",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "dz-disabled-faded",
+  "errors": [],
+  "check": "PASS Xác nhận huỷ khoá, mờ",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "esc-closes-sheet-only",
+  "errors": [],
+  "check": "PASS Esc đóng sheet, giữ màn",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "esc-backs-screen",
+  "errors": [],
+  "check": "PASS Esc lùi về Trang chủ",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "esc-typing-stays",
+  "errors": [],
+  "check": "PASS đang gõ thì Esc không lùi",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ },
+ {
+  "step": "esc-noback-stays",
+  "errors": [],
+  "check": "PASS màn không có nút lùi thì Esc giữ nguyên",
+  "dims": {
+   "sw": 390,
+   "cw": 390
+  }
+ }
+]

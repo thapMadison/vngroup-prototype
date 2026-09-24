@@ -1,0 +1,53 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "768-dash",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 768,
+   "cw": 768
+  }
+ },
+ {
+  "step": "768-orders",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 768,
+   "cw": 768
+  }
+ },
+ {
+  "step": "768-order",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 768,
+   "cw": 768
+  }
+ },
+ {
+  "step": "768-payouts",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 768,
+   "cw": 768
+  }
+ },
+ {
+  "step": "768-wide",
+  "errors": [],
+  "check": "true 1280",
+  "dims": {
+   "sw": 1280,
+   "cw": 768
+  }
+ }
+]

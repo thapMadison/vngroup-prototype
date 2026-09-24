@@ -1,0 +1,1 @@
+{"steps":[{"name":"orders","js":"CUST.S.tab=\"orders\";CUST.root(\"orders\")","shot":"customer-390-orders","jpeg":true,"check":"document.documentElement.scrollWidth"}]}

@@ -1,0 +1,1 @@
+{"steps":[{"name":"dash","js":"ADMIN.S.role='acc';ADMIN.go('dashboard',{})","wait":800,"shot":"admin","jpeg":true,"clip":"#app","scale":0.6}]}
