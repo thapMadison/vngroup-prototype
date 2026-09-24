@@ -2,6 +2,50 @@
 
 > Mỗi lần thêm hoặc sửa một tính năng bằng skill `evolve-site`, ghi lại một khối tương ứng.
 > **Đáp án của người dùng ghi nguyên văn**. Các quyết định trước đó (5 cổng của `sketch-to-site`, lặp lại sau nghiệm thu) nằm ở `DECISIONS.md`.
+> Cấp 0, và Cấp 1 không cờ: một dòng ở bảng *Nhật ký thay đổi nhỏ*. Cấp 1 có cờ, Cấp 2, Cấp 3: một khối đầy đủ.
+
+---
+
+## Nhật ký thay đổi nhỏ
+
+| Ngày | Khai báo *(Cấp · cờ · vì)* | Trang / file | Thay đổi | Nguồn yêu cầu | QA so mốc | Người dùng *(nguyên văn; Cấp 1: đáp án Cổng 3)* |
+|---|---|---|---|---|---|---|
+| 24/09/2026 | Cấp 1 · cờ: không · vì sửa 4 thành phần có sẵn trong 3 màn của App Khách hàng; không đổi dữ liệu, quyền hay quy tắc; làm prototype khớp lại estimation | `customer.js` (dòng 12, 103-104, 248-249, 261, 302-307) · `index.html` (alt ảnh) · `assets/shots/customer.jpg` · `DESIGN.md` · `_qa/steps-rating-cust.json` (mới) | Đợt 2, xem khối bên dưới | #8 "Nhà cung cấp nổi bật" · #12 hồ sơ Nhà cung cấp có đánh giá · #32 đánh giá đa tiêu chí · #69 đánh giá của đơn vị · #51 điểm từng kỹ thuật viên là chỉ số nội bộ | `0` lỗi mới | "Nghiệm thu đợt chuyển đánh giá sang nhà cung cấp thế nào?" → "Chốt tích hợp (Khuyến nghị)" · "Có sửa luôn các lỗi có sẵn tìm thấy trong đợt này không?" → "Đồng bộ điểm Sạch Xanh Home, Nâng nút sao lên 44 px" |
+
+### Đợt 2: Đánh giá thuộc về nhà cung cấp (App Khách hàng)
+
+**Yêu cầu (nguyên văn), kèm ảnh chụp trang chủ App Khách hàng ở khối "Thợ được tin chọn ở phường bạn":**
+> Hiện tại ở app Khách hàng đang là chức năng đánh giá Kỹ thuật viên -> chức năng này nên là đánh giá dịch vụ của nhà cung cấp.
+> Phần `Thợ được tin chọn ở phường bạn` đang hiển thị có thể làm người dùng hiểu là thợ 5\*, 4.9\* ... chứ không phải là nhà cung cấp.
+> Bạn thấy chỗ này như nào? Có cần chỉnh sửa không?
+> Nếu chỉnh sửa thì dùng skill /evolve-site chỉnh sửa tính năng này.
+
+**Hiện trạng đo được (mốc `_qa/truoc/dot2/`, bộ `steps-rating-cust` báo 13/14 FAIL trên bản cũ):**
+- Trang chủ: thẻ lấy tên và ảnh kỹ thuật viên làm tiêu đề, đặt điểm của nhà cung cấp (4,9) ngay cạnh tên người. Estimation #8 ghi "Nhà cung cấp nổi bật".
+- Màn đánh giá: tiêu đề "Đánh giá", dòng phụ "Lê Văn Tài · Điện lạnh Phúc An" (tên người đứng trước).
+- Chi tiết đơn: dưới tên kỹ thuật viên là "Điện lạnh Phúc An · sao 4,9"; ở khổ 390 dòng này bị cắt (161 > 130 px).
+- Nút ở đơn đang bảo hành chỉ ghi "Đánh giá".
+- Trang quản trị (hàng chờ kiểm duyệt ghi đánh giá "về Điện lạnh Phúc An") và App Nhà cung cấp (#69 điểm đơn vị, #51 điểm từng kỹ thuật viên) đã đúng mô hình, không sửa.
+
+**Cổng:** Cổng 1 và 2 không đi (Cấp 1, không cờ). Cổng 3: xem bảng trên.
+
+**Đã làm:**
+- Trang chủ: khối đổi tên "Nhà cung cấp tin cậy ở phường bạn" (EN giữ "Providers your neighbours trust"). Thẻ lấy tên đơn vị làm tiêu đề, ảnh là "đội đang làm việc", dòng phụ "5 năm hoạt động · 1.284 việc", điểm "4,9 (312)" có nhãn đọc màn hình. Tên câu được đo trong trình duyệt để vừa một dòng (294/330 px).
+- Màn đánh giá: tiêu đề "Đánh giá dịch vụ"; dòng phụ "Vệ sinh máy lạnh · Điện lạnh Phúc An"; câu nhắc "Đánh giá hiển thị trên hồ sơ Điện lạnh Phúc An sau khi được kiểm duyệt." Bốn tiêu chí giữ nguyên vì "Thái độ phục vụ" xuống dòng ở khổ 1440.
+- Chi tiết đơn: thêm dòng tên đơn vị có icon cửa hàng dưới tên dịch vụ (cùng mẫu thẻ ở Đơn của tôi); dòng kỹ thuật viên chỉ còn tên và vai "Kỹ thuật viên", không còn sao. Đơn đã huỷ cũng thấy tên đơn vị.
+- Nút ở đơn đang bảo hành: "Đánh giá dịch vụ".
+- `index.html`: alt ảnh App Khách hàng; chụp lại `assets/shots/customer.jpg`.
+
+**Cổng 3 (nguyên văn):**
+- "Nghiệm thu đợt chuyển đánh giá sang nhà cung cấp thế nào?" → "Chốt tích hợp (Khuyến nghị)"
+- "Có sửa luôn các lỗi có sẵn tìm thấy trong đợt này không?" → "Đồng bộ điểm Sạch Xanh Home, Nâng nút sao lên 44 px"
+
+**Sửa lỗi có sẵn theo lựa chọn ở Cổng 3:**
+
+| Lỗi | Đã làm | Bằng chứng |
+|---|---|---|
+| Sạch Xanh Home 4,9 trên App Khách hàng, 4,8 trên Trang quản trị | App Khách hàng lấy 4,8 theo `data.js`. Số đánh giá 188 vốn đã khớp | `customer.js:12` · bước `rating-matches-shared-data` (điểm mong đợi đọc từ `data.js` lúc sinh bước) |
+| Nút sao ở màn đánh giá 34 × 40 px, dưới 44 px | Nút 44 × 44 px. Nhãn tiêu chí chuyển lên trên hàng sao: đo trong trình duyệt, nếu giữ cùng hàng thì nhãn chỉ còn 54-84 px mà "Chất lượng" cần 86 px, "Punctuality" cần 89 px. Hàng 5 sao rộng 236 px, vừa cả máy 360 px | `customer.js:305` · bước `star-targets-44-vi`, `star-targets-44-en`, `star-rate-click` |
 
 ---
 

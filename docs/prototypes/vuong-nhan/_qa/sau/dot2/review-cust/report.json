@@ -1,0 +1,44 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "book4",
+  "errors": [],
+  "check": "Vệ sinh máy lạnh · 2 máy 128 Nguyễn Đình Chiểu, P. Xuân Hòa 24/09 · 13:00-15:00, 25/09 · 08:00-10:00Sửa",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "bedit",
+  "errors": [],
+  "check": "book1",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "review-cnt",
+  "errors": [],
+  "check": "500 | 16/500",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "dispute-cnt",
+  "errors": [],
+  "check": "500 | 28/500",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]

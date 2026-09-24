@@ -40,7 +40,7 @@ Trang quản trị thiết kế cho 1440 × 900, chạy từ 1280 (DESIGN.md §6
 | 3 khổ màn hình | 56 | 0 |
 | **Tổng** | **528** | **0** |
 
-Bộ thêm sau bảng này, cũng phải chạy lại sau mỗi thay đổi: `steps-scroll-prov`, `steps-scroll-admin` (§10) · `steps-lock-cust` (khổ 390 và 1440), `steps-docs-prov` (khổ 390 và 1440) (§11). `steps-scan-prov` nay có 54 bước (thêm 12 bước giấy tờ).
+Bộ thêm sau bảng này, cũng phải chạy lại sau mỗi thay đổi: `steps-scroll-prov`, `steps-scroll-admin` (§10) · `steps-lock-cust` (khổ 390 và 1440), `steps-docs-prov` (khổ 390 và 1440) (§11) · `steps-rating-cust` (khổ 390 và 1440) (§12). `steps-scan-prov` nay có 54 bước (thêm 12 bước giấy tờ).
 
 Số tiền được kiểm tự động và cộng khớp:
 - Kịch bản 1, duyệt rồi tạo lô chi: đã chi 782.450.000 ₫; còn phải trả 240.110.000 ₫.
@@ -143,7 +143,7 @@ Số tiền được kiểm tự động và cộng khớp:
 
 **Cần ảnh thật** (hiện là khung giữ chỗ ghi rõ nội dung và cỡ ảnh):
 - Ảnh dịch vụ theo ngành và dịch vụ con: 1200×800 ở Danh mục, 780×400 ở trang dịch vụ (`admin-config.js:107`, `customer.js:133`).
-- Ảnh kỹ thuật viên đang làm việc, 740×330 (`customer.js:101`), và ảnh đội nhà cung cấp, 780×420 (`customer.js:141`).
+- Ảnh đội nhà cung cấp đang làm việc, 740×330 ở thẻ trang chủ (`customer.js:104`), và ảnh đội nhà cung cấp, 780×420 ở hồ sơ (`customer.js:144`).
 - Banner 1080×540 (`admin-config.js:299`).
 
 Ảnh do người dùng tải lên thì giữ nguyên khung giữ chỗ, vì bản thật sẽ lấy từ dữ liệu: ảnh hiện trạng trước/sau, ảnh khách gửi, bản chụp giấy tờ, ảnh trong tin nhắn.
@@ -246,3 +246,39 @@ Quyết định 3 cổng ở `FEATURE-DECISIONS.md`. Mốc trước khi sửa �
 - `gen_textscan.py` lệch với file bước: đã đưa 23 bước quét lớp phủ của admin và 2 bước tóm tắt đặt dịch vụ vào bộ sinh. Chạy lại bộ sinh cho ra file admin và khách giống từng byte bản cũ; file nhà cung cấp giữ đủ 54 bước.
 
 **Còn lại, chưa sửa:** bản preflight trong dự án chưa có `--save`/`--compare`; so mốc bằng cách đối chiếu 2 bản chữ.
+
+## 12. Đợt `evolve-site` 2: đánh giá thuộc về nhà cung cấp (24/09/2026)
+
+Khai báo: Cấp 1, không cờ. Quyết định ở `FEATURE-DECISIONS.md`. Mốc trước khi sửa ở `_qa/truoc/dot2/`, kết quả sau khi sửa ở `_qa/sau/dot2/` (mỗi bộ một thư mục, có `report.json` và ảnh).
+
+**So với mốc** (so từng giá trị `check`):
+
+| | Trước | Sau |
+|---|---|---|
+| preflight | 0 lỗi · 0 cảnh báo | 0 lỗi · 0 cảnh báo |
+| 13 bộ cũ của App Khách hàng và hub | 170 bước | 170 bước |
+| Bước cũ bị mất · `check` cũ đổi giá trị | | 0 · 0 |
+| Lỗi console · tràn ngang · lỗi chữ | 0 · 0 · 0 | 0 · 0 · 0 |
+
+13 bộ cũ gồm: `cust`, `scan-cust`, `net-cust`, `review-cust`, `resp-customer-1440/768/390`, `lock-cust` ở 1440 và 390, `resp-index-1440/768/390`. App Nhà cung cấp và Trang quản trị không đụng tới file nào nên không chạy lại.
+
+**Bộ mới** `steps-rating-cust.json`, 20 bước, khổ 390 và 1440: 19 bước PASS; bước `order-cancelled-shot` chỉ chụp ảnh và trả tên đơn vị. Trên bản cũ, 14 bước đầu của bộ này báo 13 FAIL; chỉ bước gửi đánh giá qua vì hành vi đó không đổi. Nội dung kiểm:
+- Thẻ trang chủ: tiêu đề khối không xuống dòng; tên đơn vị làm tiêu đề thẻ; không có tên kỹ thuật viên; điểm kèm số đánh giá (312, 188) và có nhãn đọc màn hình; dòng phụ không xuống dòng; bấm thẻ mở hồ sơ đúng đơn vị; bản EN.
+- Màn đánh giá (đơn trọn gói, đơn theo giờ, đơn bảo hành): tiêu đề "Đánh giá dịch vụ"; dòng phụ gồm dịch vụ và đơn vị; không có tên kỹ thuật viên; 4 tiêu chí cao bằng nhau; câu nhắc nêu hồ sơ đơn vị; bản EN.
+- Chi tiết đơn: dòng kỹ thuật viên không có sao, dòng phụ là "Kỹ thuật viên" và không bị cắt; cả màn không có sao; dòng tên đơn vị có icon cửa hàng ở đơn đang làm, đơn theo giờ, đơn đã huỷ.
+- Đơn bảo hành chưa đánh giá: nút "Đánh giá dịch vụ" mở đúng màn; bản EN; gửi đánh giá thì đơn chuyển đã đánh giá và có toast kiểm duyệt.
+- Quét 12 màn × 2 ngôn ngữ: không thẻ, dòng hay khối nào vừa có sao vừa có tên kỹ thuật viên.
+- Điểm trên thẻ trang chủ khớp `data.js` (Phúc An 4,9 (312), Sạch Xanh 4,8 (188)); 20 nút sao đều ≥ 44 × 44 px, 5 sao một hàng, nhãn không xuống dòng ở cả VI và EN; bấm sao thứ 2 thì chỉ sao 2 được chọn.
+
+**Bẻ thử** (chép site sang thư mục tạm, phá 3 chốt, chạy bộ ở khổ 390): điểm Sạch Xanh về 4,9 · nút sao về 34 × 40 · sao về cạnh tên kỹ thuật viên ở chi tiết đơn. Bộ báo 7 FAIL, mỗi chốt ít nhất 1. Trên bản thật, bộ im lặng.
+
+**Sửa cách chạy kiểm:** bước kiểm điểm lúc đầu gọi `VNDATA`, nhưng `customer.html` không nạp `data.js`. Phép kiểm ném lỗi nên không trả giá trị, mà bộ đếm lúc đó chỉ đếm chữ "FAIL". Đã sửa theo 2 hướng: bước này đọc điểm từ `data.js` lúc sinh, và bộ đếm coi mọi bước có `check` mà không trả giá trị là lỗi. Chạy lại cả 15 bộ: không bước nào im lặng.
+
+**UX 12 điểm trên phần sửa:** 12/12.
+- Gần nhau thì liên quan: điểm nằm cùng hàng với tên đơn vị (`customer.js:104`); đơn vị (icon cửa hàng) tách khỏi kỹ thuật viên (avatar người) ở chi tiết đơn (`customer.js:248-249`).
+- Theo quy ước: dạng "4,9 (312)" giống danh sách tìm kiếm và bước chọn nhà cung cấp.
+- Thứ bậc: tên đơn vị 18 px đậm, dòng phụ 13,5 px, nhãn "đã làm cho N nhà" cuối thẻ. Mỗi màn vẫn một nút cam.
+
+**Lỗi có sẵn tìm thấy trong đợt, đã sửa theo lựa chọn ở Cổng 3:**
+- Sạch Xanh Home có điểm 4,9 trên App Khách hàng nhưng 4,8 trên Trang quản trị (`data.js:59`). Nay App Khách hàng lấy 4,8 (`customer.js:12`).
+- Nút sao ở màn đánh giá 34 × 40 px. Nay 44 × 44 px, nhãn tiêu chí nằm trên hàng sao (`customer.js:305`).

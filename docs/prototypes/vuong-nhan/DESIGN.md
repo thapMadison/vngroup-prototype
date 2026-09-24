@@ -9,7 +9,7 @@
 **Dial:** Admin V4 · M3 · D8 — App V6 · M4 · D5 · **Nền:** sáng (một nền cho cả 3 ứng dụng)
 
 ## 1. Không khí
-Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, chữ nâu than, màu chỉ xuất hiện khi có trạng thái cần để ý và ở đúng một nút cam. Hai app mang giọng thương hiệu: khối cam đặc ở đầu trang, lời chào nét đậm, người thợ là nhân vật chính. Một đơn hàng luôn được kể bằng cùng một hình: các mốc nối bằng đường liền.
+Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, chữ nâu than, màu chỉ xuất hiện khi có trạng thái cần để ý và ở đúng một nút cam. Hai app mang giọng thương hiệu: khối cam đặc ở đầu trang, lời chào nét đậm, người thợ là nhân vật chính của hành trình đơn, còn điểm sao và đánh giá luôn thuộc về nhà cung cấp. Một đơn hàng luôn được kể bằng cùng một hình: các mốc nối bằng đường liền.
 
 ## 2. Màu và vai trò
 | Tên | Giá trị (oklch → hex) | Vai trò |
@@ -75,7 +75,7 @@ Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, 
 - **Drawer 440px** (xem, sửa nhanh) · **Modal** (xác nhận) · **Menu "Thao tác khác ▾"** (ít dùng, nguy hiểm cuối, chữ đỏ).
 - **Toast** góc phải trên, tự đóng 3 giây, `role="status"`.
 - **Đang tải / rỗng / lỗi:** skeleton đúng hình (không spinner tròn) · rỗng có câu hướng dẫn + nút · lỗi đặt cạnh chỗ lỗi (mẫu "Giá sàn phải nhỏ hơn giá trần").
-- **Đặc trưng dự án:** thanh 5 điều kiện sẵn sàng nhận đơn · số dư 3 lớp nối bằng đường liền · cây cầu tiền có dấu "✓ Khớp" · đếm ngược thời hạn phản hồi (vàng khi < 5 phút) · khối cam đầu app · thẻ người thợ "đã làm cho N nhà ở phường bạn" · trục giờ đội kỹ thuật viên.
+- **Đặc trưng dự án:** thanh 5 điều kiện sẵn sàng nhận đơn · số dư 3 lớp nối bằng đường liền · cây cầu tiền có dấu "✓ Khớp" · đếm ngược thời hạn phản hồi (vàng khi < 5 phút) · khối cam đầu app · thẻ nhà cung cấp "đã làm cho N nhà ở phường bạn" (ảnh đội, điểm sao kèm số đánh giá) · trục giờ đội kỹ thuật viên.
 
 ## 6. Bố cục
 - **Admin:** thiết kế cho 1440×900, chạy tốt từ 1280. Sidebar 232 + topbar 60. 5 mẫu trang của concept: Tổng quan · Danh sách · Chi tiết (2/3 + 1/3) · Hàng chờ duyệt (danh sách trái, hồ sơ phải, thanh quyết định đáy) · Cấu hình (phạm vi, bảng nhóm, drawer).
@@ -87,6 +87,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 
 ## 8. Cấm riêng của dự án
 - Không viết tắt trên giao diện: NCC, KTV, TK, ĐHXL.
+- App Khách hàng: điểm sao chỉ gắn với nhà cung cấp và luôn kèm số đánh giá; không đặt sao cạnh tên hay ảnh kỹ thuật viên. Khách đánh giá dịch vụ của nhà cung cấp theo từng đơn. Điểm riêng của từng kỹ thuật viên chỉ hiện trong App Nhà cung cấp (#51).
 - Không quá 1 nút cam mỗi màn. Không tạo màu, kiểu badge mới ngoài TONE (không tím, không cam cho badge).
 - Không dùng "ví" cho tiền của khách (MVP không có ví); không hứa hoàn tiền khi khách chưa thanh toán.
 - Không sửa, không xoá bút toán. Không hoàn tiền sau khi đã chi cho nhà cung cấp.
@@ -155,14 +156,14 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 |---|---|---|
 | Giới thiệu 3 trang + xin quyền vị trí, thông báo · chế độ xem khi chưa đăng nhập | Bắt đầu | #3 |
 | Đăng nhập SĐT → OTP (đếm ngược gửi lại, sai mã) | Tiếp tục | #1 |
-| Trang chủ (khối cam, chip ngành, đơn đang chạy, thợ được tin chọn ở phường bạn, đặt lại) | Tìm dịch vụ | #8, #34 |
+| Trang chủ (khối cam, chip ngành, đơn đang chạy, nhà cung cấp tin cậy ở phường bạn, đặt lại) | Tìm dịch vụ | #8, #34 |
 | Danh mục 4 cấp · Tìm kiếm + lọc (bottom sheet) + sắp xếp | Chọn dịch vụ | #9-10 |
 | Chi tiết dịch vụ · Hồ sơ và bảng giá nhà cung cấp | Đặt dịch vụ | #11-12 |
 | Đặt dịch vụ 4 bước: cấu hình (thuộc tính động) → địa chỉ + 2-3 khung giờ → ghi chú + ảnh → chọn tối đa 5 nhà cung cấp | Gửi yêu cầu | #14-17 |
 | Chờ phản hồi realtime (đếm ngược, từng đơn vị xác nhận/từ chối) → So sánh và chọn · ngoài luồng: không ai nhận, hết hạn (gửi lại, đổi giờ, huỷ) | Chọn nhà cung cấp | #19-21 |
 | Đơn của tôi (tab trạng thái) → Chi tiết đơn = hành trình 7 mốc (B) · Nhắn tin · Đồng hồ + duyệt vượt ngưỡng · Huỷ / đổi lịch (hiện hệ quả trước; khoá khi thợ đang làm việc, dưới nút có lý do và lối Gọi tổng đài để CSKH huỷ hộ) | Nghiệm thu | #22-27 |
 | Nghiệm thu (bảng chốt khối lượng, ảnh trước/sau) → Hoá đơn → Thanh toán (thẻ, ví điện tử, QR; màn cổng giả lập; thất bại → thanh toán lại) → Biên nhận | Thanh toán | #28-31 |
-| Đánh giá đa tiêu chí · Mở khiếu nại kèm bằng chứng · Lịch sử giao dịch | Gửi đánh giá | #31-33 |
+| Đánh giá dịch vụ của nhà cung cấp, đa tiêu chí · Mở khiếu nại kèm bằng chứng · Lịch sử giao dịch | Gửi đánh giá | #31-33 |
 | Thông báo · Trợ giúp · Tài khoản (hồ sơ, phiên đăng nhập, sổ địa chỉ + ghim bản đồ, ngôn ngữ và khu vực, xoá tài khoản) | — | #4-7, #35-36 |
 
 ### 10.4 App Nhà cung cấp · `site/provider.html` (mục 38-70)
@@ -187,3 +188,4 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | 24/09/2026 | Tạo | Cổng 1-3, 2 tài liệu mới |
 | 24/09/2026 | §5 thêm kiểu khoá cho nút phụ trong app; §10.3 khoá huỷ, đổi lịch khi thợ đang làm; §10.4 thêm màn Chi tiết giấy tờ | `evolve-site` đợt 1, xem `FEATURE-DECISIONS.md` |
 | 24/09/2026 | §5 thêm kiểu khoá cho nút đỏ trong app và quy tắc phím Esc | Người dùng chọn sửa 2 lỗi có sẵn tìm thấy ở Cổng 3 của `evolve-site` đợt 1 |
+| 24/09/2026 | §1, §5: thẻ người thợ ở trang chủ thành thẻ nhà cung cấp · §8 thêm luật điểm sao chỉ gắn với nhà cung cấp · §10.3 | `evolve-site` đợt 2, xem `FEATURE-DECISIONS.md` |

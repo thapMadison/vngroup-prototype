@@ -1,0 +1,44 @@
+[
+ {
+  "step": "load",
+  "errors": [],
+  "check": null,
+  "dims": null
+ },
+ {
+  "step": "1440-top",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1440-apps",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1440-scn",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ {
+  "step": "1440-cov",
+  "errors": [],
+  "check": "ok",
+  "dims": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ }
+]
