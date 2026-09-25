@@ -1,1 +1,0 @@
-{"steps":[{"name":"panel","js":"document.querySelector(\".dfab\").click()","check":"JSON.stringify(document.querySelector(\".dpanel\").getBoundingClientRect())","shot":"customer-390-panel","jpeg":true}]}

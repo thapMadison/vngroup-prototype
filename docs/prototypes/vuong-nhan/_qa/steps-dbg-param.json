@@ -1,6 +1,0 @@
-{"steps":[
-{"name":"page","js":"ADMIN.S.role='sa';ADMIN.go('parameters',{})","check":"(function(){var c=document.querySelector('.content');var cs=getComputedStyle(c);return JSON.stringify({sh:c.scrollHeight,ch:c.clientHeight,ov:cs.overflowY,h:cs.height,main:getComputedStyle(document.querySelector('.main')).overflow})})()","shot":"dbg-param-page","jpeg":true},
-{"name":"scrolled","js":"var c=document.querySelector('.content');c.scrollTop=5000","check":"document.querySelector('.content').scrollTop","shot":"dbg-param-bottom","jpeg":true},
-{"name":"drawer","js":"document.querySelector('.content').scrollTop=0;document.querySelector('[data-act=paramOpen][data-id=warranty]').click()","check":"(function(){var b=document.querySelector('.drawer .modal-b'),d=document.querySelector('.drawer');var cs=getComputedStyle(b);return JSON.stringify({bsh:b.scrollHeight,bch:b.clientHeight,ov:cs.overflowY,dh:d.clientHeight,dsh:d.scrollHeight,dov:getComputedStyle(d).overflowY,disp:getComputedStyle(d).display,fd:getComputedStyle(d).flexDirection,minh:cs.minHeight})})()","shot":"dbg-param-drawer","jpeg":true},
-{"name":"edit","js":"document.querySelector('.drawer [data-act=paramEdit][data-x=\"1\"]').click()","check":"(function(){var b=document.querySelector('.drawer .modal-b');return JSON.stringify({bsh:b.scrollHeight,bch:b.clientHeight})})()","shot":"dbg-param-edit","jpeg":true}
-]}

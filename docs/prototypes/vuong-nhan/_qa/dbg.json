@@ -1,1 +1,0 @@
-{"steps":[{"name":"a","js":"ADMIN.ACT.scenario({dataset:{id:'2'}});ADMIN.ACT.refundOpen({dataset:{id:'VN-240902'}})","check":"JSON.stringify({modal:ADMIN.S.modal, ov:document.getElementById('ov').innerHTML.slice(0,300)})","shot":"dbg"}]}
