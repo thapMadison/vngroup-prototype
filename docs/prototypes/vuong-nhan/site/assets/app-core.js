@@ -60,7 +60,7 @@
         var tabs = cfg.tabs(a);
         if (tabs) h += '<nav class="tabbar" aria-label="' + L('Điều hướng chính', 'Main navigation') + '">' + tabs.map(function (t) {
           var on = a.S.tab === t[0];
-          return '<button type="button" class="tab' + (on ? ' on' : '') + '" data-act="tab" data-id="' + t[0] + '"' + (on ? ' aria-current="page"' : '') + '>' + ic(on && t[3] ? t[3] : t[2]) + (t[4] ? '<span class="pip">' + t[4] + '</span>' : '') + L(t[1][0], t[1][1]) + '</button>';
+          return '<button type="button" class="tab' + (on ? ' on' : '') + '" data-act="tab" data-id="' + t[0] + '"' + (on ? ' aria-current="page"' : '') + '>' + ic(on && t[3] && VN.theme !== 'xanh-la' ? t[3] : t[2]) + (t[4] ? '<span class="pip">' + t[4] + '</span>' : '') + L(t[1][0], t[1][1]) + '</button>';
         }).join('') + '</nav>';
       }
       if (a.S.sheet && cfg.sheets[a.S.sheet.n]) h += '<div class="a-scrim" data-act="sheetClose"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title">' + cfg.sheets[a.S.sheet.n](a.S.sheet, a) + '</div>';
@@ -80,6 +80,10 @@
       for (var i = 0; i < 4; i++) h += '<div class="a-skr"><i class="sk av"></i><div><i class="sk" style="width:70%"></i><i class="sk" style="width:44%"></i></div></div>';
       return h + '</div>';
     }
+    /* Mục Giao diện trong bảng Demo (đợt 4) */
+    a.themeCtl = function () {
+      return '<div><h3>' + L('Giao diện', 'Theme') + '</h3>' + VN.themeSeg() + '<p class="intro" style="margin-top:6px">' + L('Chỉ đổi màu, chữ và hình khối; dữ liệu và màn đang mở giữ nguyên. Phím tắt Shift+T.', 'Changes colours, type and shapes only; data and the open screen stay. Shortcut Shift+T.') + '</p></div>';
+    };
     a.netCtl = function () {
       return '<div><h3>' + L('Mạng (mô phỏng)', 'Network (simulated)') + '</h3><div class="seg" role="group" aria-label="' + L('Mạng', 'Network') + '" style="margin-top:8px">' + [['ok', 'Bình thường', 'Normal'], ['slow', 'Chậm', 'Slow'], ['off', 'Mất kết nối', 'Offline']].map(function (n) { var on = (a.S.net || 'ok') === n[0]; return '<button type="button" class="' + (on ? 'on' : '') + '" data-act="net" data-id="' + n[0] + '" aria-pressed="' + on + '">' + L(n[1], n[2]) + '</button>'; }).join('') + '</div></div>';
     };
@@ -91,6 +95,7 @@
     ACT.tab = function (el) { a.S.tab = el.dataset.id; a.root(cfg.tabRoot ? cfg.tabRoot(el.dataset.id, a) : el.dataset.id); };
     ACT.sheetClose = function () { a.closeSheet(); };
     ACT.lang = function (el) { a.S.lang = +el.dataset.id; a.render(); };
+    ACT.theme = function (el) { VN.setTheme(el.dataset.id); };
     ACT.net = function (el) { a.S.net = el.dataset.id; a.loading = false; a.load(); a.render(); };
     ACT.netRetry = function () { a.S.net = 'ok'; a.load(700); a.render(); setTimeout(function () { a.toast(L('Đã kết nối lại', 'Back online')); }, 720); };
     ACT.demoToggle = function () { demo.classList.toggle('open'); };
@@ -119,6 +124,7 @@
         }
         if (sh) VN.trap(e, sh);
       });
+      VN.onTheme = function () { a.render(); a.toast(L('Đã chuyển sang giao diện ', 'Switched to the ') + VN.themeName() + L('', ' theme')); };
       var q = new URLSearchParams(location.search);
       if (q.get('lang') === 'en') a.S.lang = 1;
       if (cfg.boot) cfg.boot(a, q);

@@ -43,6 +43,58 @@ Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, 
 
 **Tương phản đã đo (trên trắng):** chữ chính 16,5:1 · chữ mờ 6,0:1 · chữ nhạt 4,9:1 · chữ trắng trên cam 4,67:1 · mọi cặp TONE ≥ 5,6:1 · bảng màu biểu đồ qua validator dataviz (5/5 phép kiểm).
 
+## 2b. Hai theme: Cam đất và Xanh lá (đợt 4)
+**Tên:** **Cam đất** (EN Terracotta, mã `cam-dat`) là bản dựng đầu, mặc định. **Xanh lá** (EN Leaf green, mã `xanh-la`) theo nhận diện VN Group trong pitch deck. Tên chốt ở Cổng 3 đợt 4, thay tên tạm "Bản gốc" và "VN Group".
+**Bật Xanh lá:** `?theme=xanh-la` (link cũ `?theme=vngroup` vẫn mở Xanh lá) · mục **Giao diện** đầu bảng Demo của 3 ứng dụng · nút **Cam đất | Xanh lá** cạnh VI/EN ở Hub · phím **Shift+T** (bỏ qua khi đang gõ trong ô nhập). Mặc định là Cam đất.
+**Cách chạy:**
+- Đổi tức thì, không tải lại trang; dữ liệu, vai trò và màn đang mở giữ nguyên.
+- Lựa chọn ghi vào địa chỉ (F5 vẫn giữ) và đi theo mọi link giữa Hub và 3 ứng dụng; không dùng localStorage.
+- Hub đổi luôn ảnh chụp 3 ứng dụng (`assets/shots/*-xanh-la.jpg`).
+
+**Nguồn:** `requirement/VN Group - Prototype UI Theme Prompt.md`.
+
+| Vai trò | Cam đất | Xanh lá |
+|---|---|---|
+| Nền trang / nền quanh khung | Giấy ấm / `#ECEBE9` | `#FAF8F3` / `#F1F5EE` |
+| Thẻ · viền · kẻ dòng · đầu bảng | trắng · Viền · Kẻ dòng · xám rất nhạt | trắng · `#E3E8E1` · `#E3E8E1` · `#F1F5EE` |
+| Chữ chính · cấp hai · mờ | nâu than · `#514C48` · `#68625E` | `#16261B` · `#4A5A4F` · `#627168` (prompt ghi `#6B7A70`, chỉ 4,26:1 trên nền) |
+| Nút chính (1 nút mỗi màn) | cam `#D24100` chữ trắng | cam `#FA8822` chữ `#16261B` (6,5:1), hover `#F07B12`, dạng viên |
+| Nút phụ | trắng viền, chữ than | trắng viền, chữ `#1F7A33` |
+| Chọn, focus, tiến độ | cam | `#37B34A`; mục được chọn trong danh sách viền 2px, nền `#E6F4E8` |
+| Liên kết, tab đang chọn, nền đặc của mục đang chọn | cam đậm, than | `#1F7A33` |
+| Thanh tiêu đề app và thanh giờ phía trên | nền giấy | `#1F7A33`, chữ và icon trắng (5,4:1) |
+| Tab dưới đang chọn | chữ cam, icon đặc | chữ `#1F7A33`, icon nét trong viên `#E6F4E8` |
+| Khối đầu Trang chủ App Khách hàng | cam đặc | `#1F7A33` phẳng, chip ngành nền xanh sẫm để chữ trắng đạt tương phản |
+| Dải màu `#14532D → #1F7A33 → #37B34A → #FA8822` | không có | chỉ phần đầu Hub (khổ ≤ 980 px chạy dọc) và khung minh hoạ màn giới thiệu |
+| Menu trái Trang quản trị | trắng | `#1F7A33`; chữ trắng 90% (prompt ghi 60%, chỉ 3,0:1); mục đang chọn là viên trắng chữ `#1F7A33` (5,4:1); logo trên nền trắng bo 12 |
+| Số KPI | chữ than | `#1F7A33`; KPI "Cần chú ý" giữ đỏ |
+| Nhãn chữ hoa (`.lbl`, đầu bảng Demo, nhãn Hub) | xám | `#C2410C`, đậm 700, giãn .12em |
+| TONE success · warning · danger | như bảng trên | `#1F7A33`/`#E6F4E8` · `#C2410C`/`#FFF1E4` (4,67:1) · `#B42318`/`#FEF3F2` |
+| TONE info, slate, neutral; vòng "đang ở đây" | như bảng trên | giữ như Cam đất (prompt không định nghĩa) |
+| Sao · ghim đích · số trên tab · cột kỳ hiện tại | vàng · cam | `#FA8822` (số trên tab chữ tối) |
+| Biểu đồ | xanh dương · tím · hồng; heatmap xanh dương | GMV `#37B34A` · hoa hồng `#14532D` · thuế `#FA8822` (luôn kèm nhãn); heatmap 6 bậc `#E6F4E8 → #14532D`; lưới `#E3E8E1` |
+| Bóng | nhuốm nâu; thẻ Trang quản trị không bóng | nhuốm xanh `rgba(22,38,27,…)`; mọi thẻ `0 4px 16px /.06` |
+
+**Chưa theo prompt, có chủ ý:**
+- **Chữ thân:** giữ `#16261B` (prompt: `#4A5A4F`) vì số tiền, tên người và mã đơn nằm trong chữ thân; mọi chỗ vốn dùng chữ cấp hai vẫn là `#4A5A4F`.
+- **Logo:** không thêm vào màn giới thiệu, đăng nhập của app, vì thêm là đổi cấu trúc màn.
+- **Viền ô nhập:** `#D5DDD2`, đậm hơn `#E3E8E1` một bậc để còn thấy khung.
+
+**Tách token (đợt 4):**
+- **Chỗ đặt giá trị:** mọi màu, bóng, font của Cam đất đi qua token trong `:root` của `tokens.css`; Xanh lá đổi giá trị ở khối `:root[data-theme="xanh-la"]` cuối file.
+- **Token vai trò mới:**
+  - Nút: `--cta*` (nút chính), `--btn2-ink`, `--primary-solid`, `--fill-strong`.
+  - Chấm và focus: `--dot`, `--ring`, `--tab-line`.
+  - Bảng và thẻ: `--th-*`, `--row-hover`, `--card-shadow`, `--eyebrow-ink`.
+  - Khu vực: `--appbar-*`, `--hero-bg`, `--onb-ic`, `--side-*` (menu trái), `--hub-*`.
+  - Biểu đồ, dòng thời gian, thông báo, bóng: `--chart-*`, `--heat-*`, `--now*`, `--todo-*`, `--toast-*`, `--shadow-*`.
+- **Bo góc và độ đậm** dùng dạng `var(--tên, giá-trị-gốc)`: Cam đất không khai báo nên mỗi chỗ giữ giá trị riêng, Xanh lá khai báo một lần là đổi hết. Gồm `--r-btn --r-input --r-chip --r-opt --r-ico --r-nav --r-pro --r-modal --r-card-hub --w-title --w-section --w-num --eyebrow-w --eyebrow-ls`.
+- **Phần không diễn được bằng token** nằm trong khối `Theme Xanh lá` cuối `tokens.css`, `app.css`, `admin.css`, `index.html`: viền 2px, viên tab, thanh giờ xanh, nền logo.
+- **Kiểm:**
+  - `_qa/check_tokens.py` thay token về giá trị gốc rồi so với git.
+  - `_qa/gen_style.py` băm style tính toán ở 278 trạng thái.
+  - `_qa/gen_theme.py` kiểm bộ chọn và tương phản cả 2 theme.
+
 ## 3. Chữ
 | Vai | Font | Trọng lượng | Cỡ | Ghi chú |
 |---|---|---|---|---|
@@ -58,12 +110,20 @@ Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, 
 
 **Đã kiểm dấu tiếng Việt:** `preflight.py --font` → Be Vietnam Pro `VI` · JetBrains Mono `VI`.
 
+**Theme Xanh lá:**
+- **Font:** Plus Jakarta Sans 400-800 cho mọi chữ, kể cả mã đơn và đồng hồ (thay JetBrains Mono; số dùng tabular-nums).
+- **Độ đậm:** tiêu đề trang, tiêu đề màn, tiêu đề hộp thoại 800; tiêu đề khối 700; số KPI, giá, số dư, đồng hồ 800.
+- **Kiểm dấu:** `preflight.py --font "Plus Jakarta Sans"` → `VI`.
+
 ## 4. Hình khối
 - **Bo góc:** Admin: ô nhập, nút 8 · thẻ 12 · khung 14. App: ô nhập 12-14 · thẻ 16-20 · khung điện thoại 48. Badge, chip, pill 999.
 - **Bóng:** nhuốm nâu `rgba(40,30,20,…)`, khuếch tán. Thẻ Admin không bóng (chỉ viền 1px). Menu thả `0 10px 30px /.12`. Drawer `-12px 0 40px /.18`, lớp phủ `rgba(30,24,18,.28)`.
 - **Icon:** Phosphor Regular (tab đang chọn dùng Fill), nhúng sprite SVG, cỡ 16-18 Admin, 20-24 app.
 - **Khoảng cách:** bước 4: 4 · 8 · 12 · 16 · 24 · 32. Trong nhóm 8-12, giữa nhóm 24-32.
 - **Chiều cao:** control 36 · nút quyết định 40 (app 46-52) · dòng bảng 50 · vùng chạm app ≥ 44.
+- **Theme Xanh lá:** bo góc thay đổi, kích thước giữ nguyên.
+  - Dạng viên 999: nút, chip, khung giờ, bộ chọn, mục menu trái, phân trang, nút icon.
+  - Ô nhập 12. Thẻ 20 (app 16). Hộp thoại và tìm nhanh 20. Ô icon và avatar vuông 16. Lựa chọn trong app 16.
 
 ## 5. Component
 - **Nút:** chính = nền cam chữ trắng, tối đa 1/màn, góc phải hoặc đáy (app). Phụ = trắng viền. Chữ = link cam. Nguy hiểm = chữ đỏ, đặt xa nút chính, luôn mở hộp xác nhận có lý do. Không có quyền = khoá + tooltip lý do. Nút phụ và nút đỏ bị khoá trong app mờ 45% (`.abtn.sec2[aria-disabled]`, `.abtn.dz[aria-disabled]`, cùng quy ước với chip và nút Admin), và vì điện thoại không có tooltip nên luôn kèm dòng lý do `note-line` ngay dưới nút.
@@ -76,6 +136,9 @@ Admin là một bàn làm việc ấm và ngăn nắp: trung tính màu giấy, 
 - **Bảng chọn dòng + panel thao tác** (đối soát tiền mặt): bảng trái, panel phải rộng tối thiểu 360px; dòng chọn dùng `tr.sel`, bấm hoặc Enter để chọn; panel trượt `slide` 150ms chỉ ở lần vẽ ngay sau khi đổi dòng. Form trong panel báo lỗi khi bấm nút (ô đỏ, lời lỗi dưới ô, focus vào ô lỗi đầu tiên).
 - **Tiền mặt:** icon `money` (Phosphor, thêm vào sprite ở đợt 3) · viên "Tiền mặt" dùng TONE neutral ở Trang quản trị, slate ở App Khách hàng · lớp "Công nợ tiền mặt" trong số dư dùng `.pk.hold` (chấm đỏ).
 - **Toast** góc phải trên, tự đóng 3 giây, `role="status"`.
+- **Giao diện (đợt 4):** hai theme chạy song song (§2b).
+  - Bộ chọn chỉ ở bảng Demo (mục đầu tiên) và Hub, vì đây là lựa chọn khi duyệt prototype, không thuộc sản phẩm.
+  - Đổi trong 3 ứng dụng có toast "Đã chuyển sang giao diện …".
 - **Đang tải / rỗng / lỗi:** skeleton đúng hình (không spinner tròn) · rỗng có câu hướng dẫn + nút · lỗi đặt cạnh chỗ lỗi (mẫu "Giá sàn phải nhỏ hơn giá trần").
 - **Đặc trưng dự án:** thanh 5 điều kiện sẵn sàng nhận đơn · số dư 3 lớp nối bằng đường liền · cây cầu tiền có dấu "✓ Khớp" · đếm ngược thời hạn phản hồi (vàng khi < 5 phút) · khối cam đầu app · thẻ nhà cung cấp "đã làm cho N nhà ở phường bạn" (ảnh đội, điểm sao kèm số đánh giá) · trục giờ đội kỹ thuật viên.
 
@@ -90,7 +153,10 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 ## 8. Cấm riêng của dự án
 - Không viết tắt trên giao diện: NCC, KTV, TK, ĐHXL.
 - App Khách hàng: điểm sao chỉ gắn với nhà cung cấp và luôn kèm số đánh giá; không đặt sao cạnh tên hay ảnh kỹ thuật viên. Khách đánh giá dịch vụ của nhà cung cấp theo từng đơn. Điểm riêng của từng kỹ thuật viên chỉ hiện trong App Nhà cung cấp (#51).
-- Không quá 1 nút cam mỗi màn. Không tạo màu, kiểu badge mới ngoài TONE (không tím, không cam cho badge).
+- Không quá 1 nút cam mỗi màn, ở cả hai theme.
+- Không tạo màu hay kiểu badge mới ngoài TONE.
+  - Cam đất: không tím, không cam cho badge.
+  - Xanh lá: TONE warning là cam đậm `#C2410C` trên `#FFF1E4` theo theme prompt (người dùng chọn ở Cổng 2 đợt 4). Vẫn không có badge nền cam đặc.
 - Không dùng "ví" cho tiền của khách (MVP không có ví); không hứa hoàn tiền khi khách chưa thanh toán.
 - Không sửa, không xoá bút toán. Không hoàn tiền sau khi đã chi cho nhà cung cấp.
 - Không gạch dài trong chữ hiển thị; khoảng giờ viết `08:00-10:00`. Không emoji, không ký tự ★ (dùng icon).
@@ -183,7 +249,7 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | Kỹ thuật viên | Việc: Lên đường → Đã đến (check-in GPS, bán kính) → Ảnh trước → Bắt đầu (đồng hồ) → Kết thúc: khối lượng + ảnh sau → gửi bảng chốt · Báo sự cố / khách vắng mặt / dừng giữa chừng · Nhắn tin. Đơn tiền mặt: sau nghiệm thu có bước Xác nhận thu tiền mặt (thẻ số tiền, Đã thu đủ tiền mặt hoặc báo không thu được, mỗi nút một sheet xác nhận) rồi Hoàn thành | Bước kế tiếp | #58-63 |
 | Cả hai | Chuyển vai trò/đơn vị · thông báo · trợ giúp · ngôn ngữ | — | #68, #70 |
 
-**Kỹ thuật:** HTML + CSS thuần (CSS variables) + JavaScript thuần, không Tailwind, không framework; font Google Fonts; icon sprite nhúng sẵn. Chạy bằng cách mở file, không cần máy chủ; đăng được thành Artifact.
+**Kỹ thuật:** HTML + CSS thuần (CSS variables) + JavaScript thuần, không Tailwind, không framework; font Google Fonts (Be Vietnam Pro, JetBrains Mono, Plus Jakarta Sans cho theme Xanh lá); icon sprite nhúng sẵn. Chạy bằng cách mở file, không cần máy chủ; đăng được thành Artifact.
 
 ## Lịch sử
 | Ngày | Đổi gì | Vì sao |
@@ -193,3 +259,4 @@ Admin ≤ 200ms, chỉ để phản hồi: drawer trượt 180ms, modal mờ d�
 | 24/09/2026 | §5 thêm kiểu khoá cho nút đỏ trong app và quy tắc phím Esc | Người dùng chọn sửa 2 lỗi có sẵn tìm thấy ở Cổng 3 của `evolve-site` đợt 1 |
 | 24/09/2026 | §1, §5: thẻ người thợ ở trang chủ thành thẻ nhà cung cấp · §8 thêm luật điểm sao chỉ gắn với nhà cung cấp · §10.3 | `evolve-site` đợt 2, xem `FEATURE-DECISIONS.md` |
 | 24/09/2026 | §5 thêm mẫu bảng chọn dòng + panel thao tác và quy ước tiền mặt · §9 thêm dòng Tiền mặt · §10.2 Đối soát 2 tab con, 17 kịch bản, quyền ghi nhận chuyển khoản tiền mặt · §10.3 đặt 5 bước, đơn tiền mặt · §10.4 thu tiền mặt, công nợ | `evolve-site` đợt 3, xem `FEATURE-DECISIONS.md` |
+| 25/09/2026 | §2b hai theme Cam đất (mặc định) và Xanh lá chạy song song, tách token toàn bộ · §3, §4 phần Xanh lá · §5 bộ chọn giao diện · §8 luật badge theo theme · Kỹ thuật: thêm font | `evolve-site` đợt 4, xem `FEATURE-DECISIONS.md` |

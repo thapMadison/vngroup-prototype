@@ -313,7 +313,7 @@
     [17, ['Đối soát tiền mặt', 'Cash reconciliation'], ['VN-240931 thu tiền mặt → ghi nhận chuyển khoản 76.500 ₫', 'VN-240931 paid in cash → record the 76,500 ₫ transfer'], 'acc', 'transactions', { tab: 'recon', rs: 'cash' }, 'cash31'],
   ];
   function demoPanel() {
-    var h = '<div class="demo-panel" role="dialog" aria-label="Demo"><div><h3>' + L('Xem với vai trò', 'View as') + '</h3><div class="roles" style="margin-top:8px">';
+    var h = '<div class="demo-panel" role="dialog" aria-label="Demo"><div><h3>' + L('Giao diện', 'Theme') + '</h3>' + VN.themeSeg() + '<p class="subtle" style="margin:6px 0 0;font-size:12px;line-height:1.45">' + L('Chỉ đổi màu, chữ và hình khối; dữ liệu, vai trò và màn đang mở giữ nguyên. Phím tắt Shift+T.', 'Changes colours, type and shapes only; data, role and the open screen stay. Shortcut Shift+T.') + '</p></div><div><h3>' + L('Xem với vai trò', 'View as') + '</h3><div class="roles" style="margin-top:8px">';
     Object.keys(A.ROLES).forEach(function (k) { var r = A.ROLES[k], a = A.acctOf ? A.acctOf(r.email) : null; h += '<button type="button" class="' + (A.S.role === k ? 'on' : '') + '" data-act="role" data-id="' + k + '">' + A.roleLabel(A.personaRole(k)) + '<small>' + esc(a ? a.name : r.name) + (a && a.st === 'disabled' ? ' · ' + L('đã vô hiệu hoá', 'disabled') : '') + '</small></button>'; });
     h += '</div></div><div><h3>' + L('Mạng (mô phỏng)', 'Network (simulated)') + '</h3><div class="seg" role="group" aria-label="' + L('Mạng', 'Network') + '" style="margin-top:8px">' + [['ok', 'Bình thường', 'Normal'], ['slow', 'Chậm', 'Slow'], ['off', 'Mất kết nối', 'Offline']].map(function (n) { var on = (A.S.net || 'ok') === n[0]; return '<button type="button" class="' + (on ? 'on' : '') + '" data-act="net" data-id="' + n[0] + '" aria-pressed="' + on + '">' + L(n[1], n[2]) + '</button>'; }).join('') + '</div><p class="subtle" style="margin:6px 0 0;font-size:12px;line-height:1.45">' + L('Chậm: mỗi trang hiện khung chờ 0,9 giây. Mất kết nối: xem trạng thái lỗi và nút Thử lại.', 'Slow: each page shows a 0.9 s skeleton. Offline: see the error state and Retry.') + '</p></div><div><h3>' + L('Kịch bản', 'Scenarios') + '</h3><div class="scn" style="margin-top:6px">';
     A.SCENARIOS.forEach(function (s) {
@@ -347,6 +347,7 @@
   ACT.nav = function (el) { A.S.demo = false; var id = el.dataset.id, x = el.dataset.x; A.go(id, x ? { tab: x } : {}); };
   ACT.back = function () { A.back(); };
   ACT.lang = function (el) { VN.lang = +el.dataset.id; A.render(); };
+  ACT.theme = function (el) { VN.setTheme(el.dataset.id); };
   ACT.menu = function (el) { var id = el.dataset.id; A.S.menu = A.S.menu === id ? null : id; A.render(); };
   ACT.closeMenu = function () { A.S.menu = null; A.render(); };
   ACT.net = function (el) { A.S.net = el.dataset.id; A.S.loading = false; A.load(); A.render(); };
@@ -422,6 +423,7 @@
     document.addEventListener('click', function (e) {
       if (A.S.menu && !e.target.closest('.menu') && !e.target.closest('[data-act="menu"]')) { A.S.menu = null; A.render(); }
     }, true);
+    VN.onTheme = function () { A.render(); A.toast(L('Đã chuyển sang giao diện ', 'Switched to the ') + VN.themeName() + L('', ' theme')); };
     var q = new URLSearchParams(location.search);
     if (q.get('role') && A.ROLES[q.get('role')]) A.S.role = q.get('role');
     if (q.get('lang') === 'en') VN.lang = 1;

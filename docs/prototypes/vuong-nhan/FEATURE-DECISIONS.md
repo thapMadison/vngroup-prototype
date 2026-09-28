@@ -49,7 +49,135 @@
 
 ---
 
-## Đợt 3: Thanh toán tiền mặt (3 ứng dụng) — Ngày: 24/09/2026
+## Đợt 4: Hai theme chạy song song, Cam đất và Xanh lá (3 ứng dụng + Hub) · Ngày: 25/09/2026
+
+> Tên chốt ở Cổng 3 (lượt 1): "Bản gốc" thành **Cam đất** (EN Terracotta, mã `cam-dat`, mặc định); "VN Group" thành **Xanh lá** (EN Leaf green, mã `xanh-la`). Câu hỏi và đáp án ở Cổng 1, Cổng 2 giữ nguyên văn với tên tạm cũ.
+
+**Yêu cầu (nguyên văn):**
+> dùng /evolve-site để tạo thêm 1 theme cho bản prototype này. 2 theme chạy song song, user có thể lựa chọn 1 trong 2 theme.
+> file theme mới: VN Group - Prototype UI Theme Prompt.md
+
+### Bối cảnh & Mục tiêu
+- **Khai báo:** `Cấp 3 · cờ: T, C · vì thêm một lớp giao diện thứ hai phủ cả 4 trang (token, font, hình khối, component) và bộ chọn theme trên mọi trang; sửa tokens.css và core.js dùng chung` · nâng cấp giữa chừng: không.
+- **Màn hình liên quan:** cả 4 trang (`index.html`, `admin.html`, `customer.html`, `provider.html`).
+- **Nguồn yêu cầu:**
+  - Phần hình ảnh lấy từ `requirement/VN Group - Prototype UI Theme Prompt.md`. Prompt viết "Re-theme the entire prototype", nhưng câu lệnh chỉ định 2 theme chạy song song nên theo câu lệnh.
+  - Bộ chọn theme không có trong estimation #1-109, nên nguồn là câu lệnh. Cờ Y không bật vì người dùng chọn đặt bộ chọn ở bảng Demo, không thuộc sản phẩm.
+- **Mốc trước khi sửa:**
+  - Bộ kiểm: `_qa/truoc/dot4/` gồm 41 bộ, 0 lỗi console, 0 FAIL, 2 lần tràn ngang có sẵn và cố ý (bước "Vẫn xem, cuộn ngang" của Trang quản trị ở 768 và 390).
+  - Preflight: 4 file, 0 lỗi, 0 cảnh báo.
+  - Style tính toán: `_qa/truoc/dot4-style*` (278 trạng thái).
+
+**Phát hiện khi đối chiếu (B1):**
+
+| # | Phát hiện | Bằng chứng |
+|---|---|---|
+| 1 | Màu gần như chỉ nằm trong CSS; JS có 9 chỗ gõ cứng | `admin-fin1.js:89-97` (lưới, trục biểu đồ), `admin-fin2.js` 2 dòng chi thất bại, `customer.js`, `provider.js` (viền cam duyệt vượt ước tính, nút gửi tin) |
+| 2 | Prompt tự vi phạm luật tương phản §6 của chính nó | chữ mờ `#6B7A70` trên nền `#FAF8F3` 4,26:1 · menu trái trắng 60% trên `#1F7A33` 3,0:1 · chữ trắng trên viên sáng 3,97:1 |
+| 3 | Badge "chờ" màu cam trong prompt trái DESIGN §8 "không cam cho badge" | Prompt mục 4, DESIGN §8 |
+| 4 | Plus Jakarta Sans có đủ dấu tiếng Việt | `preflight.py --font "Plus Jakarta Sans"` → `VI` |
+| 5 | Ngôn ngữ đi theo URL `?lang=en`; dự án cấm localStorage | `app-core.js:123`, `admin-shell.js:427`, AGENTS.md |
+| 6 | Prompt không định nghĩa badge đang chạy, đã sắp xếp, trung tính, biểu đồ loạt 2-3, heatmap | Prompt mục 1, 4, 5 |
+
+---
+
+### 🛑 Cổng 1 · Vị trí & Lối vào
+| Hạng mục | Phương án đề xuất | Quyết định của người dùng (nguyên văn) |
+|---|---|---|
+| Lối vào chính | Bảng Demo + Hub (Khuyến nghị) · Trong cài đặt sản phẩm (cờ Y) · Cả hai | "Bảng Demo + Hub (Khuyến nghị)" |
+| Theme mặc định khi URL không có tham số | Bản gốc (Khuyến nghị) · VN Group | "Bản gốc (Khuyến nghị)" |
+| Lối vào nhanh | Tham số URL, mang theo (Khuyến nghị) · URL + phím tắt Shift+T · Chỉ bộ chọn, không mang theo | "URL + phím tắt Shift+T" |
+
+### 🛑 Cổng 2 · Phương án hiển thị
+| Hạng mục | Phương án đề xuất | Quyết định của người dùng (nguyên văn) |
+|---|---|---|
+| Phương án tích hợp *(kèm bảng token và 3 chỗ lệch vì tương phản)* | A · Lớp phủ riêng (Khuyến nghị) · B · Tách token toàn bộ | "B · Tách token toàn bộ" |
+| Badge "chờ" trong theme VN Group *(cờ T, trái DESIGN §8)* | Cam theo prompt (Khuyến nghị) · Giữ vàng của Bản gốc | "Cam theo prompt (Khuyến nghị)" |
+| Dải màu `#14532D → #FA8822` dùng ở đâu | Hub + màn giới thiệu (Khuyến nghị) · Cả Trang chủ app | "Hub + màn giới thiệu (Khuyến nghị)" |
+
+**Token mới *(cờ T, duyệt cùng phương án B)*:** bảng ở `DESIGN.md` §2b.
+
+**Ba chỗ lệch khỏi prompt vì tương phản, đã trình ở Cổng 2:**
+- Chữ mờ `#627168`.
+- Menu trái chưa chọn trắng 90%.
+- Mục đang chọn là viên trắng chữ xanh đậm.
+
+**Suy ra, không hỏi, ghi lại:**
+- **Giữ như Cam đất:** badge info, slate, neutral và vòng "đang ở đây", vì prompt không định nghĩa.
+- **Biểu đồ:** GMV `#37B34A`, hoa hồng `#14532D`, thuế `#FA8822`; heatmap 6 bậc xanh lá.
+- **Viền ô nhập:** `#D5DDD2`, đậm hơn viền thẻ một bậc để còn thấy khung.
+- **Chữ thân:** giữ màu chữ chính, không theo `#4A5A4F` của prompt.
+- **Logo:** không thêm vào màn giới thiệu và đăng nhập của app, vì thêm là đổi cấu trúc.
+- **Tab dưới:** tab đang chọn dùng icon nét, không đổi sang icon đặc, theo prompt "one outline icon style".
+
+### 🛑 Cổng 3 · Nghiệm thu tích hợp
+**Các file đã sửa / tạo mới:**
+- `site/assets/tokens.css`: 104 token vai trò trong `:root` (giá trị Bản gốc); khối `Theme VN Group` cuối file (giá trị VN Group và 4 luật riêng). Mọi màu, bóng, bo góc, độ đậm của thành phần chung đi qua token.
+- `site/assets/app.css`, `site/assets/admin.css`: thay giá trị gõ cứng bằng token; khối `Theme VN Group` cuối file:
+  - App: thanh giờ xanh, viên tab, bóng thẻ, chip ngành, khung minh hoạ.
+  - Trang quản trị: nền logo, KPI xanh, bóng khối nhóm, số đếm tab con.
+- `site/assets/core.js`: `VN.theme`, `VN.setTheme`, `VN.themeSeg`, giữ theme khi bấm link, Shift+T.
+- `site/assets/admin-shell.js`, `site/assets/app-core.js`: mục Giao diện đầu bảng Demo, `ACT.theme`, toast khi đổi. `app-core.js` thêm icon nét cho tab đang chọn ở VN Group.
+- `site/assets/customer.js`, `site/assets/provider.js`: gọi mục Giao diện trong bảng Demo; 5 màu gõ cứng thành token; khung minh hoạ màn giới thiệu có móc `onb-art`.
+- `site/assets/admin-fin1.js`, `site/assets/admin-fin2.js`: màu biểu đồ và dòng chi thất bại thành token.
+- `site/admin.html`, `site/customer.html`, `site/provider.html`: font Plus Jakarta Sans; đặt `data-theme` sớm trong `<head>` để không nháy.
+- `site/index.html`:
+  - Nút Bản gốc | VN Group cạnh VI/EN; link mang theo theme; Shift+T.
+  - Ảnh 3 ứng dụng và alt đổi theo theme.
+  - Dòng hướng dẫn ở "Cách chạy"; dải màu dọc ở khổ ≤ 980 px.
+- `site/assets/shots/{admin,customer,provider}-xanh-la.jpg`: ảnh chụp mới cho Hub.
+- `DESIGN.md` (§2b, §3, §4, §5, §8, Kỹ thuật, Lịch sử) · `DECISIONS.md` · `_qa/QA.md` §14.
+- QA:
+  - Tạo mới `_qa/check_tokens.py`, `_qa/gen_style.py`, `_qa/cmp_style.py`, `_qa/gen_theme.py`, `_qa/break_test_theme.py`, `steps-style-*.json`, `steps-theme-*.json`.
+  - `_qa/run.mjs` nhận `QA_QUERY` (chạy lại mọi bộ trên Xanh lá).
+  - `_qa/run_all.py` thêm 7 bộ theme.
+
+**Kết quả tự kiểm hồi quy** (chi tiết ở `_qa/QA.md` §14):
+- **So với mốc:**
+  - Cam đất: 40 bộ cũ 819/819 bước; 0 bước mất; 0 lỗi console; 2 lần tràn ngang có sẵn, không đổi. Giá trị `check` đổi: 0 ở lần chạy trước khi đổi tên; 1 ở lần chạy cuối, là số giây của đồng hồ đếm ngược chạy thật (`scroll-prov`, 250 → 251), lệch theo lúc chạy.
+  - Xanh lá: 40 bộ chạy lại bằng `QA_QUERY=?theme=xanh-la`, 819 bước, 0 FAIL, 0 lỗi console, 0 lỗi chữ. 2 số đo đổi do font (vùng cuộn 1020 → 1018 px, 663 → 644 px), vẫn cuộn được.
+- **Cam đất không lệch khi tách token:**
+  - Kiểm tĩnh: 0 token cũ đổi giá trị; CSS của Cam đất trùng git sau khi thay token.
+  - Băm style tính toán ở 278 trạng thái: pha 1 trùng khít; pha 2 trùng khít, trừ 1 bước vốn tự lệch giữa 2 lần chạy và 3 phần tử của dòng ghi chú mới ở Hub.
+- **Bộ theme mới:** 144 bước ở 7 bộ, 0 FAIL, ở 1440 và 390; có bước link cũ `?theme=vngroup` mở Xanh lá.
+- **Tương phản Xanh lá:** 66 trạng thái, 4.045 lượt chữ, 0 dưới AA.
+- **Bẻ thử:** 5/5.
+- **Kiểm cơ giới:** preflight 0 lỗi, 0 cảnh báo.
+- **Kiểm theo bước B4:**
+  - Thoát hiểm 2 chiều: không áp dụng (không thêm lớp phủ).
+  - 5 trạng thái của bộ chọn: bình thường · hover/focus · đang tải (font `display=swap`) · rỗng và lỗi không áp dụng.
+  - UX 12/12.
+  - Phân quyền: không áp dụng (mọi vai thấy như nhau).
+  - Cờ C: `tokens.css` và `core.js` dùng ở 4 trang, cả 47 bộ đã chạy lại.
+- **Lỗi tương phản có sẵn ở Cam đất, không đụng:**
+  - Chữ gợi ý ô tìm kiếm Trang quản trị: 4,49:1.
+  - Heatmap bậc 4: 3,64:1.
+  - Chip ngành trên khối cam: 3,83:1.
+  - Khối "Một đơn, ba góc nhìn" ở Hub: 3,95:1.
+- **Sự cố môi trường:**
+  - Commit `3869617` xoá `_qa` khỏi remote; `git pull` trong phiên xoá 880 file `_qa` trên đĩa.
+  - Đã khôi phục lên đĩa từ `8b00f17`: không ghi đè, không đụng index; `_qa/` đã nằm trong `.gitignore`.
+
+**Cổng 3, lượt 1 (nguyên văn):**
+- "Nghiệm thu đợt theme VN Group chạy song song thế nào?" → "sửa tên của theme lại. Không nên để là Bản gốc + VN Group. Nên là tên khác cho 2 theme theo chủ đề của từng theme."
+- "Có sửa 4 lỗi tương phản có sẵn ở Bản gốc không? Sửa thì Bản gốc đổi nhẹ ở đúng chỗ đó." → "Không sửa (Khuyến nghị)"
+- "Thư mục _qa (880 file) tôi đã khôi phục lên đĩa sau khi lệnh pull xóa. Giữ hay bỏ?" → "Giữ trên máy (Khuyến nghị)"
+
+**Hỏi thêm để làm theo lượt 1 (nguyên văn):**
+- "Đặt tên 2 theme thế nào (VI · EN)?" → "Cam đất · Xanh lá (Khuyến nghị)"
+- "Tham số trên đường dẫn có đổi theo tên mới không?" → "Đổi theo tên mới (Khuyến nghị)"
+
+**Đã làm theo lượt 1:**
+- **Tên hiển thị:** "Cam đất / Terracotta" và "Xanh lá / Leaf green" (`VN.themeName`, nút ở Hub); toast "Đã chuyển sang giao diện Xanh lá".
+- **Mã:** `cam-dat` (mặc định, không ghi vào địa chỉ) và `xanh-la` (`?theme=xanh-la`, `data-theme="xanh-la"`).
+  - Link cũ `?theme=vngroup` vẫn mở Xanh lá (`VN.themeOf`, thẻ `<head>` của 4 trang, script Hub).
+- **Tên khối và ảnh:** khối CSS đổi tên `Theme Xanh lá`; ảnh Hub thành `*-xanh-la.jpg`.
+- **Không đụng tên thương hiệu:** logo `vngroup-logo.png`, email `@vngroup.info`, chữ "VN Group" ở alt logo và chân trang.
+- **Không sửa 4 lỗi tương phản có sẵn của Cam đất.** Giữ `_qa` trên máy.
+- **Chạy lại toàn bộ:** Cam đất 47 bộ (963 bước) và Xanh lá 40 bộ (819 bước), 0 FAIL, 0 lỗi console; kiểm tĩnh, preflight, bẻ thử 5/5 như trên.
+
+**Quyết định nghiệm thu, lượt 2 (nguyên văn):**
+- "Nghiệm thu hai theme Cam đất và Xanh lá thế nào?" → "Chốt tích hợp (Khuyến nghị)"
 
 **Yêu cầu (nguyên văn):**
 > dùng /evolve-site update thêm tính năng mới được mô tả trong 3 file:

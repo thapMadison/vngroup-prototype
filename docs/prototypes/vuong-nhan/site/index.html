@@ -7,7 +7,7 @@
 <meta name="description" content="Prototype MVP nền tảng dịch vụ tại nhà Vương Nhân: Trang quản trị, App Khách hàng, App Nhà cung cấp, 27 kịch bản demo.">
 <link rel="icon" href="assets/vngroup-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
 <style>
   body{background:var(--canvas)}
@@ -16,15 +16,15 @@
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
   .top .lg{height:44px;overflow:hidden;display:flex;align-items:center}
   .top .lg img{height:56px;width:auto;margin-left:-6px}
-  .hero{background:var(--primary);color:#fff}
+  .hero{background:var(--hub-hero-bg);color:var(--on-dark)}
   .hero .wrap{padding-top:48px;padding-bottom:56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
   .hero .tag{font:600 12.5px var(--mono);letter-spacing:.06em;opacity:.9}
   .hero h1{margin:12px 0 0;font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-.025em}
   .hero p{margin:14px 0 0;font-size:17px;line-height:1.6;opacity:.94;max-width:620px}
-  .hero .story{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:18px;padding:20px 22px;font-size:14.5px;line-height:1.6}
+  .hero .story{background:var(--hub-story-bg);border:1px solid var(--hub-story-line);border-radius:18px;padding:20px 22px;font-size:14.5px;line-height:1.6}
   .hero .story b{font-weight:700}
-  .hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:22px;height:52px;padding:0 22px;border-radius:14px;background:#fff;color:var(--nav-active);font-weight:700;font-size:16px}
-  .hero .cta:hover{text-decoration:none;background:var(--primary-soft)}
+  .hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:22px;height:52px;padding:0 22px;border-radius:var(--r-btn, 14px);background:var(--hub-cta-bg);color:var(--hub-cta-ink);font-weight:700;font-size:16px}
+  .hero .cta:hover{text-decoration:none;background:var(--hub-cta-hover)}
   .apps{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:20px;margin-top:-28px}
   .app{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;color:var(--text);box-shadow:var(--shadow-card);transition:transform .15s var(--ease),box-shadow .15s var(--ease)}
   .app:hover{text-decoration:none;transform:translateY(-3px);box-shadow:var(--shadow-frame)}
@@ -34,7 +34,7 @@
   .app .shot.phone{padding-top:18px}
   .app .shot.phone img{width:190px;border-radius:26px}
   .app .b{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px}
-  .app .b small{font:600 11.5px var(--mono);letter-spacing:.05em;color:var(--muted)}
+  .app .b small{font:var(--eyebrow-w, 600) 11.5px var(--mono);letter-spacing:var(--eyebrow-ls, .05em);color:var(--eyebrow-ink)}
   .app h2{margin:0;font-size:21px;font-weight:800;letter-spacing:-.01em}
   .app p{margin:0;font-size:14px;line-height:1.55;color:var(--text-2)}
   .app .open{margin-top:6px;font-weight:700;color:var(--link);display:flex;align-items:center;gap:6px}
@@ -42,18 +42,18 @@
   section>h2{margin:0 0 6px;font-size:26px;font-weight:800;letter-spacing:-.02em}
   section>.lead{margin:0 0 20px;color:var(--text-2);font-size:15px;max-width:760px}
   .scn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-  .scn .col{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 18px 12px}
+  .scn .col{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card-hub, 18px);padding:18px 18px 12px}
   .scn .col h3{margin:0 0 10px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
   .scn .col h3 .ic{font-size:20px;color:var(--nav-active)}
   .scn a{display:flex;gap:10px;padding:10px 8px;border-radius:10px;color:var(--text);font-size:14px;line-height:1.45}
   .scn a:hover{background:var(--fill);text-decoration:none}
-  .scn .scn-g{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:12px 8px 2px}
+  .scn .scn-g{font-size:11.5px;font-weight:var(--eyebrow-w, 700);letter-spacing:var(--eyebrow-ls, .06em);text-transform:uppercase;color:var(--eyebrow-ink);padding:12px 8px 2px}
   .scn .scn-g:first-of-type{padding-top:2px}
   .scn a b{font:600 11.5px var(--mono);color:var(--muted);min-width:22px;padding-top:2px}
   .scn a small{display:block;color:var(--muted);font-size:12.5px}
-  .cov{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;font-size:14px}
+  .cov{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card-hub, 16px);overflow:hidden;font-size:14px}
   .cov th,.cov td{text-align:left;vertical-align:top;padding:12px 16px;border-top:1px solid var(--line)}
-  .cov thead th{border-top:0;background:oklch(0.98 0.002 60);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .cov thead th{border-top:0;background:var(--th-bg);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
   .cov td.g{font-weight:700;background:var(--fill);font-size:13px}
   .cov td .mono{font-size:12px;color:var(--muted)}
   .cov-wrap{overflow-x:auto}
@@ -64,13 +64,22 @@
   footer{margin:64px 0 40px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   @media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.apps{grid-template-columns:1fr;margin-top:24px}.scn,.notes{grid-template-columns:1fr}.hero h1{font-size:34px}}
   @media (max-width:560px){.wrap{padding:0 16px}.hero .wrap{padding-top:32px;padding-bottom:36px}.hero h1{font-size:29px}.app .shot{height:220px}.top .seg{height:auto}.top .seg button{height:44px;min-width:48px;padding:0 10px}}
+  .top-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  @media (max-width:560px){.top{flex-wrap:wrap;height:auto;min-height:72px;padding-top:12px;padding-bottom:12px;row-gap:10px}.top-r{margin-left:auto}}
   @media (prefers-reduced-motion: reduce){.app{transition:none}}
+  /* ===== Theme Xanh lá (đợt 4): phần riêng của Hub. Khổ hẹp đổi dải màu sang chiều dọc để chữ trắng luôn nằm trên phần xanh đậm ===== */
+  @media (max-width:980px){[data-theme="xanh-la"] .hero{background:var(--gradient-v)}}
+  /* ===== Hết theme Xanh lá ===== */
 </style>
+<script>/[?&]theme=(xanh-la|vngroup)(&|$)/.test(location.search)&&document.documentElement.setAttribute('data-theme','xanh-la')</script>
 </head>
 <body>
 <header class="wrap top">
   <span class="lg"><img src="assets/vngroup-logo.png" alt="VN Group"></span>
-  <div class="seg" role="group" aria-label="Ngôn ngữ"><button type="button" class="on" data-lang="vi" aria-pressed="true">VI</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+  <div class="top-r">
+    <div class="seg" role="group" aria-label="Giao diện"><button type="button" class="on" data-theme-id="cam-dat" aria-pressed="true"><span class="vi">Cam đất</span><span class="en">Terracotta</span></button><button type="button" data-theme-id="xanh-la" aria-pressed="false"><span class="vi">Xanh lá</span><span class="en">Leaf green</span></button></div>
+    <div class="seg" role="group" aria-label="Ngôn ngữ"><button type="button" class="on" data-lang="vi" aria-pressed="true">VI</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+  </div>
 </header>
 <main>
   <div class="hero">
@@ -90,9 +99,9 @@
 
   <div class="wrap">
     <div class="apps">
-      <a class="app" href="admin.html"><div class="shot wide"><img src="assets/shots/admin.jpg" alt="Ảnh chụp Trang quản trị: Tổng quan với dòng chảy đơn, tiền đi đâu và việc cần xử lý"></div><div class="b"><small><span class="vi">WEB · 1440 × 900 · MỤC 71-94</span><span class="en">WEB · 1440 × 900 · ITEMS 71-94</span></small><h2><span class="vi">Trang quản trị</span><span class="en">Admin portal</span></h2><p><span class="vi">18 mục menu, 4 vai trò có phân quyền. Tài chính, đơn hàng, nhà cung cấp làm sâu; báo cáo cộng khớp, xuất Excel 3 sheet.</span><span class="en">18 menu items, 4 permissioned roles. Deep finance, orders and providers; balanced reports with a 3-sheet Excel export.</span></p><span class="open"><span class="vi">Mở Trang quản trị</span><span class="en">Open Admin</span> →</span></div></a>
-      <a class="app" href="customer.html"><div class="shot phone"><img src="assets/shots/customer.jpg" alt="Ảnh chụp App Khách hàng: trang chủ khối cam, đơn đang chạy, nhà cung cấp tin cậy ở phường"></div><div class="b"><small><span class="vi">DI ĐỘNG · MỤC 1-36</span><span class="en">MOBILE · ITEMS 1-36</span></small><h2><span class="vi">App Khách hàng</span><span class="en">Customer app</span></h2><p><span class="vi">Tìm, đặt 4 bước, chờ phản hồi thời gian thực, theo dõi hành trình đơn, nghiệm thu, thanh toán.</span><span class="en">Search, 4-step booking, live responses, order journey, sign-off, payment.</span></p><span class="open"><span class="vi">Mở App Khách hàng</span><span class="en">Open Customer app</span> →</span></div></a>
-      <a class="app" href="provider.html"><div class="shot phone"><img src="assets/shots/provider.jpg" alt="Ảnh chụp App Nhà cung cấp: đội hôm nay, đơn chưa phân công và gợi ý người"></div><div class="b"><small><span class="vi">DI ĐỘNG · MỤC 38-70</span><span class="en">MOBILE · ITEMS 38-70</span></small><h2><span class="vi">App Nhà cung cấp</span><span class="en">Provider app</span></h2><p><span class="vi">Một app cho chủ đơn vị và kỹ thuật viên: nhận yêu cầu, điều phối, check-in GPS, bảng chốt, rút tiền.</span><span class="en">One app for owners and technicians: requests, dispatch, GPS check-in, sign-off sheet, payouts.</span></p><span class="open"><span class="vi">Mở App Nhà cung cấp</span><span class="en">Open Provider app</span> →</span></div></a>
+      <a class="app" href="admin.html"><div class="shot wide"><img src="assets/shots/admin.jpg" data-shot="admin" alt="Ảnh chụp Trang quản trị: Tổng quan với dòng chảy đơn, tiền đi đâu và việc cần xử lý"></div><div class="b"><small><span class="vi">WEB · 1440 × 900 · MỤC 71-94</span><span class="en">WEB · 1440 × 900 · ITEMS 71-94</span></small><h2><span class="vi">Trang quản trị</span><span class="en">Admin portal</span></h2><p><span class="vi">18 mục menu, 4 vai trò có phân quyền. Tài chính, đơn hàng, nhà cung cấp làm sâu; báo cáo cộng khớp, xuất Excel 3 sheet.</span><span class="en">18 menu items, 4 permissioned roles. Deep finance, orders and providers; balanced reports with a 3-sheet Excel export.</span></p><span class="open"><span class="vi">Mở Trang quản trị</span><span class="en">Open Admin</span> →</span></div></a>
+      <a class="app" href="customer.html"><div class="shot phone"><img src="assets/shots/customer.jpg" data-shot="customer" alt="Ảnh chụp App Khách hàng: trang chủ khối cam, đơn đang chạy, nhà cung cấp tin cậy ở phường" data-alt-cam-dat="Ảnh chụp App Khách hàng: trang chủ khối cam, đơn đang chạy, nhà cung cấp tin cậy ở phường" data-alt-xanh-la="Ảnh chụp App Khách hàng: trang chủ khối xanh, đơn đang chạy, nhà cung cấp tin cậy ở phường"></div><div class="b"><small><span class="vi">DI ĐỘNG · MỤC 1-36</span><span class="en">MOBILE · ITEMS 1-36</span></small><h2><span class="vi">App Khách hàng</span><span class="en">Customer app</span></h2><p><span class="vi">Tìm, đặt 4 bước, chờ phản hồi thời gian thực, theo dõi hành trình đơn, nghiệm thu, thanh toán.</span><span class="en">Search, 4-step booking, live responses, order journey, sign-off, payment.</span></p><span class="open"><span class="vi">Mở App Khách hàng</span><span class="en">Open Customer app</span> →</span></div></a>
+      <a class="app" href="provider.html"><div class="shot phone"><img src="assets/shots/provider.jpg" data-shot="provider" alt="Ảnh chụp App Nhà cung cấp: đội hôm nay, đơn chưa phân công và gợi ý người"></div><div class="b"><small><span class="vi">DI ĐỘNG · MỤC 38-70</span><span class="en">MOBILE · ITEMS 38-70</span></small><h2><span class="vi">App Nhà cung cấp</span><span class="en">Provider app</span></h2><p><span class="vi">Một app cho chủ đơn vị và kỹ thuật viên: nhận yêu cầu, điều phối, check-in GPS, bảng chốt, rút tiền.</span><span class="en">One app for owners and technicians: requests, dispatch, GPS check-in, sign-off sheet, payouts.</span></p><span class="open"><span class="vi">Mở App Nhà cung cấp</span><span class="en">Open Provider app</span> →</span></div></a>
     </div>
 
     <section id="scenarios" aria-labelledby="scn-h">
@@ -193,6 +202,7 @@
           <li><span class="vi">Mở trực tiếp file HTML, không cần máy chủ. Cần mạng để tải font Google.</span><span class="en">Open the HTML files directly; no server needed. Internet is needed for Google Fonts.</span></li>
           <li><span class="vi">Trang quản trị thiết kế cho 1440 × 900, dùng tốt từ 1280. Hai app hiển thị trong khung điện thoại; trên điện thoại thật thì chiếm toàn màn.</span><span class="en">Admin is designed for 1440 × 900, works from 1280. The apps show in a phone frame, full screen on a real phone.</span></li>
           <li><span class="vi">Tìm nhanh trong Trang quản trị: Ctrl K.</span><span class="en">Quick search in Admin: Ctrl K.</span></li>
+          <li><span class="vi">Hai giao diện chạy song song: Cam đất (mặc định) và Xanh lá theo nhận diện VN Group. Đổi bằng nút ở đầu trang, mục Giao diện trong bảng Demo của mỗi ứng dụng, phím Shift+T, hoặc thêm ?theme=xanh-la vào đường dẫn. Dữ liệu và màn đang mở giữ nguyên.</span><span class="en">Two themes run side by side: Terracotta (default) and Leaf green, based on the VN Group identity. Switch with the toggle at the top, the Theme section in each app's Demo panel, Shift+T, or add ?theme=xanh-la to the URL. Data and the open screen stay.</span></li>
         </ul></div>
       </div>
     </section>
@@ -202,18 +212,48 @@
 <script src="assets/icons.js"></script>
 <script>
   (function () {
-    var q = new URLSearchParams(location.search);
-    function set(l) {
-      document.documentElement.lang = l;
-      document.querySelectorAll('[data-lang]').forEach(function (b) { var on = b.getAttribute('data-lang') === l; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    var q = new URLSearchParams(location.search), lang = 'vi', theme = 'cam-dat';
+    /* Mọi link sang 3 ứng dụng mang theo ngôn ngữ và giao diện đang chọn */
+    function relink() {
       document.querySelectorAll('a[href$=".html"],a[href*=".html?"]').forEach(function (a) {
         var u = a.getAttribute('href').split('#')[0]; var base = u.split('?')[0], qs = new URLSearchParams(u.split('?')[1] || '');
-        if (l === 'en') qs.set('lang', 'en'); else qs.delete('lang');
+        if (lang === 'en') qs.set('lang', 'en'); else qs.delete('lang');
+        if (theme === 'xanh-la') qs.set('theme', 'xanh-la'); else qs.delete('theme');
         var s = qs.toString(); a.setAttribute('href', base + (s ? '?' + s : ''));
       });
     }
+    function press(attr, val) { document.querySelectorAll('[' + attr + ']').forEach(function (b) { var on = b.getAttribute(attr) === val; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); }); }
+    function set(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      press('data-lang', l);
+      relink();
+    }
+    /* Giao diện (đợt 4): Cam đất hoặc Xanh lá (nhận cả tên cũ vngroup); ảnh chụp 3 ứng dụng đổi theo */
+    function setTheme(t, fromUser) {
+      theme = t === 'xanh-la' || t === 'vngroup' ? 'xanh-la' : 'cam-dat';
+      if (theme === 'xanh-la') document.documentElement.setAttribute('data-theme', 'xanh-la'); else document.documentElement.removeAttribute('data-theme');
+      press('data-theme-id', theme);
+      document.querySelectorAll('img[data-shot]').forEach(function (i) {
+        i.src = 'assets/shots/' + i.getAttribute('data-shot') + (theme === 'xanh-la' ? '-xanh-la' : '') + '.jpg';
+        var alt = i.getAttribute(theme === 'xanh-la' ? 'data-alt-xanh-la' : 'data-alt-cam-dat'); if (alt) i.alt = alt;
+      });
+      relink();
+      if (fromUser) try {
+        var s = new URLSearchParams(location.search);
+        if (theme === 'xanh-la') s.set('theme', 'xanh-la'); else s.delete('theme');
+        var qs = s.toString(); history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+      } catch (e) {}
+    }
     document.querySelectorAll('[data-lang]').forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-lang')); }); });
+    document.querySelectorAll('[data-theme-id]').forEach(function (b) { b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme-id'), true); }); });
+    document.addEventListener('keydown', function (e) {
+      if (!e.shiftKey || e.ctrlKey || e.altKey || e.metaKey || e.repeat || (e.key !== 'T' && e.key !== 't')) return;
+      var t = e.target; if (t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+      e.preventDefault(); setTheme(theme === 'xanh-la' ? 'cam-dat' : 'xanh-la', true);
+    });
     set(q.get('lang') === 'en' ? 'en' : 'vi');
+    setTheme(q.get('theme'));
   })();
 </script>
 </body>

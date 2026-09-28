@@ -86,15 +86,15 @@
     var s = '<svg width="' + W0 + '" height="' + H + '" role="img" aria-label="' + esc(L('Biểu đồ GMV và hoa hồng thực thu', 'GMV and realised commission chart')) + '">';
     for (var t = 0; t <= 4; t++) {
       var v = step * t;
-      s += '<line x1="' + pl + '" x2="' + W0 + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="' + (t ? '#ECEAE7' : '#C9C5C0') + '"/>' +
-        '<text x="' + (pl - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="11" fill="#76706C">' + esc(axisLbl(v)) + '</text>';
+      s += '<line x1="' + pl + '" x2="' + W0 + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="' + (t ? 'var(--chart-grid)' : 'var(--chart-base)') + '"/>' +
+        '<text x="' + (pl - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--chart-axis)">' + esc(axisLbl(v)) + '</text>';
     }
     var every = Math.ceil(n / 9);
     data.forEach(function (x, i) {
       var bx = pl + i * cw + (cw - bw * 2 - 2) / 2;
       s += '<g class="bg" data-i="' + i + '"><rect x="' + (pl + i * cw) + '" y="' + pt + '" width="' + cw + '" height="' + (H - pt - pb) + '" fill="transparent"/>' +
         '<path d="' + top(bx, y(x.gmv), bw, y(0) - y(x.gmv)) + '" fill="var(--series-1)"/><path d="' + top(bx + bw + 2, y(x.hh), bw, y(0) - y(x.hh)) + '" fill="var(--series-2)"/></g>';
-      if (i % every === 0) s += '<text x="' + (pl + i * cw + cw / 2) + '" y="' + (H - 7) + '" text-anchor="middle" font-size="11" fill="#76706C">' + esc(x.short) + '</text>';
+      if (i % every === 0) s += '<text x="' + (pl + i * cw + cw / 2) + '" y="' + (H - 7) + '" text-anchor="middle" font-size="11" fill="var(--chart-axis)">' + esc(x.short) + '</text>';
     });
     el.innerHTML = s + '</svg><div class="tip" hidden></div>';
     var tip = el.querySelector('.tip');

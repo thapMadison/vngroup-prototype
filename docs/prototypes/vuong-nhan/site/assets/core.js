@@ -191,5 +191,59 @@
   VN.clone = function (o) { return JSON.parse(JSON.stringify(o)); };
   VN.uid = (function () { var i = 1000; return function (p) { return (p || 'x') + (++i); }; })();
 
+  /* ---------- Giao diện (đợt 4) ----------
+     Hai theme chạy song song: 'cam-dat' = Cam đất (bản dựng đầu, mặc định), 'xanh-la' = Xanh lá (theo nhận diện VN Group).
+     Đọc từ ?theme=xanh-la (nhận cả tên cũ ?theme=vngroup) và đặt data-theme trên <html> (thẻ <head> đã đặt sớm để không nháy),
+     mang theo khi bấm link sang trang .html khác, Shift+T để đổi. Không dùng localStorage. */
+  VN.THEMES = ['cam-dat', 'xanh-la'];
+  VN.themeOf = function (s) { return s === 'xanh-la' || s === 'vngroup' ? 'xanh-la' : 'cam-dat'; };
+  VN.theme = VN.themeOf(new URLSearchParams(location.search).get('theme'));
+  VN.onTheme = null;
+  VN.themeName = function (t) { return (t || VN.theme) === 'xanh-la' ? VN.L('Xanh lá', 'Leaf green') : VN.L('Cam đất', 'Terracotta'); };
+  function paintTheme() {
+    if (VN.theme === 'xanh-la') document.documentElement.setAttribute('data-theme', 'xanh-la');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  /* Cam đất là mặc định nên không ghi vào địa chỉ; Xanh lá ghi theme=xanh-la */
+  function themeQuery(q) {
+    if (VN.theme === 'xanh-la') q.set('theme', 'xanh-la'); else q.delete('theme');
+    return q.toString();
+  }
+  VN.setTheme = function (t) {
+    VN.theme = VN.themeOf(t);
+    paintTheme();
+    /* Ghi lại vào địa chỉ để F5 vẫn giữ theme */
+    try {
+      var s = themeQuery(new URLSearchParams(location.search));
+      history.replaceState(history.state, '', location.pathname + (s ? '?' + s : '') + location.hash);
+    } catch (e) {}
+    if (VN.onTheme) VN.onTheme(VN.theme);
+  };
+  VN.themeSeg = function () {
+    return '<div class="seg" role="group" aria-label="' + VN.L('Giao diện', 'Theme') + '" style="margin-top:8px">' + VN.THEMES.map(function (t) {
+      var on = VN.theme === t;
+      /* id để VN.patch trả focus về đúng nút sau khi vẽ lại (người dùng bàn phím) */
+      return '<button type="button" id="theme-' + t + '" class="' + (on ? 'on' : '') + '" data-act="theme" data-id="' + t + '" aria-pressed="' + on + '">' + VN.themeName(t) + '</button>';
+    }).join('') + '</div>';
+  };
+  paintTheme();
+  /* Link được dựng lại mỗi lần vẽ, nên sửa href ngay lúc bấm (cả chuột giữa và menu chuột phải) */
+  function carryTheme(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var m = /^([\w./-]+\.html)(\?[^#]*)?(#.*)?$/.exec(a.getAttribute('href'));
+    if (!m) return;
+    var s = themeQuery(new URLSearchParams((m[2] || '').slice(1)));
+    a.setAttribute('href', m[1] + (s ? '?' + s : '') + (m[3] || ''));
+  }
+  ['click', 'auxclick', 'contextmenu'].forEach(function (ev) { document.addEventListener(ev, carryTheme, true); });
+  document.addEventListener('keydown', function (e) {
+    if (!e.shiftKey || e.ctrlKey || e.altKey || e.metaKey || e.repeat || (e.key !== 'T' && e.key !== 't')) return;
+    var t = e.target;
+    if (t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+    e.preventDefault();
+    VN.setTheme(VN.theme === 'xanh-la' ? 'cam-dat' : 'xanh-la');
+  });
+
   W.VN = VN;
 })(window);
